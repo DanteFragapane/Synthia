@@ -1,10 +1,15 @@
+// Dotenv package to handle development environment variables
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+
+// Imports
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 3001
-const secret = process.env.SECRET
+const SECRET = process.env.SECRET
 const app = express()
 
-console.log(secret)
 // Define middleware here
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
