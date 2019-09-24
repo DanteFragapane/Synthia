@@ -5,6 +5,8 @@ CREATE TABLE `websynth`.`users`
 (
   `username` VARCHAR
 (45) NOT NULL,
+`email` VARCHAR
+(45) NOT NULL,
   `password` TEXT NULL,
   PRIMARY KEY
 (`username`),
