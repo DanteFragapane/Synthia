@@ -11,7 +11,7 @@ const context = new (window.AudioContext || window.webkitAudioContext) ()
 const oscillator = context.createOscillator()
 
 oscillator.type = 'sine'
-oscillator.frequency.value = 200
+oscillator.frequency.value = 100
 oscillator.connect(context.destination)
 oscillator.start() 
 
