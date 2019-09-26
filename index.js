@@ -71,8 +71,8 @@ app.post('/api/createUser', (req, res) => {
     const hash = hashPassword(password)
     console.log(username, hash)
     connection.query(
-      'INSERT INTO users VALUES (?)',
-      { username: username, password: hash, email: email },
+      'INSERT INTO users (username, password, email) VALUES (?, ?, ?)',
+      [ username, hash, email ],
       (err, data) => {
         if (err) {
           res.status(500).send('Internal Error')
