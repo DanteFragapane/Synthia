@@ -3,8 +3,13 @@ import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './components/Login'
 import Signup from './components/Signup'
+import Me from './components/Me'
 import Synth from './synth/synth-test'
 import withAuth from './components/withAuth'
+
+// function testMe () {
+//   return <h1>This should only be available after logging in!</h1>
+// }
 
 function App () {
   return (
@@ -13,7 +18,7 @@ function App () {
         <Switch>
           <Route path="/login" component={Login} />
           <Route path="/signup" component={Signup} />
-          <Route path="/me" component={withAuth(<h1>Me! This should only be avaiable AFTER logging in!</h1>)} />
+          <Route path="/me" component={withAuth(Me)} />
           <Route path="/" component={Synth} />
         </Switch>
       </div>

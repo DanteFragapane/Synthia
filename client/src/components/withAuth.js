@@ -14,12 +14,7 @@ export default function withAuth (ComponentToProtect) {
     componentDidMount () {
       fetch('/authenticate')
         .then((res) => {
-          if (res.status === 200) {
-            this.setState({ loading: false })
-          } else {
-            const error = new Error(res.error)
-            throw error
-          }
+          this.setState({ loading: false })
         })
         .catch((err) => {
           console.error(err)
