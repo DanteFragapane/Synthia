@@ -2,17 +2,11 @@ const bcrypt = require('bcrypt')
 const saltRounds = 10
 
 function hashPassword (password) {
-  return bcrypt.hash(password, saltRounds, (err, hash) => {
-    if (err) return false
-    return hash
-  })
+  return bcrypt.hashSync(password, saltRounds)
 }
 
 function checkPassword (hashedPassword, currentPassword) {
-  return bcrypt.compare(currentPassword, hashedPassword, (err, bool) => {
-    if (err) return false
-    return bool
-  })
+  return bcrypt.compareSync(currentPassword, hashedPassword)
 }
 
 module.exports = { hashPassword, checkPassword }

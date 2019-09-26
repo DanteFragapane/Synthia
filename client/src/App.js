@@ -1,15 +1,20 @@
-import React, { Component } from "react";
-import "./App.css";
-import Synth from "./synth/synth-test"
+import React, { Component } from 'react'
+import './App.css'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Login from './components/Login'
+import Synth from './synth/synth-test'
 
-class App extends Component {
-  render() {
-    return (
+function App () {
+  return (
+    <Router>
       <div>
-          <Synth/>
+        <Switch>
+          <Route path="/login" component={Login} />
+          <Route path="/" component={Synth} />
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  )
 }
 
-export default App;
+export default App
