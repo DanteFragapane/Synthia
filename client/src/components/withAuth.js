@@ -12,9 +12,14 @@ export default function withAuth (ComponentToProtect) {
     }
 
     componentDidMount () {
-      fetch('/authenticate')
+      fetch('/checkToken', { method: 'POST' })
         .then((res) => {
-          this.setState({ loading: false })
+          if (res.status === 200) {
+            this.setState({ loading: false })
+          } else {
+            const error = new Error(res.error)
+            throw error
+          }
         })
         .catch((err) => {
           console.error(err)
@@ -32,6 +37,7 @@ export default function withAuth (ComponentToProtect) {
       }
       return (
         <React.Fragment>
+          {console.log(this.props)}
           <ComponentToProtect {...this.props} />
         </React.Fragment>
       )

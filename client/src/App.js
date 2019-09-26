@@ -7,10 +7,6 @@ import Me from './components/Me'
 import Synth from './synth/synth-test'
 import withAuth from './components/withAuth'
 
-// function testMe () {
-//   return <h1>This should only be available after logging in!</h1>
-// }
-
 function App () {
   return (
     <Router>

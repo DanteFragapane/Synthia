@@ -33,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
 }
 
-// // Define API routes here
+// Define API routes here
 app.post('/api/authenticate', function (req, res) {
   const { username, password } = req.body
 
@@ -62,6 +62,10 @@ app.post('/api/authenticate', function (req, res) {
       }
     }
   })
+})
+
+app.post('/checkToken', authenticate, (req, res) => {
+  res.sendStatus(200)
 })
 
 app.post('/api/createUser', (req, res) => {
