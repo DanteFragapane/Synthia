@@ -1,0 +1,12 @@
+.header {
+  width: 100%;
+  font-size: 4rem;
+  font-family: system;
+  background: #000000;
+  color: #2A77AE;
+  margin-bottom: 5rem;
+}
+
+.title {
+  float: left;
+}
