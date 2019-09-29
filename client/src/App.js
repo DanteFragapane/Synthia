@@ -2,13 +2,13 @@ import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Me from './components/Me'
 import Synth from './components/Synth'
 import withAuth from './components/withAuth'
 import Header from './components/Header'
-
 
 function App () {
   return (
