@@ -2,11 +2,14 @@ import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from './components/Nav'
+
+
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Me from './components/Me'
-import Synth from './synth/synth-test'
+import Synth from './components/Synth'
 import withAuth from './components/withAuth'
+import Main from './components/Pages/Main'
 
 class App extends React.Component {
   state = {
