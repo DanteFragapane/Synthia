@@ -1,0 +1,6 @@
+.myfooter{
+  background: black;
+  color: white;
+  border-block-end-width: 1rem;
+  border-block-color: pink;
+}

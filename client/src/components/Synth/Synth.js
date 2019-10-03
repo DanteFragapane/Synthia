@@ -1,7 +1,6 @@
 import React from 'react'
 import './Synth.css'
 
-
 function Synth () {
   // this creates the audio context
   const context = new (window.AudioContext || window.webkitAudioContext)()
