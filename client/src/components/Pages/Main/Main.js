@@ -9,11 +9,11 @@ import Sidebar from '../../Sidebar'
 function Main () {
   return (
 
-    <div>
-      <Header />
-      <Sidebar />
-      <Synth />
-      <Footer />
+    <div className='grid-container'>
+      <Header className='item1' />
+      <Sidebar className='item2' />
+      <Synth className='item3' />
+      <Footer className='item4' />
     </div>
 
   )

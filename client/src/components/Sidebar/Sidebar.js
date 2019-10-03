@@ -13,6 +13,11 @@ function Sidebar () {
         <a href='#Thing3'>Thing 3</a>
         <a href='#Thing4'>Thing 4</a>
         <a href='#Thing5'>Thing 5</a>
+        <a href='#Thing6'>Thing 6</a>
+        <a href='#Thing7'>Thing 7</a>
+        <a href='#Thing8'>Thing 8</a>
+        <a href='#Thing9'>Thing 9</a>
+        <a href='#Thing10'>Thing 10</a>
       </div>
 
     </div>
