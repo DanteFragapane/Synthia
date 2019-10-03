@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'react-dom'
+// import { render } from 'react-dom'
 import makeSound from './Oscillator'
 import Synthesizer from './Synth'
 
@@ -9,4 +9,4 @@ const SynthApp = () => (
     </div>
 )
 
-render(<SynthApp makeSound={makeSound} />, document.getElementById("root"))
+export default SynthApp
