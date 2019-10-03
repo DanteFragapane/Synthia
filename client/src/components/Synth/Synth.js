@@ -3,7 +3,7 @@ import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 
 class Synthesizer extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       waveform: WAVEFORMS.SINE.id,
@@ -12,91 +12,57 @@ class Synthesizer extends React.Component {
     }
   }
 
-  setWaveform = e => {
+  componentDidUpdate () {
+    console.log(this.state)
+  }
+
+  setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
   }
 
-  setDuration = e => {
-    this.setDuration({ duration: e.target.value })
+  setDuration = (e) => {
+    this.setState({ duration: Number(e.target.value) })
   }
 
-  setFrequency = value => {
-    this.setState({ frequency: value })
+  setFrequency = (value) => {
+    this.setState({ frequency: Number(value) })
   }
 
   playSound = () => {
-    this.props.makeSound(
-      this.state.waveform,
-      this.state.frequency,
-      this.state.duration
-    )
+    this.props.makeSound(this.state.waveform, this.state.frequency, this.state.duration)
+    console.log('Playing a sound!')
   }
 
-  render() {
+  render () {
     return (
       <div>
         <h1>Synthesizer</h1>
         <p>Create a tone but be careful</p>
 
-        <div className='control'>
-          <label htmlFor='waveform'>Waveform</label>
-          <select 
-            id="waveform" 
-            value={this.state.waveform} 
-            onChange={this.setWaveform}
-          >
+        <div className="control">
+          <label htmlFor="waveform">Waveform</label>
+          <select id="waveform" value={this.state.waveform} onChange={this.setWaveform}>
             <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
-            <option value={WAVEFORMS.SAWTOOTH.id}>
-              {WAVEFORMS.SAWTOOTH.userTerm}
-            </option>
-            <option value={WAVEFORMS.TRIANGLE.id}>
-              {WAVEFORMS.TRIANGLE.userTerm}
-            </option>
-            <option value={WAVEFORMS.SQUARE.id}>
-              {WAVEFORMS.SQUARE.userTerm}
-            </option>
+            <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
+            <option value={WAVEFORMS.TRIANGLE.id}>{WAVEFORMS.TRIANGLE.userTerm}</option>
+            <option value={WAVEFORMS.SQUARE.id}>{WAVEFORMS.SQUARE.userTerm}</option>
           </select>
         </div>
 
-        <Frequency
-          value={this.state.frequency}
-          updateFrequency={this.setFrequency}
-          />
+        <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
-          <div className="control">
-            <label htmlFor="duration">Duration (milliseconds)</label>
-            <input
-              id="duration"
-              type="text"
-              value={this.state.duration}
-              onChange={this.setDuration}
-              />
-          </div>
+        <div className="control">
+          <label htmlFor="duration">Duration (milliseconds)</label>
+          <input id="duration" type="text" value={this.state.duration} onChange={this.setDuration} />
+        </div>
 
-          <button onClick={this.playSound}>Play!</button>
+        <button onClick={this.playSound}>Play!</button>
       </div>
     )
   }
 }
 
 export default Synthesizer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // function Synth () {
 //   // this creates the audio context
@@ -120,4 +86,3 @@ export default Synthesizer
 // export default Synth
 
 // ++==++== - - Basic Synth ^
-

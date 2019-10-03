@@ -2,8 +2,6 @@ import React from 'react'
 import './App.css'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from './components/Nav'
-
-
 import Login from './components/Login'
 import Signup from './components/Signup'
 import Me from './components/Me'
@@ -48,6 +46,7 @@ class App extends React.Component {
             <Route path="/signup" component={Signup} />
             <Route path="/profile/:user" component={withAuth(Me)} />
             <Route path="/me" component={withAuth(Me)} />
+            <Route path="/main" component={Main} />
             <Route path="/" component={Main} />
           </Switch>
         </div>

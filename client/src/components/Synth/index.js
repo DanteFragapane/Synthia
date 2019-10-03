@@ -4,9 +4,9 @@ import makeSound from './Oscillator'
 import Synthesizer from './Synth'
 
 const SynthApp = () => (
-    <div>
-        <Synthesizer makeSound={makeSound} />
-    </div>
+  <div>
+    <Synthesizer makeSound={makeSound} />
+  </div>
 )
 
 export default SynthApp
