@@ -5,7 +5,7 @@ import './Table.css'
 export default class Example extends React.Component {
   render () {
     return (
-      <div className='flex-container'>
+      <div className='mesa'>
         <Table dark>
           <thead>
             <tr>
