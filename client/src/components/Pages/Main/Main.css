@@ -1,0 +1,24 @@
+.item1 { grid-area: header; }
+.item2 { grid-area: sidebar; }
+.item3 { grid-area: synth; }
+.item4 { grid-area: table; }
+.item5 { grid-area: footer; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+  'header header header header header header header'
+  'sidebar synth synth synth table table table'
+  'sidebar footer footer footer footer footer';
+grid-gap: 1rem;
+  grid-gap: 1rem;
+  background-color: darkgrey;
+  padding: 1rem;
+}
+
+.grid-container > div {
+  background-color: rgba(136, 66, 66, 0.8);
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 30px;
+}

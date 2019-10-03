@@ -17,17 +17,18 @@ const app = express()
 // MySQL stuff
 const mysql = require('mysql')
 const connection = mysql.createConnection({
-  host: 'localhost',
-  port: 3306,
-  user: 'root',
-  password: 'password',
-  database: 'websynth'
+  host: process.env.dbHots || 'localhost',
+  port: process.env.dbPort || 3306,
+  user: process.env.dbUser || 'root',
+  password: process.env.dbPassword || 'password',
+  database: process.env.dbDatabase || 'websynth'
 })
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(cookieParser())
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'))
@@ -89,6 +90,14 @@ app.post('/api/createUser', (req, res) => {
   } else {
     res.status(401).send('Improper usename, email, or password!')
   }
+})
+
+app.post('/logout', (_, res) => {
+  return res.clearCookie('token').redirect('/')
+})
+
+app.get('/api/getCurrentUser', authenticate, (req, res) => {
+  return res.json({ username: req.username })
 })
 
 // Send every other request to the React app
