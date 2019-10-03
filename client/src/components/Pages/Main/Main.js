@@ -5,6 +5,7 @@ import Header from '../../Header'
 import Footer from '../../Footer'
 import Synth from '../../Synth'
 import Sidebar from '../../Sidebar'
+import Table from '../../Table'
 
 function Main () {
   return (
@@ -13,7 +14,8 @@ function Main () {
       <Header className='item1' />
       <Sidebar className='item2' />
       <Synth className='item3' />
-      <Footer className='item4' />
+      <Table className='item4' />
+      <Footer className='item5' />
     </div>
 
   )

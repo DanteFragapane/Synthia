@@ -1,14 +1,15 @@
 .item1 { grid-area: header; }
-.item2 { grid-area: menu; }
-.item3 { grid-area: main; }
-.item4 { grid-area: footer; }
+.item2 { grid-area: sidebar; }
+.item3 { grid-area: synth; }
+.item4 { grid-area: table; }
+.item5 { grid-area: footer; }
 
 .grid-container {
   display: grid;
   grid-template-areas:
-  'header header header header header header'
-  'menu main main main main main'
-  'menu footer footer footer footer';
+  'header header header header header header header'
+  'sidebar synth synth synth table table table'
+  'sidebar footer footer footer footer footer';
 grid-gap: 1rem;
   grid-gap: 1rem;
   background-color: darkgrey;

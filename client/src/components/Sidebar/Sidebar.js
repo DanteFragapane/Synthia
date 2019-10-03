@@ -1,5 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
+import '../Table'
 
 function Sidebar () {
   return (
@@ -18,6 +19,8 @@ function Sidebar () {
         <a href='#Thing8'>Thing 8</a>
         <a href='#Thing9'>Thing 9</a>
         <a href='#Thing10'>Thing 10</a>
+        <div className='content'>        </div>
+
       </div>
 
     </div>
