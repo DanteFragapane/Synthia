@@ -3,7 +3,7 @@ const audioContext = window.audioContext || new AudioContext()
 const makeSound = (waveform, frequency, duration) => {
   var oscillator = audioContext.createOscillator()
   oscillator.type = waveform || 'sine'
-  oscillator.frequency.value = frequency || 300
+  oscillator.frequency.value = frequency || 440
 
   oscillator.start()
   duration = duration || 500
