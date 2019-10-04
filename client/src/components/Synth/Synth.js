@@ -2,8 +2,8 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 
-const keyArray = [261.63, 293.66, 329.63, 349.23, 392.00, 440.00, 493.88, 523.25]
-const keyName = ['C', 'D', 'E', 'F', 'G', 'A', 'B', 'C']
+const keyArray = [261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25]
+const keyName = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C']
 
 function keyMaker () {
   for (let i = 0; i < keyArray.length; i++) {
