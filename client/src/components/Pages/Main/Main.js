@@ -15,6 +15,8 @@ function Main () {
       <div className='three'><SynthApp /></div>
       <div className='four'><Table /></div>
       <div className='five'><Footer /></div>
+      <div className='six'><Footer /></div>
+      <div className='seven'><Footer /></div>
     </div>
   )
 }
