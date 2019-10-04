@@ -12,6 +12,19 @@ class Synthesizer extends React.Component {
     }
   }
 
+  makeAudioContext (waveform, frequency, duration) {
+    const audioContext = window.audioContext || new AudioContext()
+    const oscillator = audioContext.createOscillator()
+    const masterGainNode = audioContext.createGain()
+    masterGainNode.connect(audioContext.destination)
+    oscillator.type = waveform || 'sine'
+    oscillator.frequency.value = frequency || 300
+    oscillator.connect(masterGainNode)
+    oscillator.start()
+    duration = duration || 500
+    window.setTimeout(oscillator.stop.bind(oscillator), duration)
+  }
+
   componentDidUpdate () {
     console.log(this.state)
   }
@@ -29,7 +42,8 @@ class Synthesizer extends React.Component {
   }
 
   playSound = () => {
-    this.props.makeSound(this.state.waveform, this.state.frequency, this.state.duration)
+    // this.props.makeSound(this.state.waveform, this.state.frequency, this.state.duration)
+    this.makeAudioContext(this.state.waveform, this.state.frequency, this.state.duration)
     console.log('Playing a sound!')
   }
 
