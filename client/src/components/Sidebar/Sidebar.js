@@ -18,7 +18,7 @@ function Sidebar () {
         <a href='#Thing7'>Thing 7</a>
         <a href='#Thing8'>Thing 8</a>
         <a href='#Thing9'>Thing 9</a>
-        <a href='#Thing10'>Thing 10</a>
+
         <div className='content' />
 
       </div>

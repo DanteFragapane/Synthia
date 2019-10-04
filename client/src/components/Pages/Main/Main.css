@@ -2,6 +2,7 @@
 .wrapper {
   max-width: 100%;
   margin: 0 auto;
+
 }
 
 .wrapper > div {
@@ -42,7 +43,7 @@
   grid-row: 2;
 }
 
-/* Footer */
+/* Footer 1 */
 .five {
   grid-column: 1;
   grid-row: 3;

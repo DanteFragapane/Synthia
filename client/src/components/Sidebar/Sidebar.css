@@ -2,11 +2,12 @@
 .sidebar {
   margin: 0;
   padding: 0;
-  width: 200px;
+  width: 100%;
   background-color: black;
   position: float;
   height: 100%;
   overflow: auto;
+  text-align: center
 }
 
 /* Sidebar links */
@@ -19,14 +20,14 @@
 
 /* Active/current link */
 .sidebar a.active {
-  background-color: palevioletred;
+  background-color:#d9480f;
   color: white;
 }
 
 /* Links on mouse-over */
 .sidebar a:hover:not(.active) {
-  background-color: #555;
-  color: white;
+  background-color: rgb(233,171,88);
+  color: black;
 }
 
 div.content {
