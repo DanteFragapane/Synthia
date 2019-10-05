@@ -2,7 +2,20 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 
+const keyArray = [261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25]
+const keyName = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C']
 
+function keyMaker () {
+  for (let i = 0; i < keyArray.length; i++) {
+    const button = document.createElement('input')
+    button.type = "button"
+    button.value = keyName[i]
+    button.id = keyArray[i]
+    document.body.appendChild(button)    
+  }
+}
+
+keyMaker()
 
 class Synthesizer extends React.Component {
   constructor (props) {
@@ -41,14 +54,19 @@ class Synthesizer extends React.Component {
 
   setFrequency = (value) => {
     this.setState({ frequency: Number(value) })
-  }
-
+    
+  }  
+  
+  
+  
   playSound = () => {
     // this.props.makeSound(this.state.waveform, this.state.frequency, this.state.duration)
     this.makeAudioContext(this.state.waveform, this.state.frequency, this.state.duration)
     console.log('Playing a sound!')
+    
   }
 
+  
   render () {
     return (
       <div>
@@ -72,7 +90,10 @@ class Synthesizer extends React.Component {
           <input id="duration" type="text" value={this.state.duration} onChange={this.setDuration} />
         </div>
 
-        <button onClick={this.playSound}>Play!</button>
+        <button onClick={this.playSound}>create keyboard</button>
+
+        <div id="keyboard"></div>
+        
       </div>
     )
   }
