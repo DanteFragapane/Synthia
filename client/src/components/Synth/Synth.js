@@ -51,7 +51,7 @@ class Synthesizer extends React.Component {
 
     // Start the oscillator
     oscillator.start()
-    duration = duration || 500
+    duration = this.state.duration || 500
     window.setTimeout(oscillator.stop.bind(oscillator), duration)
   }
 
