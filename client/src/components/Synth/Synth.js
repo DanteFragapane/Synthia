@@ -2,6 +2,8 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 
+
+
 class Synthesizer extends React.Component {
   constructor (props) {
     super(props)

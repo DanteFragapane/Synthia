@@ -4,25 +4,20 @@ import '../Table'
 
 function Sidebar () {
   return (
-
     <div>
-
-      <div className='sidebar'>
-        <a className='active' href='#home'>Home</a>
-        <a href='#Thing1'>Thing 1</a>
-        <a href='#Thing2'>Thing 2</a>
-        <a href='#Thing3'>Thing 3</a>
-        <a href='#Thing4'>Thing 4</a>
-        <a href='#Thing5'>Thing 5</a>
-        <a href='#Thing6'>Thing 6</a>
-        <a href='#Thing7'>Thing 7</a>
-        <a href='#Thing8'>Thing 8</a>
-        <a href='#Thing9'>Thing 9</a>
-
-        <div className='content' />
-
+      <div id='mySidebar' class='sidebar'>
+        <a href='javascript:void(0)' class='closebtn' onclick='closeNav()'>&times;</a>
+        <a href='#'>About</a>
+        <a href='#'>Services</a>
+        <a href='#'>Clients</a>
+        <a href='#'>Contact</a>
       </div>
 
+      <div id='main'>
+        <button class='openbtn' onclick='openNav()'>&#9776; Toggle Sidebar</button>
+        <h2>Collapsed Sidebar</h2>
+        <p>Content...</p>
+      </div>
     </div>
 
   )
