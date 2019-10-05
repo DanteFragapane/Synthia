@@ -40,8 +40,8 @@ class Synthesizer extends React.Component {
     oscillator.type = waveform || 'sine'
     oscillator.frequency.value = frequency || 300
     filter.type = 'lowpass'
-    filter.frequency.setValueAtTime(500, audioContext.currentTime)
-    filter.gain.setValueAtTime(100, audioContext.currentTime)
+    filter.frequency.setValueAtTime(this.state, audioContext.currentTime)
+    filter.gain.setValueAtTime(this.state, audioContext.currentTime)
 
     // Connect the nodes
     oscillator.connect(filter)
@@ -66,6 +66,18 @@ class Synthesizer extends React.Component {
     this.setState({ frequency: Number(value) })
   }
 
+  setFilterFrequency = (value2) => {
+    this.setState({filterFrequency: Number(value2.target.value)})
+  }
+
+
+  setFilterGain = (value3) => {
+    this.setState({filterGain: Number(value3.target.value)})
+  }
+
+  componentDidUpdate() {
+    console.log(this.state)
+  }
   playSound = () => {
     // this.props.makeSound(this.state.waveform, this.state.frequency, this.state.duration)
     this.makeAudioContext(this.state.waveform, this.state.frequency, this.state.duration)
@@ -94,10 +106,18 @@ class Synthesizer extends React.Component {
           <label htmlFor="duration">Duration (milliseconds)</label>
           <input id="duration" type="text" value={this.state.duration} onChange={this.setDuration} />
         </div>
-
-        <button onClick={this.playSound}>create keyboard</button>
-
-        <div id="keyboard" />
+        <div className="control">
+          <label htmlFor="filterFreq">Filter Frequency</label>
+          <input id="filterFreq" type="text" value={this.state.filterFrequency} onChange={this.setFilterFrequency} />
+        </div>
+        <div className="control">
+          <label htmlFor="filterGain">Filter Gain</label>
+          <input id="filterGain" type="text" value={this.state.filterGain} onChange={this.setFilterGain} />
+        </div>
+        <div id="keyboard">
+          <div></div>
+          <button onClick={this.playSound}>create keyboard</button>
+        </div>
       </div>
     )
   }
