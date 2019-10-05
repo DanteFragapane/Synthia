@@ -40,10 +40,6 @@ class Synthesizer extends React.Component {
     window.setTimeout(oscillator.stop.bind(oscillator), duration)
   }
 
-  componentDidUpdate () {
-    console.log(this.state)
-  }
-
   setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
   }
