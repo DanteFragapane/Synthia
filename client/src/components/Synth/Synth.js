@@ -1,7 +1,7 @@
 import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
-
+import './Synth.css'
 const keyArray = [261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25]
 const keyName = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C']
 
@@ -21,7 +21,7 @@ class Synthesizer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      waveform: WAVEFORMS.SINE.id,
+      waveform: WAVEFORMS.SAWTOOTH.id,
       frequency: 250,
       duration: 500
     }
