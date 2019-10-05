@@ -6,6 +6,8 @@ import Footer from '../../Footer'
 import SynthApp from '../../Synth/index'
 import Sidebar from '../../Sidebar'
 import Table from '../../Table'
+import '../../HorizontalBar'
+import HorizontalBar from '../../HorizontalBar'
 
 function Main () {
   return (
@@ -14,9 +16,10 @@ function Main () {
       <div className='two'><Sidebar /></div>
       <div className='three'><SynthApp /></div>
       <div className='four'><Table /></div>
-      <div className='five'><Footer /></div>
-      <div className='six'><Footer /></div>
-      <div className='seven'><Footer /></div>
+      <div className='five'><Table /></div>
+      <div className='six'><Table /></div>
+      <div className='seven'><HorizontalBar /></div>
+      <div className='eight'><Footer /></div>
     </div>
   )
 }
