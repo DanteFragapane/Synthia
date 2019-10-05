@@ -10,11 +10,11 @@ import Table from '../../Table'
 function Main () {
   return (
     <div className="grid-container">
-      <Header className="item1" />
-      <Sidebar className="item2" />
-      <SynthApp className="item3" />
-      <Table className="item4" />
-      <Footer className="item5" />
+      <Header className="header" />
+      <Sidebar className="sidebar" />
+      <SynthApp className="synth" />
+      <Table className="table" />
+      <Footer className="footer" />
     </div>
   )
 }
