@@ -26,7 +26,8 @@ class Synthesizer extends React.Component {
       duration: 500,
       filterType: 'lowpass',
       filterFrequency: 250,
-      filterGain: 100
+      filterGain: 100,
+      attackTime: 0.1
     }
   }
 
@@ -44,6 +45,22 @@ class Synthesizer extends React.Component {
     filter.frequency.setValueAtTime(this.state.filterFrequency, audioContext.currentTime)
     filter.gain.setValueAtTime(this.state.filterGain, audioContext.currentTime)
 
+
+    //ASDR +++++++++++++++++++++++++++++++++
+
+    const EnvGen = require('fastidious-envelope-generator')
+    
+    const adsr = new EnvGen(audioContext, masterGainNode.gain)
+
+    adsr.mode = 'ADSR'
+    adsr.attackTime = this.state.attackTime
+    adsr.decayTime = 1
+    adsr.sustainLevel = 1
+    adsr.releaseTime = 0.5
+
+    adsr.gateOn(1)
+    //ASDR +++++++++++++++++++++++++++++++++
+
     // Connect the nodes
     oscillator.connect(filter)
     filter.connect(masterGainNode)
@@ -51,8 +68,11 @@ class Synthesizer extends React.Component {
 
     // Start the oscillator
     oscillator.start()
-    duration = duration || 500
-    window.setTimeout(oscillator.stop.bind(oscillator), duration)
+    this.state.duration = this.state.duration || 500
+    window.setTimeout(oscillator.stop.bind(oscillator), this.state.duration)
+
+
+
   }
 
   setWaveform = (e) => {
@@ -75,14 +95,18 @@ class Synthesizer extends React.Component {
     this.setState({ filterGain: Number(value3.target.value) })
   }
 
-  componentDidUpdate () {
-    console.log(this.state)
+  setAttackTime = (a) => {
+    this.setState({ attackTime: Number(a.target.value)})
   }
+
+ 
 
   playSound = () => {
     this.makeAudioContext()
-    console.log('Playing a sound!')
+    console.log('Playing a sound!') 
+    console.log(this.state)
   }
+  
 
   render () {
     return (
@@ -113,6 +137,10 @@ class Synthesizer extends React.Component {
         <div className="control">
           <label htmlFor="filterGain">Filter Gain</label>
           <input id="filterGain" type="text" value={this.state.filterGain} onChange={this.setFilterGain} />
+        </div>
+        <div className="control">
+          <label htmlFor="attack">Attack</label>
+          <input id="attack" type="text" value={this.state.attackTime} onChange={this.setAttackTime} />
         </div>
         <div id="keyboard">
           <div />
