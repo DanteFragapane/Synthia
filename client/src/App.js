@@ -46,7 +46,6 @@ class App extends React.Component {
             <Route path="/signup" component={Signup} />
             <Route path="/profile/:user" component={withAuth(Me)} />
             <Route path="/me" component={withAuth(Me)} />
-            <Route path="/main" component={Main} />
             <Route path="/" component={Main} />
           </Switch>
         </div>
