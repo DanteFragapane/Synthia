@@ -60,7 +60,6 @@ class Synthesizer extends React.Component {
 
     adsr.gateOn(1)
     //ASDR +++++++++++++++++++++++++++++++++
-
     // Connect the nodes
     oscillator.connect(filter)
     filter.connect(masterGainNode)
