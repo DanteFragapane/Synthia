@@ -8,10 +8,10 @@ const keyName = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'
 function keyMaker () {
   for (let i = 0; i < keyArray.length; i++) {
     const button = document.createElement('input')
-    button.type = "button"
+    button.type = 'button'
     button.value = keyName[i]
     button.id = keyArray[i]
-    document.body.appendChild(button)    
+    document.body.appendChild(button)
   }
 }
 
@@ -23,25 +23,35 @@ class Synthesizer extends React.Component {
     this.state = {
       waveform: WAVEFORMS.SAWTOOTH.id,
       frequency: 250,
-      duration: 500
+      duration: 500,
+      filterFrequency: 250,
+      filterGain: 100
     }
   }
 
   makeAudioContext (waveform, frequency, duration) {
+    // Create the components
     const audioContext = window.audioContext || new AudioContext()
     const oscillator = audioContext.createOscillator()
+    const filter = audioContext.createBiquadFilter()
     const masterGainNode = audioContext.createGain()
-    masterGainNode.connect(audioContext.destination)
+
+    // Start setting up the components
     oscillator.type = waveform || 'sine'
     oscillator.frequency.value = frequency || 300
-    oscillator.connect(masterGainNode)
+    filter.type = 'lowpass'
+    filter.frequency.setValueAtTime(500, audioContext.currentTime)
+    filter.gain.setValueAtTime(100, audioContext.currentTime)
+
+    // Connect the nodes
+    oscillator.connect(filter)
+    filter.connect(masterGainNode)
+    masterGainNode.connect(audioContext.destination)
+
+    // Start the oscillator
     oscillator.start()
     duration = duration || 500
     window.setTimeout(oscillator.stop.bind(oscillator), duration)
-  }
-
-  componentDidUpdate () {
-    console.log(this.state)
   }
 
   setWaveform = (e) => {
@@ -54,19 +64,14 @@ class Synthesizer extends React.Component {
 
   setFrequency = (value) => {
     this.setState({ frequency: Number(value) })
-    
-  }  
-  
-  
-  
+  }
+
   playSound = () => {
     // this.props.makeSound(this.state.waveform, this.state.frequency, this.state.duration)
     this.makeAudioContext(this.state.waveform, this.state.frequency, this.state.duration)
     console.log('Playing a sound!')
-    
   }
 
-  
   render () {
     return (
       <div>
@@ -92,8 +97,7 @@ class Synthesizer extends React.Component {
 
         <button onClick={this.playSound}>create keyboard</button>
 
-        <div id="keyboard"></div>
-        
+        <div id="keyboard" />
       </div>
     )
   }
