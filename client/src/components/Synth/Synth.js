@@ -2,8 +2,8 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 import './Synth.css'
-const keyArray = [261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00, 466.16, 493.88, 523.25]
-const keyName = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C']
+const keyArray = [ 261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.0, 415.3, 440.0, 466.16, 493.88, 523.25 ]
+const keyName = [ 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C' ]
 
 function keyMaker () {
   for (let i = 0; i < keyArray.length; i++) {
@@ -24,12 +24,13 @@ class Synthesizer extends React.Component {
       waveform: WAVEFORMS.SAWTOOTH.id,
       frequency: 250,
       duration: 500,
+      filterType: 'lowpass',
       filterFrequency: 250,
       filterGain: 100
     }
   }
 
-  makeAudioContext (waveform, frequency, duration) {
+  makeAudioContext () {
     // Create the components
     const audioContext = window.audioContext || new AudioContext()
     const oscillator = audioContext.createOscillator()
@@ -37,11 +38,11 @@ class Synthesizer extends React.Component {
     const masterGainNode = audioContext.createGain()
 
     // Start setting up the components
-    oscillator.type = waveform || 'sine'
-    oscillator.frequency.value = frequency || 300
-    filter.type = 'lowpass'
-    filter.frequency.setValueAtTime(this.state, audioContext.currentTime)
-    filter.gain.setValueAtTime(this.state, audioContext.currentTime)
+    oscillator.type = this.state.waveform || 'sine'
+    oscillator.frequency.value = this.state.frequency || 300
+    filter.type = this.state.filterType
+    filter.frequency.setValueAtTime(this.state.filterFrequency, audioContext.currentTime)
+    filter.gain.setValueAtTime(this.state.filterGain, audioContext.currentTime)
 
     // Connect the nodes
     oscillator.connect(filter)
@@ -67,20 +68,19 @@ class Synthesizer extends React.Component {
   }
 
   setFilterFrequency = (value2) => {
-    this.setState({filterFrequency: Number(value2.target.value)})
+    this.setState({ filterFrequency: Number(value2.target.value) })
   }
-
 
   setFilterGain = (value3) => {
-    this.setState({filterGain: Number(value3.target.value)})
+    this.setState({ filterGain: Number(value3.target.value) })
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     console.log(this.state)
   }
+
   playSound = () => {
-    // this.props.makeSound(this.state.waveform, this.state.frequency, this.state.duration)
-    this.makeAudioContext(this.state.waveform, this.state.frequency, this.state.duration)
+    this.makeAudioContext()
     console.log('Playing a sound!')
   }
 
@@ -115,7 +115,7 @@ class Synthesizer extends React.Component {
           <input id="filterGain" type="text" value={this.state.filterGain} onChange={this.setFilterGain} />
         </div>
         <div id="keyboard">
-          <div></div>
+          <div />
           <button onClick={this.playSound}>create keyboard</button>
         </div>
       </div>
