@@ -1,6 +1,7 @@
 import React from 'react'
 import { Table } from 'reactstrap'
 import './Table.css'
+import { Button } from 'reactstrap'
 
 export default class Example extends React.Component {
   render () {
@@ -9,30 +10,42 @@ export default class Example extends React.Component {
         <Table dark>
           <thead>
             <tr>
-              <th>#</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Username</th>
+              <th>BUZZ</th>
+              <th>BLAMO</th>
+              <th>WHAMO</th>
+              <th>ZAP</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th scope='row'>1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
+              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='secondary'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='success'>WUUUUUB!</Button>{' '}</td>
             </tr>
             <tr>
               <th scope='row'>2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
+              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='danger'>WUUUUUB!</Button>{' '}</td>
             </tr>
             <tr>
               <th scope='row'>3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
+              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='secondary'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
+            </tr>
+            <tr>
+              <th scope='row'>2</th>
+              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='danger'>WUUUUUB!</Button>{' '}</td>
+            </tr>
+            <tr>
+              <th scope='row'>2</th>
+              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
+              <td><Button color='danger'>WUUUUUB!</Button>{' '}</td>
             </tr>
           </tbody>
         </Table>

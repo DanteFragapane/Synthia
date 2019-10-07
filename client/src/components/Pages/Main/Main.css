@@ -11,60 +11,57 @@
   border: 2px solid rgb(233,171,88);
   border-radius: 5px;
   background-color: rgba(233,171,88,.5);
-  padding: .125rem;
+  padding: .125rem 0  0 0;
   color: #d9480f;
 }
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(2fr, 2fr, 2fr, 2fr);
-  grid-gap: .25rem;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: .25rem .040rem;
+  grid-area: inherit;
+  
+  
   grid-auto-rows: minmax(2rem, auto);
 }
 
-/* header */
+/* Main header */
 .one {
   grid-column: 1/ 8;
   grid-row: 1; 
 }
 
-/* sidebar */
+/* sidebar orange bar */
 .two {
-  grid-column: 1/ 7;
+  grid-column: 1/8;
   grid-row: 2;
 }
 
 /* Synthesizer */
 .three {
-  grid-column: 1/8;
+  grid-column: 2;
   grid-row: 3;
 }
 
 /* Table */
 .four {
-  grid-column: 1/3;
+  grid-column: 1;
   grid-row: 3;
 }
 
 /* Table */
 .five {
-  grid-column: 1/3;
+  grid-column: 3;
   grid-row: 3;
 }
 
-/* Table */
+/* Mid horizontal bar */
 .six {
-  grid-column: 1/6;
-  grid-row: 3; 
-}
-
-/* HorizontalBar */
-.seven {
   grid-column: 1/8;
   grid-row: 4; 
 }
 
 /* Footer */
-.eight {
+.seven {
   grid-column: 1/8;
   grid-row: 5; 
 }

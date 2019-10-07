@@ -4,7 +4,6 @@ import './Main.css'
 import Header from '../../Header'
 import Footer from '../../Footer'
 import SynthApp from '../../Synth/index'
-import Sidebar from '../../Sidebar'
 import Table from '../../Table'
 import HorizontalBar from '../../HorizontalBar'
 import Toolbar from '../../Toolbar'
@@ -45,11 +44,11 @@ return (
     <div className='two'><Toolbar drawerClickHandler={this.drawerToggleClickHandler} /></div>
     <SideDrawer show={this.state.sideDrawerOpen}/>
     {backdrop}
-    <div className='five'><SynthApp /></div>
-    <div className='six'><Table /></div>
-    <div className='seven'><Table /></div>
-    <div className='nine'><HorizontalBar /></div>
-    <div className='ten'><Footer /></div>
+    <div className='three'><SynthApp /></div>
+    <div className='four'><Table /></div>
+    <div className='five'><Table /></div>
+    <div className='six'><HorizontalBar /></div>
+    <div className='seven'><Footer /></div>
   </div>
 )
 
