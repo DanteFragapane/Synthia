@@ -23,11 +23,14 @@ class Synthesizer extends React.Component {
     this.state = {
       waveform: WAVEFORMS.SAWTOOTH.id,
       frequency: 250,
-      duration: 500,
+      duration: 1000,
       filterType: 'lowpass',
-      filterFrequency: 250,
-      filterGain: 100,
-      attackTime: 0.1
+      filterFrequency: 500,
+      filterGain: 50,
+      attackTime: 0.1,
+      decayTime: 0.9,
+      sustainLevel: 0.5,
+      releaseTime: 9
     }
   }
 
@@ -54,11 +57,11 @@ class Synthesizer extends React.Component {
 
     adsr.mode = 'ADSR'
     adsr.attackTime = this.state.attackTime
-    adsr.decayTime = 1
-    adsr.sustainLevel = 1
-    adsr.releaseTime = 0.5
+    adsr.decayTime = this.state.decayTime
+    adsr.sustainLevel = this.state.sustainLevel
+    adsr.releaseTime = this.state.releaseTime
 
-    adsr.gateOn(1)
+    adsr.gateOn(audioContext.currentTime)
     //ASDR +++++++++++++++++++++++++++++++++
     // Connect the nodes
     oscillator.connect(filter)
@@ -96,6 +99,18 @@ class Synthesizer extends React.Component {
 
   setAttackTime = (a) => {
     this.setState({ attackTime: Number(a.target.value)})
+  }
+
+  setDecayTime = (d) => {
+    this.setState({ decayTime: Number(d.target.value)})
+  }
+
+  setSustainLevel = (s) => {
+    this.setState({ sustainLevel: Number(s.target.value)})
+  }
+
+  setReleaseTime = (r) => {
+    this.setState({ releaseTime: Number(r.target.value)})
   }
 
  
@@ -140,6 +155,18 @@ class Synthesizer extends React.Component {
         <div className="control">
           <label htmlFor="attack">Attack</label>
           <input id="attack" type="text" value={this.state.attackTime} onChange={this.setAttackTime} />
+        </div>
+        <div className="control">
+          <label htmlFor="decay">Decay</label>
+          <input id="decay" type="text" value={this.state.decayTime} onChange={this.setDecayTime} />
+        </div>
+        <div className="control">
+          <label htmlFor="sustain">Sustain</label>
+          <input id="sustain" type="text" value={this.state.sustainLevel} onChange={this.setSustainLevel} />
+        </div>
+        <div className="control">
+          <label htmlFor="release">Release</label>
+          <input id="release" type="text" value={this.state.releaseTime} onChange={this.setReleaseTime} />
         </div>
         <div id="keyboard">
           <div />
