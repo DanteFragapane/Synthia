@@ -48,11 +48,10 @@ class Synthesizer extends React.Component {
     filter.frequency.setValueAtTime(this.state.filterFrequency, audioContext.currentTime)
     filter.gain.setValueAtTime(this.state.filterGain, audioContext.currentTime)
 
-
     //ASDR +++++++++++++++++++++++++++++++++
 
     const EnvGen = require('fastidious-envelope-generator')
-    
+
     const adsr = new EnvGen(audioContext, masterGainNode.gain)
 
     adsr.mode = 'ADSR'
@@ -63,6 +62,7 @@ class Synthesizer extends React.Component {
 
     adsr.gateOn(audioContext.currentTime)
     //ASDR +++++++++++++++++++++++++++++++++
+
     // Connect the nodes
     oscillator.connect(filter)
     filter.connect(masterGainNode)
@@ -70,11 +70,8 @@ class Synthesizer extends React.Component {
 
     // Start the oscillator
     oscillator.start()
-    this.state.duration = this.state.duration || 500
-    window.setTimeout(oscillator.stop.bind(oscillator), this.state.duration)
-
-
-
+    const duration = this.state.duration || 500
+    window.setTimeout(oscillator.stop.bind(oscillator), duration)
   }
 
   setWaveform = (e) => {
@@ -98,29 +95,26 @@ class Synthesizer extends React.Component {
   }
 
   setAttackTime = (a) => {
-    this.setState({ attackTime: Number(a.target.value)})
+    this.setState({ attackTime: Number(a.target.value) })
   }
 
   setDecayTime = (d) => {
-    this.setState({ decayTime: Number(d.target.value)})
+    this.setState({ decayTime: Number(d.target.value) })
   }
 
   setSustainLevel = (s) => {
-    this.setState({ sustainLevel: Number(s.target.value)})
+    this.setState({ sustainLevel: Number(s.target.value) })
   }
 
   setReleaseTime = (r) => {
-    this.setState({ releaseTime: Number(r.target.value)})
+    this.setState({ releaseTime: Number(r.target.value) })
   }
-
- 
 
   playSound = () => {
     this.makeAudioContext()
-    console.log('Playing a sound!') 
+    console.log('Playing a sound!')
     console.log(this.state)
   }
-  
 
   render () {
     return (
