@@ -34,44 +34,47 @@ class Synthesizer extends React.Component {
     }
   }
 
-  makeAudioContext () {
+  componentDidMount () {
     // Create the components
-    const audioContext = window.audioContext || new AudioContext()
-    const oscillator = audioContext.createOscillator()
-    const filter = audioContext.createBiquadFilter()
-    const masterGainNode = audioContext.createGain()
+    const audioCtx = window.AudioContext || window.webkitAudioContext
+    this.audioContext = new audioCtx()
+    this.oscillator = this.audioContext.createOscillator()
+    this.filter = this.audioContext.createBiquadFilter()
+    this.masterGainNode = this.audioContext.createGain()
 
     // Start setting up the components
-    oscillator.type = this.state.waveform || 'sine'
-    oscillator.frequency.value = this.state.frequency || 300
-    filter.type = this.state.filterType
-    filter.frequency.setValueAtTime(this.state.filterFrequency, audioContext.currentTime)
-    filter.gain.setValueAtTime(this.state.filterGain, audioContext.currentTime)
+    this.oscillator.type = this.state.waveform || 'sine'
+    this.oscillator.frequency.value = this.state.frequency || 300
+    this.filter.type = this.state.filterType
+    this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
+    this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
 
     //ASDR +++++++++++++++++++++++++++++++++
 
     const EnvGen = require('fastidious-envelope-generator')
 
-    const adsr = new EnvGen(audioContext, masterGainNode.gain)
+    this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
 
-    adsr.mode = 'ADSR'
-    adsr.attackTime = this.state.attackTime
-    adsr.decayTime = this.state.decayTime
-    adsr.sustainLevel = this.state.sustainLevel
-    adsr.releaseTime = this.state.releaseTime
+    this.adsr.mode = 'ADSR'
+    this.adsr.attackTime = this.state.attackTime
+    this.adsr.decayTime = this.state.decayTime
+    this.adsr.sustainLevel = this.state.sustainLevel
+    this.adsr.releaseTime = this.state.releaseTime
 
-    adsr.gateOn(audioContext.currentTime)
     //ASDR +++++++++++++++++++++++++++++++++
 
     // Connect the nodes
-    oscillator.connect(filter)
-    filter.connect(masterGainNode)
-    masterGainNode.connect(audioContext.destination)
+    this.oscillator.connect(this.filter)
+    this.filter.connect(this.masterGainNode)
+    this.masterGainNode.connect(this.audioContext.destination)
+  }
 
-    // Start the oscillator
-    oscillator.start()
+  makeSound () {
+    this.adsr.gateOn(this.audioContext.currentTime)
+    this.oscillator.start()
     const duration = this.state.duration || 500
-    window.setTimeout(oscillator.stop.bind(oscillator), duration)
+    window.setTimeout(this.oscillator.stop.bind(this.oscillator), duration)
+    console.log(this)
   }
 
   setWaveform = (e) => {
@@ -111,7 +114,7 @@ class Synthesizer extends React.Component {
   }
 
   playSound = () => {
-    this.makeAudioContext()
+    this.makeSound()
     console.log('Playing a sound!')
     console.log(this.state)
   }
