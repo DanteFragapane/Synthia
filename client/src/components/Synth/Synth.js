@@ -28,9 +28,9 @@ class Synthesizer extends React.Component {
       filterFrequency: 500,
       filterGain: 50,
       attackTime: 0.1,
-      decayTime: 0.9,
-      sustainLevel: 0.5,
-      releaseTime: 9
+      decayTime: 0.1,
+      sustainLevel: 1,
+      releaseTime: 0.1
     }
   }
 
@@ -67,14 +67,8 @@ class Synthesizer extends React.Component {
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
     this.masterGainNode.connect(this.audioContext.destination)
-  }
 
-  makeSound () {
-    this.adsr.gateOn(this.audioContext.currentTime)
     this.oscillator.start()
-    const duration = this.state.duration || 500
-    window.setTimeout(this.oscillator.stop.bind(this.oscillator), duration)
-    console.log(this)
   }
 
   setWaveform = (e) => {
@@ -114,9 +108,13 @@ class Synthesizer extends React.Component {
   }
 
   playSound = () => {
-    this.makeSound()
-    console.log('Playing a sound!')
-    console.log(this.state)
+    this.adsr.gateOn(this.audioContext.currentTime)
+    // this.oscillator.start()
+  }
+
+  stopSound = () => {
+    this.adsr.gateOff(this.audioContext.currentTime)
+    // this.oscillator.stop(this.audioContext.currentTime)
   }
 
   render () {
@@ -167,7 +165,9 @@ class Synthesizer extends React.Component {
         </div>
         <div id="keyboard">
           <div />
-          <button onClick={this.playSound}>create keyboard</button>
+          <button onMouseUp={this.stopSound} onMouseDown={this.playSound}>
+            create keyboard
+          </button>
         </div>
       </div>
     )
