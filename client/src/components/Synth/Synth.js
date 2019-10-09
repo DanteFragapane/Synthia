@@ -29,7 +29,7 @@ class Synthesizer extends React.Component {
       filterGain: 50,
       attackTime: 0.1,
       decayTime: 0.1,
-      sustainLevel: 1,
+      sustainLevel: 0.1,
       releaseTime: 0.1
     }
   }
@@ -39,8 +39,13 @@ class Synthesizer extends React.Component {
     const audioCtx = window.AudioContext || window.webkitAudioContext
     this.audioContext = new audioCtx()
     this.oscillator = this.audioContext.createOscillator()
+    this.oscillator.start()
     this.filter = this.audioContext.createBiquadFilter()
     this.masterGainNode = this.audioContext.createGain()
+    this.masterGainNode.gain.value = 0
+    this.envGainNode = this.audioContext.createGain()
+    this.envGainNode.gain.value = 0
+
 
     // Start setting up the components
     this.oscillator.type = this.state.waveform || 'sine'
@@ -53,7 +58,7 @@ class Synthesizer extends React.Component {
 
     const EnvGen = require('fastidious-envelope-generator')
 
-    this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
+    this.adsr = new EnvGen(this.audioContext, this.envGainNode.gain)
 
     this.adsr.mode = 'ADSR'
     this.adsr.attackTime = this.state.attackTime
@@ -63,12 +68,30 @@ class Synthesizer extends React.Component {
 
     //ASDR +++++++++++++++++++++++++++++++++
 
+    // Constant Node code ???
+    function createConstantNode(audioContext, v) {
+      const constantBuffer = audioContext.createBuffer(1, 2, audioContext.sampleRate);
+      const constantData = constantBuffer.getChannelData(0);
+      constantData[0] = v;
+      constantData[1] = v;
+      const node = audioContext.createBufferSource();
+      node.buffer = constantBuffer;
+      node.loop = true;
+      node.start();
+      return node;
+    }
+
+    this.constNode = createConstantNode(this.audioContext, 1)
+    // Constant Node
+
     // Connect the nodes
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
     this.masterGainNode.connect(this.audioContext.destination)
+    this.constNode.connect(this.envGainNode)
+    this.envGainNode.connect(this.masterGainNode.gain)
 
-    this.oscillator.start()
+    
   }
 
   setWaveform = (e) => {
@@ -110,6 +133,7 @@ class Synthesizer extends React.Component {
   playSound = () => {
     this.adsr.gateOn(this.audioContext.currentTime)
     // this.oscillator.start()
+    console.log(this)
   }
 
   stopSound = () => {
