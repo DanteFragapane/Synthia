@@ -1,86 +1,56 @@
-/* $white: #E3E1E1;
-$black:  #1F2125;
-$knobSize: 10em; */
-html, body{
-  background-color: #1F2125;
-  color: white;
-  min-height: 100%;
-  height: 100%;
-  font-family: "Open Sans";
-  font-weight: 100;
+/* html, body {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  background-image: radial-gradient(30% 50%, #555 6%, #333 90%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.Mainknob {
+  /* display: grid; */
+  justify-content: center;
+  align-items: center;
+  /* grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem; */
 }
 
-body{
-  text-align: center;
-  padding-top: 5em;
-}
-
-knob-input{
-  width: auto;
-  height: auto;
-  display: inline-block;
-  cursor: pointer;
+.knob {
+  display: flex;
   position: relative;
-  margin: 0 2em;
 }
-
-$handW : .6em;
-knob-hand{
-  width: $handW;
-  background-color: transparent;
-  box-sizing: border-box;
-  border-bottom: 1.6em solid $white;
-  height: 100%;
+.knob .ticks {
   position: absolute;
+}
+.knob .ticks .tick {
+  position: absolute;
+  background: black;
+  box-shadow: inset 0 0 0 0 black;
+  width: 3px;
+  transition: box-shadow 0.5s;
+}
+.knob .ticks .tick.active {
+  box-shadow: inset 0 0 5px 2px #509eec, 0 0 0 1px #369;
+}
+.knob.outer {
+  border-radius: 50%;
+  border: 1px solid #222;
+  border-bottom: 5px solid #222;
+  background-image: radial-gradient(100% 70%, #666 6%, #333 90%);
+  box-shadow: 0 5px 15px 2px black, 0 0 5px 3px black, 0 0 0 12px #444;
+}
+.knob.inner {
+  border-radius: 50%;
+}
+.knob.inner .grip {
+  position: absolute;
+  width: 5%;
+  height: 5%;
+  bottom: 2%;
   left: 50%;
-  margin-left: -$handW / 2;
-}
-
-knob-face{
- display: inline-block;
-  width: $knobSize;
-  height: $knobSize;
-  border: 1em solid $white;
-  box-sizing: border-box;
-  border-radius: $knobSize;
-  cursor: pointer;
-  position: absolute;
-  background-color: $black;
-  z-index: 2;
-}
-
-.blue{
-  font-size: .6em;
-}
-
-.knobInput-label{
-  display: block;
-  text-align: center;
-  font-size: 3em;
-}
-
-.knob-progress{
-  position: relative;
-  top: 0;
-  left: 0;
-  z-index: 1;
-}
-
-.hidden{
-  display: none;
-}
-
-
-
-
-
-.noSelection{
-       -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    min-height: 100%;
-  height: 100%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: #509eec;
+  box-shadow: 0 0 3px 1px black;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import { Table } from 'reactstrap'
 import './Table.css'
 import { Button } from 'reactstrap'
-// import Knob from '../Knob'
+import Knob from '../Knob'
 
 export default class Example extends React.Component {
   render () {
@@ -20,67 +20,63 @@ export default class Example extends React.Component {
           <tbody>
             <tr>
               <th className='mesa' scope='row'>1</th>
-              <td>        
-                {/* <Knob
-                size={100}
-                numTicks={25}
-                degrees={260}
-                min={1}
-                max={100}
-                value={30}
-                color
-                onChange={this.handleChange}
-              /> */}
-              {' '}</td>
-              <td>       
-                 {/* <Knob
-                size={100}
-                numTicks={25}
-                degrees={260}
-                min={1}
-                max={100}
-                value={30}
-                color
-                onChange={this.handleChange}
-              /> */}
-              {' '}</td>
-              <td>        
-                {/* <Knob
-                size={100}
-                numTicks={25}
-                degrees={260}
-                min={1}
-                max={100}
-              
-                value={30}
-                color
-                onChange={this.handleChange}
-              /> */}
-              {' '}</td>
+              <td>
+                <Button color='primary'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='warning'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='danger'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
             </tr>
             <tr>
               <th scope='row'>2</th>
-              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='danger'>WUUUUUB!</Button>{' '}</td>
+              <td>
+                <Button color='primary'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='warning'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='danger'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
             </tr>
             <tr>
               <th scope='row'>3</th>
-              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='secondary'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
+              <td>
+                <Button color='primary'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='secondary'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='danger'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
             </tr>
             <tr>
               <th scope='row'>2</th>
-              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='danger'>WUUUUUB!</Button>{' '}</td>
-            </tr>
-            <tr>
-              <th scope='row'>2</th>
-              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='warning'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='danger'>WUUUUUB!</Button>{' '}</td>
+              <td>
+                <Button color='primary'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='secondary'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
+              <td>
+                <Button color='danger'>WUUUUUB!</Button>
+                <Knob />
+                {' '}</td>
             </tr>
           </tbody>
         </Table>
