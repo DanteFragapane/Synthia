@@ -1,30 +1,28 @@
 import React from 'react'
 import './Knob.css'
 
-
-
 class Knob extends React.Component {
-  constructor() {
+  constructor () {
     super()
-    this.state = {value: 3}
+    this.state = { value: 3 }
     this.handleChange = this.handleChange.bind(this)
   }
-  
-  handleChange(event) {
-    this.setState({value: event.target.value});
+
+  handleChange (event) {
+    this.setState({ value: event.target.value })
   }
 
-  render() {
+  render () {
     return (
       <div>
         <label>
-          <input 
-            id="typeinp" 
-            type="range" 
-            min="0" max="5" 
-            value={this.state.value} 
+          <input
+            id='typeinp'
+            type='range'
+            min='0' max='100'
+            value={this.state.value}
             onChange={this.handleChange}
-            step="1"/>
+            step='.25' />
           {this.state.value}
         </label>
       </div>

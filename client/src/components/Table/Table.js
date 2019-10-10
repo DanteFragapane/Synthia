@@ -2,6 +2,8 @@ import React from 'react'
 import { Table } from 'reactstrap'
 import './Table.css'
 import { Button } from 'reactstrap'
+
+// slider
 import Knob from '../Knob'
 
 export default class Example extends React.Component {
