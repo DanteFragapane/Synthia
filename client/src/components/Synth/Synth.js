@@ -23,55 +23,75 @@ class Synthesizer extends React.Component {
     this.state = {
       waveform: WAVEFORMS.SAWTOOTH.id,
       frequency: 250,
-      duration: 500,
+      duration: 1000,
       filterType: 'lowpass',
-      filterFrequency: 250,
-      filterGain: 100,
-      attackTime: 0.1
+      filterFrequency: 500,
+      filterGain: 50,
+      attackTime: 0.1,
+      decayTime: 0.1,
+      sustainLevel: 0.1,
+      releaseTime: 0.1
     }
   }
 
-  makeAudioContext () {
+  componentDidMount () {
     // Create the components
-    const audioContext = window.audioContext || new AudioContext()
-    const oscillator = audioContext.createOscillator()
-    const filter = audioContext.createBiquadFilter()
-    const masterGainNode = audioContext.createGain()
+    const audioCtx = window.AudioContext || window.webkitAudioContext
+    this.audioContext = new audioCtx()
+    this.oscillator = this.audioContext.createOscillator()
+    this.oscillator.start()
+    this.filter = this.audioContext.createBiquadFilter()
+    this.masterGainNode = this.audioContext.createGain()
+    this.masterGainNode.gain.value = 0
+    this.envGainNode = this.audioContext.createGain()
+    this.envGainNode.gain.value = 0
+
 
     // Start setting up the components
-    oscillator.type = this.state.waveform || 'sine'
-    oscillator.frequency.value = this.state.frequency || 300
-    filter.type = this.state.filterType
-    filter.frequency.setValueAtTime(this.state.filterFrequency, audioContext.currentTime)
-    filter.gain.setValueAtTime(this.state.filterGain, audioContext.currentTime)
-
+    this.oscillator.type = this.state.waveform || 'sine'
+    this.oscillator.frequency.value = this.state.frequency || 300
+    this.filter.type = this.state.filterType
+    this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
+    this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
 
     //ASDR +++++++++++++++++++++++++++++++++
 
     const EnvGen = require('fastidious-envelope-generator')
-    
-    const adsr = new EnvGen(audioContext, masterGainNode.gain)
 
-    adsr.mode = 'ADSR'
-    adsr.attackTime = this.state.attackTime
-    adsr.decayTime = 1
-    adsr.sustainLevel = 1
-    adsr.releaseTime = 0.5
+    this.adsr = new EnvGen(this.audioContext, this.envGainNode.gain)
 
-    adsr.gateOn(1)
+    this.adsr.mode = 'ADSR'
+    this.adsr.attackTime = this.state.attackTime
+    this.adsr.decayTime = this.state.decayTime
+    this.adsr.sustainLevel = this.state.sustainLevel
+    this.adsr.releaseTime = this.state.releaseTime
+
     //ASDR +++++++++++++++++++++++++++++++++
+
+    // Constant Node code ???
+    function createConstantNode(audioContext, v) {
+      const constantBuffer = audioContext.createBuffer(1, 2, audioContext.sampleRate);
+      const constantData = constantBuffer.getChannelData(0);
+      constantData[0] = v;
+      constantData[1] = v;
+      const node = audioContext.createBufferSource();
+      node.buffer = constantBuffer;
+      node.loop = true;
+      node.start();
+      return node;
+    }
+
+    this.constNode = createConstantNode(this.audioContext, 1)
+    // Constant Node
+
     // Connect the nodes
-    oscillator.connect(filter)
-    filter.connect(masterGainNode)
-    masterGainNode.connect(audioContext.destination)
+    this.oscillator.connect(this.filter)
+    this.filter.connect(this.masterGainNode)
+    this.masterGainNode.connect(this.audioContext.destination)
+    this.constNode.connect(this.envGainNode)
+    this.envGainNode.connect(this.masterGainNode.gain)
 
-    // Start the oscillator
-    oscillator.start()
-    this.state.duration = this.state.duration || 500
-    window.setTimeout(oscillator.stop.bind(oscillator), this.state.duration)
-
-
-
+    
   }
 
   setWaveform = (e) => {
@@ -95,17 +115,31 @@ class Synthesizer extends React.Component {
   }
 
   setAttackTime = (a) => {
-    this.setState({ attackTime: Number(a.target.value)})
+    this.setState({ attackTime: Number(a.target.value) })
   }
 
- 
+  setDecayTime = (d) => {
+    this.setState({ decayTime: Number(d.target.value) })
+  }
+
+  setSustainLevel = (s) => {
+    this.setState({ sustainLevel: Number(s.target.value) })
+  }
+
+  setReleaseTime = (r) => {
+    this.setState({ releaseTime: Number(r.target.value) })
+  }
 
   playSound = () => {
-    this.makeAudioContext()
-    console.log('Playing a sound!') 
-    console.log(this.state)
+    this.adsr.gateOn(this.audioContext.currentTime)
+    // this.oscillator.start()
+    console.log(this)
   }
-  
+
+  stopSound = () => {
+    this.adsr.gateOff(this.audioContext.currentTime)
+    // this.oscillator.stop(this.audioContext.currentTime)
+  }
 
   render () {
     return (
@@ -141,9 +175,23 @@ class Synthesizer extends React.Component {
           <label htmlFor="attack">Attack</label>
           <input id="attack" type="text" value={this.state.attackTime} onChange={this.setAttackTime} />
         </div>
+        <div className="control">
+          <label htmlFor="decay">Decay</label>
+          <input id="decay" type="text" value={this.state.decayTime} onChange={this.setDecayTime} />
+        </div>
+        <div className="control">
+          <label htmlFor="sustain">Sustain</label>
+          <input id="sustain" type="text" value={this.state.sustainLevel} onChange={this.setSustainLevel} />
+        </div>
+        <div className="control">
+          <label htmlFor="release">Release</label>
+          <input id="release" type="text" value={this.state.releaseTime} onChange={this.setReleaseTime} />
+        </div>
         <div id="keyboard">
           <div />
-          <button onClick={this.playSound}>create keyboard</button>
+          <button onMouseUp={this.stopSound} onMouseDown={this.playSound}>
+            create keyboard
+          </button>
         </div>
       </div>
     )
