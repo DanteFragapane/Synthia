@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from 'reactstrap'
 import './Table.css'
 import { Button } from 'reactstrap'
+// import Knob from '../Knob'
 
 export default class Example extends React.Component {
   render () {
@@ -9,19 +10,53 @@ export default class Example extends React.Component {
       <div className='mesa'>
         <Table dark>
           <thead>
-            <tr>
-              <th>BUZZ</th>
-              <th>BLAMO</th>
-              <th>WHAMO</th>
-              <th>ZAP</th>
+            <tr className='mesa' >
+              <th align='center'>BUZZ</th>
+              <th align='center' >BLAMO</th>
+              <th align='center' >WHAMO</th>
+              <th align='center' >ZAP</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th scope='row'>1</th>
-              <td><Button color='primary'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='secondary'>WUUUUUB!</Button>{' '}</td>
-              <td><Button color='success'>WUUUUUB!</Button>{' '}</td>
+              <th className='mesa' scope='row'>1</th>
+              <td>        
+                {/* <Knob
+                size={100}
+                numTicks={25}
+                degrees={260}
+                min={1}
+                max={100}
+                value={30}
+                color
+                onChange={this.handleChange}
+              /> */}
+              {' '}</td>
+              <td>       
+                 {/* <Knob
+                size={100}
+                numTicks={25}
+                degrees={260}
+                min={1}
+                max={100}
+                value={30}
+                color
+                onChange={this.handleChange}
+              /> */}
+              {' '}</td>
+              <td>        
+                {/* <Knob
+                size={100}
+                numTicks={25}
+                degrees={260}
+                min={1}
+                max={100}
+              
+                value={30}
+                color
+                onChange={this.handleChange}
+              /> */}
+              {' '}</td>
             </tr>
             <tr>
               <th scope='row'>2</th>

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
 import './HorizontalBar.css'
+import Keyboard from 'C:/Users/xpat1/Desktop/project3/KnightsOfDweebdom/client/src/Keyboard.png'
 
 export default class HorizontalBar extends React.Component {
   constructor (props) {
@@ -26,7 +27,8 @@ export default class HorizontalBar extends React.Component {
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href='/components/'>Components</NavLink>
+                <img src={Keyboard} alt='' />
+
               </NavItem>
               <NavItem>
                 <NavLink href='https://github.com/DanteFragapane/KnightsOfDweebdom'>GitHub</NavLink>

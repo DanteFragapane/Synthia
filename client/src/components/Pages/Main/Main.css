@@ -6,7 +6,10 @@
 
 } */
 
-
+.img{
+  width: 50%;
+  height: 50%;
+}
 .wrapper > div {
   border: 2px solid rgb(233,171,88);
   border-radius: 5px;

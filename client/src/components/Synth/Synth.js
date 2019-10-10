@@ -109,7 +109,7 @@ class Synthesizer extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className='synth__all'>
         <h1>Synthesizer</h1>
         <p>Create a tone but be careful</p>
 
