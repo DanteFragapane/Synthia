@@ -1,7 +1,7 @@
 import React from 'react'
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
 import './HorizontalBar.css'
-import Keyboard from 'C:/Users/xpat1/Desktop/project3/KnightsOfDweebdom/client/src/Keyboard.png'
+import Keyboard from '../../Keyboard.png'
 
 export default class HorizontalBar extends React.Component {
   constructor (props) {
@@ -21,17 +21,18 @@ export default class HorizontalBar extends React.Component {
   render () {
     return (
       <div>
-        <Navbar color='dark' dark>
-          <NavbarBrand href='/' className='mr-auto'>Synthdweeb</NavbarBrand>
-          <NavbarToggler onClick={this.toggleNavbar} className='mr-2' />
+        <Navbar color="dark" dark>
+          <NavbarBrand href="/" className="mr-auto">
+            Synthdweeb
+          </NavbarBrand>
+          <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
               <NavItem>
-                <img src={Keyboard} alt='' />
-
+                <img src={Keyboard} alt="" />
               </NavItem>
               <NavItem>
-                <NavLink href='https://github.com/DanteFragapane/KnightsOfDweebdom'>GitHub</NavLink>
+                <NavLink href="https://github.com/DanteFragapane/KnightsOfDweebdom">GitHub</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
