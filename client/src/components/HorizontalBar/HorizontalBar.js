@@ -26,7 +26,7 @@ export default class HorizontalBar extends React.Component {
           <NavbarToggler onClick={this.toggleNavbar} className='mr-2' />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
-              <NavItem>
+              <NavItem className='navitem'>
                 <img src={Keyboard} alt='' />
 
               </NavItem>

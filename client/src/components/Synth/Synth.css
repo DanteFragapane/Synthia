@@ -8,8 +8,10 @@
 }
 
 .waveform{
-  align-items: center;
-  color: #d62222
+   
+  color: #d62222;
+  display: grid;
+  width: 50px; 
 }
 
 .control{
@@ -36,5 +38,7 @@ input {
 
 .synth__all{
   align-items: center;
-  padding: .10rem 4rem 2rem 1rem 
+  padding: .10rem 4rem 2rem 1rem; 
+  display: grid;
+  width: 50px;
 }
