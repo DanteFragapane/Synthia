@@ -2,29 +2,28 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 import './Synth.css'
-
+const EnvGen = require('fastidious-envelope-generator')
 
 // The main class
 export default class Synthesizer extends React.Component {
   constructor (props) {
     super(props)
     this.keys = [
-      {name: 'C', freq: 261.63},
-      {name: 'C#', freq: 277.18},
-      {name: 'D', freq: 293.66},
-      {name: 'D#', freq: 311.13}, 
-      {name: 'E', freq: 329.63},
-      {name: 'F', freq: 349.23},
-      {name: 'F#', freq: 369.99}, 
-      {name: 'G', freq: 392.0},
-      {name: 'G#', freq: 415.3},
-      {name: 'A', freq:  440.0},
-      {name: 'A#', freq: 466.16}, 
-      {name: 'B', freq: 493.88},
-      {name: 'C1', freq: 523.25}
+      { name: 'C', freq: 261.63 },
+      { name: 'C#', freq: 277.18 },
+      { name: 'D', freq: 293.66 },
+      { name: 'D#', freq: 311.13 },
+      { name: 'E', freq: 329.63 },
+      { name: 'F', freq: 349.23 },
+      { name: 'F#', freq: 369.99 },
+      { name: 'G', freq: 392.0 },
+      { name: 'G#', freq: 415.3 },
+      { name: 'A', freq: 440.0 },
+      { name: 'A#', freq: 466.16 },
+      { name: 'B', freq: 493.88 },
+      { name: 'C1', freq: 523.25 }
     ]
     this.state = {
-      state: 'suspended',
       waveform: WAVEFORMS.SAWTOOTH.id,
       frequency: 250,
       duration: 1000,
@@ -38,8 +37,6 @@ export default class Synthesizer extends React.Component {
     }
   }
 
-
-  
   restartAudio = () => {
     this.oscillator.stop(this.audioContext.currentTime)
     this.createAudio()
@@ -53,22 +50,21 @@ export default class Synthesizer extends React.Component {
     this.oscillator = this.audioContext.createOscillator()
     this.filter = this.audioContext.createBiquadFilter()
     this.masterGainNode = this.audioContext.createGain()
-    this.masterGainNode.gain.value = 0
     this.envGainNode = this.audioContext.createGain()
+    this.masterGainNode.gain.value = 0
     this.envGainNode.gain.value = 0
 
     // Start setting up the components
     this.oscillator.type = this.state.waveform || 'sine'
-    this.oscillator.frequency.value =  this.state.frequency || 300 
+    this.oscillator.frequency.value = this.state.frequency || 300
     this.filter.type = this.state.filterType
     this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
     this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
 
     //ASDR +++++++++++++++++++++++++++++++++
 
-    const EnvGen = require('fastidious-envelope-generator')
-
-    this.adsr = new EnvGen(this.audioContext, this.envGainNode.gain)
+    // this.adsr = new EnvGen(this.audioContext, this.envGainNode.gain)
+    this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
 
     this.adsr.mode = 'ADSR'
     this.adsr.attackTime = this.state.attackTime
@@ -80,26 +76,26 @@ export default class Synthesizer extends React.Component {
 
     // Constant Node code ???
     // Made into a function for scope reasons
-    function createConstantNode (audioContext, v) {
-      const constantBuffer = audioContext.createBuffer(1, 2, audioContext.sampleRate)
-      const constantData = constantBuffer.getChannelData(0)
-      constantData[0] = v
-      constantData[1] = v
-      const node = audioContext.createBufferSource()
-      node.buffer = constantBuffer
-      node.loop = true
-      node.start()
-      return node
-    }
+    // function createConstantNode (audioContext, v) {
+    //   const constantBuffer = audioContext.createBuffer(1, 2, audioContext.sampleRate)
+    //   const constantData = constantBuffer.getChannelData(0)
+    //   constantData[0] = v
+    //   constantData[1] = v
+    //   const node = audioContext.createBufferSource()
+    //   node.buffer = constantBuffer
+    //   node.loop = true
+    //   node.start()
+    //   return node
+    // }
 
     // Constant Node
-    this.constNode = createConstantNode(this.audioContext, 1)
+    // this.constNode = createConstantNode(this.audioContext, 1)
 
     // Connect the nodes
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
     this.masterGainNode.connect(this.audioContext.destination)
-    this.constNode.connect(this.envGainNode)
+    // this.constNode.connect(this.envGainNode)
     this.envGainNode.connect(this.masterGainNode.gain)
 
     this.oscillator.start()
@@ -150,8 +146,13 @@ export default class Synthesizer extends React.Component {
     this.setState({ releaseTime: Number(r.target.value) })
   }
 
-  playSound = () => {
-    this.adsr.gateOn(this.audioContext.currentTime)
+  playSound = (freq) => {
+    if (this.state.frequency === freq) {
+      this.adsr.gateOn(this.audioContext.currentTime)
+    } else {
+      this.setState({ frequency: Number(freq) })
+    }
+    console.log(this.oscillator)
   }
 
   stopSound = () => {
@@ -206,21 +207,20 @@ export default class Synthesizer extends React.Component {
         </div>
         <div id="keyboard">
           <div />
-          <button onMouseUp={this.stopSound} onMouseDown={this.playSound}>
+          <button onMouseUp={this.stopSound} onMouseDown={this.playSound.bind(this, 440)}>
             create keyboard
           </button>
-          <div className="keyMaker"> 
-                {this.keys.map(key => (
-                    <div className={key.name} key={key.name} data-freq-type={key.freq}>
-                      <button onMouseUp={this.stopSound} onMouseDown={this.playSound}>
-                        {key.name}
-                      </button>
-                  </div>
-                ))}
+          <div className="keyMaker">
+            {this.keys.map((key) => (
+              <div className={key.name} key={key.name} data-freq={key.freq}>
+                <button onMouseUp={this.stopSound} onMouseDown={this.playSound.bind(this, key.freq)}>
+                  {key.name}
+                </button>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     )
   }
 }
-
