@@ -2,25 +2,27 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 import './Synth.css'
-const keyArray = [ 261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.0, 415.3, 440.0, 466.16, 493.88, 523.25 ]
-const keyName = [ 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B', 'C' ]
 
-function keyMaker () {
-  for (let i = 0; i < keyArray.length; i++) {
-    const button = document.createElement('input')
-    button.type = 'button'
-    button.value = keyName[i]
-    button.id = keyArray[i]
-    document.body.appendChild(button)
-  }
-}
-
-keyMaker()
 
 // The main class
 export default class Synthesizer extends React.Component {
   constructor (props) {
     super(props)
+    this.keys = [
+      {name: 'C', freq: 261.63},
+      {name: 'C#', freq: 277.18},
+      {name: 'D', freq: 293.66},
+      {name: 'D#', freq: 311.13}, 
+      {name: 'E', freq: 329.63},
+      {name: 'F', freq: 349.23},
+      {name: 'F#', freq: 369.99}, 
+      {name: 'G', freq: 392.0},
+      {name: 'G#', freq: 415.3},
+      {name: 'A', freq:  440.0},
+      {name: 'A#', freq: 466.16}, 
+      {name: 'B', freq: 493.88},
+      {name: 'C1', freq: 523.25}
+    ]
     this.state = {
       state: 'suspended',
       waveform: WAVEFORMS.SAWTOOTH.id,
@@ -36,6 +38,8 @@ export default class Synthesizer extends React.Component {
     }
   }
 
+
+  
   restartAudio = () => {
     this.oscillator.stop(this.audioContext.currentTime)
     this.createAudio()
@@ -55,7 +59,7 @@ export default class Synthesizer extends React.Component {
 
     // Start setting up the components
     this.oscillator.type = this.state.waveform || 'sine'
-    this.oscillator.frequency.value = this.state.frequency || 300
+    this.oscillator.frequency.value =  this.state.frequency || 300 
     this.filter.type = this.state.filterType
     this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
     this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
@@ -205,31 +209,18 @@ export default class Synthesizer extends React.Component {
           <button onMouseUp={this.stopSound} onMouseDown={this.playSound}>
             create keyboard
           </button>
+          <div className="keyMaker"> 
+                {this.keys.map(key => (
+                    <div className={key.name} key={key.name} data-freq-type={key.freq}>
+                      <button onMouseUp={this.stopSound} onMouseDown={this.playSound}>
+                        {key.name}
+                      </button>
+                  </div>
+                ))}
+          </div>
         </div>
       </div>
     )
   }
 }
 
-// function Synth () {
-//   // this creates the audio context
-//   const context = new (window.AudioContext || window.webkitAudioContext)()
-
-//   // creates the repeating ocillator
-//   // OscillatorNode.type = 'sine' | 'square' | 'triangle' | 'sawtooth'
-
-//   const oscillator = context.createOscillator()
-
-//   oscillator.type = 'square, triangle, sawtooth'
-//   oscillator.frequency.value = 220
-//   oscillator.connect(context.destination)
-//   oscillator.start()
-
-//   return (
-//     <div className='synth'>farts</div>
-//   )
-// }
-
-// export default Synth
-
-// ++==++== - - Basic Synth ^
