@@ -17,10 +17,12 @@ function keyMaker () {
 
 keyMaker()
 
-class Synthesizer extends React.Component {
+// The main class
+export default class Synthesizer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
+      state: 'suspended',
       waveform: WAVEFORMS.SAWTOOTH.id,
       frequency: 250,
       duration: 1000,
@@ -34,18 +36,22 @@ class Synthesizer extends React.Component {
     }
   }
 
-  componentDidMount () {
+  restartAudio = () => {
+    this.oscillator.stop(this.audioContext.currentTime)
+    this.createAudio()
+  }
+
+  createAudio = () => {
     // Create the components
+    //    Only the audioContext needs to be attached to the object
     const audioCtx = window.AudioContext || window.webkitAudioContext
     this.audioContext = new audioCtx()
     this.oscillator = this.audioContext.createOscillator()
-    this.oscillator.start()
     this.filter = this.audioContext.createBiquadFilter()
     this.masterGainNode = this.audioContext.createGain()
     this.masterGainNode.gain.value = 0
     this.envGainNode = this.audioContext.createGain()
     this.envGainNode.gain.value = 0
-
 
     // Start setting up the components
     this.oscillator.type = this.state.waveform || 'sine'
@@ -69,20 +75,21 @@ class Synthesizer extends React.Component {
     //ASDR +++++++++++++++++++++++++++++++++
 
     // Constant Node code ???
-    function createConstantNode(audioContext, v) {
-      const constantBuffer = audioContext.createBuffer(1, 2, audioContext.sampleRate);
-      const constantData = constantBuffer.getChannelData(0);
-      constantData[0] = v;
-      constantData[1] = v;
-      const node = audioContext.createBufferSource();
-      node.buffer = constantBuffer;
-      node.loop = true;
-      node.start();
-      return node;
+    // Made into a function for scope reasons
+    function createConstantNode (audioContext, v) {
+      const constantBuffer = audioContext.createBuffer(1, 2, audioContext.sampleRate)
+      const constantData = constantBuffer.getChannelData(0)
+      constantData[0] = v
+      constantData[1] = v
+      const node = audioContext.createBufferSource()
+      node.buffer = constantBuffer
+      node.loop = true
+      node.start()
+      return node
     }
 
-    this.constNode = createConstantNode(this.audioContext, 1)
     // Constant Node
+    this.constNode = createConstantNode(this.audioContext, 1)
 
     // Connect the nodes
     this.oscillator.connect(this.filter)
@@ -91,7 +98,16 @@ class Synthesizer extends React.Component {
     this.constNode.connect(this.envGainNode)
     this.envGainNode.connect(this.masterGainNode.gain)
 
-    
+    this.oscillator.start()
+  }
+
+  componentDidMount () {
+    // Call the main createAudio function
+    this.createAudio()
+  }
+
+  componentDidUpdate () {
+    this.restartAudio()
   }
 
   setWaveform = (e) => {
@@ -132,18 +148,15 @@ class Synthesizer extends React.Component {
 
   playSound = () => {
     this.adsr.gateOn(this.audioContext.currentTime)
-    // this.oscillator.start()
-    console.log(this)
   }
 
   stopSound = () => {
     this.adsr.gateOff(this.audioContext.currentTime)
-    // this.oscillator.stop(this.audioContext.currentTime)
   }
 
   render () {
     return (
-      <div className='synth__all'>
+      <div className="synth__all">
         <h1>Synthesizer</h1>
         <p>Create a tone but be careful</p>
 
@@ -197,8 +210,6 @@ class Synthesizer extends React.Component {
     )
   }
 }
-
-export default Synthesizer
 
 // function Synth () {
 //   // this creates the audio context
