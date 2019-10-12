@@ -35,6 +35,7 @@ export default class Synthesizer extends React.Component {
       sustainLevel: 0.1,
       releaseTime: 0.1
     }
+    this.frequency = 220
   }
 
   restartAudio = () => {
@@ -50,15 +51,14 @@ export default class Synthesizer extends React.Component {
     this.oscillator = this.audioContext.createOscillator()
     this.filter = this.audioContext.createBiquadFilter()
     this.masterGainNode = this.audioContext.createGain()
-    this.envGainNode = this.audioContext.createGain()
     this.masterGainNode.gain.value = 0
 
     this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
 
     // Start setting up the components
     this.oscillator.type = this.state.waveform || 'sine'
-    this.oscillator.frequency.value = this.state.frequency || 440
-    this.filter.type = this.state.filterType
+    this.oscillator.frequency.value = this.frequency || 440
+    this.filter.type = this.state.filterType || 'lowpass'
     this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
     this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
 
@@ -83,10 +83,10 @@ export default class Synthesizer extends React.Component {
     this.createContexts()
   }
 
-  componentDidUpdate () {
-    // this.restartAudio()
-    this.createAudio()
-  }
+  // componentDidUpdate () {
+  //   // this.restartAudio()
+  //   this.createAudio()
+  // }
 
   setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
@@ -97,7 +97,9 @@ export default class Synthesizer extends React.Component {
   }
 
   setFrequency = (value) => {
-    this.setState({ frequency: Number(value) })
+    // this.setState({ frequency: Number(value) })
+    this.frequency = Number(value)
+    this.createAudio()
   }
 
   setFilterFrequency = (value2) => {
@@ -125,9 +127,6 @@ export default class Synthesizer extends React.Component {
   }
 
   playSound = (freq) => {
-    // if (this.state.frequency !== freq) {
-    //   this.setState({ frequency: Number(freq) })
-    // }
     this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
   }
