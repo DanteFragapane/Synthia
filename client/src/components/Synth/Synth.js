@@ -81,12 +81,16 @@ export default class Synthesizer extends React.Component {
   componentDidMount () {
     // Call the main createAudio function
     this.createContexts()
+
+    document.getElementById('keyboardDiv').focus()
   }
 
-  // componentDidUpdate () {
-  //   // this.restartAudio()
-  //   this.createAudio()
-  // }
+  componentWillUnmount () {
+    this.oscillator = null
+    this.filter = null
+    this.adsr = null
+    this.masterGainNode = null
+  }
 
   setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
@@ -135,9 +139,19 @@ export default class Synthesizer extends React.Component {
     this.adsr.gateOff(this.audioContext.currentTime)
   }
 
+  test = (e) => {
+    console.log(e)
+  }
+
   render () {
     return (
-      <div className="synth__all">
+      <div
+        className="synth__all"
+        id="keyboardDiv"
+        onKeyPress={(e) => {
+          this.test(e)
+        }}
+      >
         <h1>Synthesizer</h1>
         <p>Create a tone but be careful</p>
 
@@ -189,7 +203,13 @@ export default class Synthesizer extends React.Component {
           <div className="keyMaker">
             {this.keys.map((key) => (
               <div className={key.name} key={key.name} data-freq={key.freq}>
-                <button onMouseUp={this.stopSound} onMouseDown={this.playSound.bind(this, key.freq)}>
+                <button
+                  onMouseUp={this.stopSound}
+                  onMouseDown={this.playSound.bind(this, key.freq)}
+                  onTouchStart={this.playSound.bind(this, key.freq)}
+                  onTouchEnd={this.stopSound}
+                  onTouchCancel={this.stopSound}
+                >
                   {key.name}
                 </button>
               </div>
