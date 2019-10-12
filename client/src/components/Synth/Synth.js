@@ -52,9 +52,7 @@ export default class Synthesizer extends React.Component {
     this.masterGainNode = this.audioContext.createGain()
     this.envGainNode = this.audioContext.createGain()
     this.masterGainNode.gain.value = 0
-    this.envGainNode.gain.value = 0
 
-    // this.adsr = new EnvGen(this.audioContext, this.envGainNode.gain)
     this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
 
     // Start setting up the components
@@ -76,9 +74,8 @@ export default class Synthesizer extends React.Component {
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
     this.masterGainNode.connect(this.audioContext.destination)
-    this.envGainNode.connect(this.masterGainNode.gain)
 
-    this.oscillator.start(this.audioContext.currentTime)
+    this.oscillator.start()
   }
 
   componentDidMount () {
@@ -131,7 +128,7 @@ export default class Synthesizer extends React.Component {
     // if (this.state.frequency !== freq) {
     //   this.setState({ frequency: Number(freq) })
     // }
-    this.setState({ frequency: Number(freq) })
+    this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
   }
 
