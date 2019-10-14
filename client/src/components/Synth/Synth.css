@@ -60,3 +60,14 @@ input {
   display: grid;
   width: 50px;
 }
+
+
+keyMaker{
+  color: tomato;
+}
+
+.button{
+
+  color: tomato;
+  background: violet;
+}
