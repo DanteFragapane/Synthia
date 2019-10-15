@@ -277,8 +277,8 @@ export default class Synthesizer extends React.Component {
         </div>
         <div id="keyboard">
           <div />
-          <button onMouseUp={this.stopSound} onMouseDown={this.playSound.bind(this, 440)}>
-            create keyboard
+          <button onMouseDown={this.stopSound}>
+            STOP SOUND
           </button>
           <div className="keyMaker">
             {this.keys.map((key) => (
