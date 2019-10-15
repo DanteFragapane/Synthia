@@ -1,6 +1,6 @@
-html{
+/* html{
 	height: 100%;
-}
+} */
 body {
 	height: 100%;
 background: rgb(226, 143, 9);  /* fallback for old browsers */
@@ -25,12 +25,12 @@ background: linear-gradient(to left, rgb(100, 99, 199), rgb(224, 123, 6)); /* W3
 	top: 50%;
 	width: 1000px;
 	height: 45rem;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+  transform: translate(-60%, -40%);
+
 }
 
 .triangle {
-	fill: none;
+	fill: orangered;
 	stroke: blue;
 	stroke-width: 15;
 	transform-origin: center center ;
