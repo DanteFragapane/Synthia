@@ -14,7 +14,7 @@ export default class Synthesizer extends React.Component {
       { name: 'C', freq: 261.63, keyLetter: 'A' }, 
       { name: 'CSH', freq: 277.18, keyLetter: 'W' },
       { name: 'D', freq: 293.66, keyLetter: 'S' },
-      { name: 'ESH', freq: 311.13, keyLetter: 'E' },
+      { name: 'DSH', freq: 311.13, keyLetter: 'E' },
       { name: 'E', freq: 329.63, keyLetter: 'D' },
       { name: 'F', freq: 349.23, keyLetter: 'F' },
       { name: 'FSH', freq: 369.99, keyLetter: 'T' },
@@ -277,13 +277,13 @@ export default class Synthesizer extends React.Component {
         </div>
         <div id="keyboard">
           <div />
-          <button onMouseDown={this.stopSound}>
+          <button className='boton' onMouseDown={this.stopSound}>
             STOP SOUND
           </button>
           <div className="keyMaker">
             {this.keys.map((key) => (
               <div className={key.name} key={key.name} data-freq={key.freq}>
-                <button
+                <button className= 'buton2'
                   onMouseUp={this.stopSound}
                   onMouseDown={this.playSound.bind(this, key.freq)}
                   onTouchStart={this.playSound.bind(this, key.freq)}

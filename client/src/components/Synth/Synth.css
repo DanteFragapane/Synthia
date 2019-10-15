@@ -6,6 +6,14 @@
   grid-auto-rows: minmax(2rem, auto)
 } */
 
+.buton2{
+  border-radius: 25px;
+  color: tomato;
+  background: violet;
+  padding: 2rem;
+  background: -webkit-linear-gradient(to left, white,black);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, black, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
 div.keyMaker{
   display: grid;
@@ -16,29 +24,117 @@ div.keyMaker{
 }
 
 
-.C{grid-column-start: 1;grid-row-start: 3;}
-.CSH{grid-column-start: 2;grid-row-start: 1;}
+.C{
+  grid-column-start: 1;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
+  
+}
 
-.D{grid-column-start: 3;grid-row-start: 3;}
-.DSH{grid-column-start: 4;grid-row-start: 1;}
+.CSH{
+  grid-column-start: 2;
+  grid-row-start: 1;
+  background: black;
+  align-content: center;
+  border-radius: 25px;
 
-.E{grid-column-start: 5;grid-row-start: 3;}
+}
+
+.D{grid-column-start: 3;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
+
+}
+
+.DSH{grid-column-start: 4;grid-row-start: 1;
+  background: black;
+  align-content: center;
+  border-radius: 25px;
+
+}
+
+.E{
+  grid-column-start: 5;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
+
+}
 
 
-.F{grid-column-start: 6;grid-row-start: 3;}
-.FSH{grid-column-start: 7;grid-row-start: 1;}
+.F{grid-column-start: 6;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
+
+}
+.FSH{
+  grid-column-start: 7;
+  grid-row-start: 1;
+  background: black;
+  align-content: center;
+  border-radius: 25px;
+
+}
 
 
-.G{grid-column-start: 8;grid-row-start: 3;}
-.GSH{grid-column-start: 9;grid-row-start: 1;}
+.G{grid-column-start: 8;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
 
-.A{grid-column-start: 10;grid-row-start: 3;}
-.ASH{grid-column-start: 11;grid-row-start: 1;}
+}
+.GSH{grid-column-start: 9;
+  grid-row-start: 1;
+  background: black;
+  align-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 25px;
+}
+
+.A{
+  grid-column-start: 10;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
+
+
+}
+
+.ASH{
+  grid-column-start: 11;
+  grid-row-start: 1;
+  background: black;
+  align-content: center;
+  border-radius: 25px;
+
+}
 
 
 
-.B{grid-column-start: 12;grid-row-start: 3;}
-.C1{grid-column-start: 13;grid-row-start: 3;}
+.B{grid-column-start: 12;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
+
+}
+.C1{grid-column-start: 13;
+  grid-row-start: 3;
+  background: white;
+  align-content: center;
+  border-radius: 25px;
+
+}
 
 
 .synth {
@@ -93,8 +189,3 @@ div.keyMaker{
   color: tomato;
 }
 
-.button{
-  border-radius: 25px;
-  color: tomato;
-  background: violet;
-}
