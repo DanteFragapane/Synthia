@@ -143,14 +143,75 @@ export default class Synthesizer extends React.Component {
     // this.midi.noteOn(freq)
   }
 
-  keyPlaySound = (keyCode) => {
-    if (keyCode === 65 || 87 || 83 || 69 || 68 || 70 || 84 || 71 || 89 || 72 || 85 || 74 || 75) {
-      this.playSound()
-      console.log()
-    } else {
-      console.log('not a valid key')
+
+  keyPlaySound2 = event => {
+    switch (event.key) {
+      case 'a' :
+        this.playSound(261.63)
+        console.log('a key was pressed')
+        break
+        case 'w' :
+        this.playSound(277.18)
+        console.log('w key was pressed')
+        break
+        case 's' :
+        this.playSound(293.66)
+        console.log('s key was pressed')
+        break
+        case 'e' :
+        this.playSound(311.13)
+        console.log('e key was pressed')
+        break
+        case 'd' :
+        this.playSound(329.63)
+        console.log('d key was pressed')
+        break
+        case 'f' :
+        this.playSound(349.23)
+        console.log('f key was pressed')
+        break
+        case 't' :
+        this.playSound(369.99)
+        console.log('t key was pressed')
+        break
+        case 'g' :
+        this.playSound(392.0)
+        console.log('g key was pressed')
+        break
+        case 'y' :
+        this.playSound(415.3)
+        console.log('y key was pressed')
+        break
+        case 'h' :
+        this.playSound(440.0)
+        console.log('h key was pressed')
+        break
+        case 'u' :
+        this.playSound(466.16)
+        console.log('u key was pressed')
+        break
+        case 'j' :
+        this.playSound(493.88)
+        console.log('j key was pressed')
+        break
+        case 'k' :
+        this.playSound(523.25)
+        console.log('k key was pressed')
+        break
+
+        default:
+          console.log('wrong key')
     }
   }
+
+  // keyPlaySound = event => {
+  //   if (event.key.match(/^(a|w|s|e|d|f|g|y|h|u|j|k)$/)) {
+  //     console.log(event.key)
+  //     this.playSound()
+  //   } else {
+  //     console.log('not a valid key')
+  //   }
+  // }
  
   stopSound = () => {
     this.adsr.gateOff(this.audioContext.currentTime)
@@ -172,9 +233,7 @@ export default class Synthesizer extends React.Component {
       <div
         className="synth__all"
         id="keyboardDiv"
-        onKeyDown={(keyCode) => { 
-          this.keyPlaySound(keyCode)
-        }}
+        onKeyDown={this.keyPlaySound2}
         onKeyUp={() => {
           this.stopSound()
         }}
