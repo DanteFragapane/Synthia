@@ -26,16 +26,16 @@ export default class Synthesizer extends React.Component {
       { name: 'C1', freq: 523.25, keyLetter: 'K' }
     ]
     this.state = {
-      waveform: WAVEFORMS.SAWTOOTH.id,
+      waveform: WAVEFORMS.SQUARE.id,
       frequency: 250,
       duration: 1000,
       filterType: 'lowpass',
-      filterFrequency: 500,
+      filterFrequency: 375,
       filterGain: 50,
-      attackTime: 0.1,
-      decayTime: 0.1,
-      sustainLevel: 0.1,
-      releaseTime: 0.1
+      attackTime: 0.2,
+      decayTime: 0.5,
+      sustainLevel: 0.5,
+      releaseTime: 0.3
     }
     this.frequency = 220
     // this.midi = new MidiInterface({
@@ -54,27 +54,33 @@ export default class Synthesizer extends React.Component {
   }
 
   createAudio = () => {
-    this.oscillator = this.audioContext.createOscillator()
-    this.filter = this.audioContext.createBiquadFilter()
+
+    //MASTER GAINN NODE
     this.masterGainNode = this.audioContext.createGain()
     this.masterGainNode.gain.value = 0
+    //MASTER GAINN NODE
 
-    this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
-
-    // Start setting up the components
+    //OSCILLATOR
+    this.oscillator = this.audioContext.createOscillator()
     this.oscillator.type = this.state.waveform || 'sine'
     this.oscillator.frequency.value = this.frequency || 440
+    //OSCILLATOR
+
+    //FILTER
+    this.filter = this.audioContext.createBiquadFilter()
     this.filter.type = this.state.filterType || 'lowpass'
     this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
     this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
+    //FILTER
 
-    //ASDR +++++++++++++++++++++++++++++++++
+    //ASDR
+    this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
     this.adsr.mode = 'ADSR'
     this.adsr.attackTime = this.state.attackTime
     this.adsr.decayTime = this.state.decayTime
     this.adsr.sustainLevel = this.state.sustainLevel
     this.adsr.releaseTime = this.state.releaseTime
-    //ASDR +++++++++++++++++++++++++++++++++
+    //ASDR
 
     // Connect the nodes
     this.oscillator.connect(this.filter)
@@ -106,18 +112,18 @@ export default class Synthesizer extends React.Component {
     this.setState({ duration: Number(e.target.value) })
   }
 
-  setFrequency = (value) => {
+  setFrequency = (e) => {
     // this.setState({ frequency: Number(value) })
-    this.frequency = Number(value)
+    this.frequency = Number(e)
     this.createAudio()
   }
 
-  setFilterFrequency = (value2) => {
-    this.setState({ filterFrequency: Number(value2.target.value) })
+  setFilterFrequency = (e) => {
+    this.setState({ filterFrequency: Number(e.target.value) })
   }
 
-  setFilterGain = (value3) => {
-    this.setState({ filterGain: Number(value3.target.value) })
+  setFilterGain = (e) => {
+    this.setState({ filterGain: Number(e.target.value) })
   }
 
   setAttackTime = (a) => {
