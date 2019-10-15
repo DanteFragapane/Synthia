@@ -2,6 +2,8 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 import './Synth.css'
+// import MidiInterface from 'js-midi'
+
 const EnvGen = require('fastidious-envelope-generator')
 
 // The main class
@@ -9,19 +11,19 @@ export default class Synthesizer extends React.Component {
   constructor (props) {
     super(props)
     this.keys = [
-      { name: 'C', freq: 261.63 },
-      { name: 'C#', freq: 277.18 },
-      { name: 'D', freq: 293.66 },
-      { name: 'D#', freq: 311.13 },
-      { name: 'E', freq: 329.63 },
-      { name: 'F', freq: 349.23 },
-      { name: 'F#', freq: 369.99 },
-      { name: 'G', freq: 392.0 },
-      { name: 'G#', freq: 415.3 },
-      { name: 'A', freq: 440.0 },
-      { name: 'A#', freq: 466.16 },
-      { name: 'B', freq: 493.88 },
-      { name: 'C1', freq: 523.25 }
+      { name: 'C', freq: 261.63, keyLetter: 'A' }, 
+      { name: 'C#', freq: 277.18, keyLetter: 'W' },
+      { name: 'D', freq: 293.66, keyLetter: 'S' },
+      { name: 'D#', freq: 311.13, keyLetter: 'E' },
+      { name: 'E', freq: 329.63, keyLetter: 'D' },
+      { name: 'F', freq: 349.23, keyLetter: 'F' },
+      { name: 'F#', freq: 369.99, keyLetter: 'T' },
+      { name: 'G', freq: 392.0, keyLetter: 'G' },
+      { name: 'G#', freq: 415.3, keyLetter: 'Y' },
+      { name: 'A', freq: 440.0, keyLetter: 'H' },
+      { name: 'A#', freq: 466.16, keyLetter: 'U' },
+      { name: 'B', freq: 493.88, keyLetter: 'J' },
+      { name: 'C1', freq: 523.25, keyLetter: 'K' }
     ]
     this.state = {
       waveform: WAVEFORMS.SAWTOOTH.id,
@@ -36,6 +38,10 @@ export default class Synthesizer extends React.Component {
       releaseTime: 0.1
     }
     this.frequency = 220
+    // this.midi = new MidiInterface({
+    //   onPressNote: (evt) => console.log(evt),
+    //   onReleaseNote: (evt) => console.log(evt)
+    // })
   }
 
   restartAudio = () => {
@@ -130,26 +136,47 @@ export default class Synthesizer extends React.Component {
     this.setState({ releaseTime: Number(r.target.value) })
   }
 
+
   playSound = (freq) => {
+    this.setFrequency(freq)
+    this.adsr.gateOn(this.audioContext.currentTime)
+    // this.midi.noteOn(freq)
+  }
+
+  keyPlaySound = (keyCode) => {
+    if (keyCode === 65 || 87 || 83 || 69 || 68 || 70 || 84 || 71 || 89 || 72 || 85 || 74 || 75) {
+      this.playSound()
+      console.log()
+    } else {
+      console.log('not a valid key')
+    }
+  }
+ 
+  stopSound = () => {
+    this.adsr.gateOff(this.audioContext.currentTime)
+    // this.midi.noteOff()
+  }
+
+
+  
+  test = (freq) => {
+    console.log(freq)
     this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
   }
 
-  stopSound = () => {
-    this.adsr.gateOff(this.audioContext.currentTime)
-  }
-
-  test = (e) => {
-    console.log(e)
-  }
+  
 
   render () {
     return (
       <div
         className="synth__all"
         id="keyboardDiv"
-        onKeyPress={(e) => {
-          this.test(e)
+        onKeyDown={(keyCode) => { 
+          this.keyPlaySound(keyCode)
+        }}
+        onKeyUp={() => {
+          this.stopSound()
         }}
       >
         <h1>Synthesizer</h1>
