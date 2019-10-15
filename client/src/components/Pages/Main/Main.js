@@ -9,6 +9,7 @@ import Toolbar from '../../Toolbar'
 import SideDrawer from '../../SideDrawer/SideDrawer'
 import Backdrop from '../../Backdrop/Backdrop'
 import Knob from '../../Knob'
+import Mockvisualizer from '../../Mockvisualizer'
 
 
 
@@ -46,24 +47,13 @@ return (
     <div className='two'><Toolbar drawerClickHandler={this.drawerToggleClickHandler} /></div>
     <SideDrawer show={this.state.sideDrawerOpen}/>
     {backdrop}
-    <div className='three'><h1>Visualize Me!</h1></div>
+    
+    <div className='three'><div className ='visualframe'>Vizualize!
+      <Mockvisualizer />
+      </div></div>
     <div className='four'><Table /></div>
-    <div className='five'><Table /></div>
-    {/* <div className= 'four' >
-    <Knob/>
-    <Knob/>
-    <Knob/>
-    <Knob/>
-    <Knob/>
-    <Knob/>
-    </div>
-    <div className= 'five' >
-    <Knob/>
-    <Knob/>
-    <Knob/>
-    <Knob/>
-    <Knob/>
-    <Knob/>    </div> */}
+
+   
     <div className='six'><HorizontalBar /></div>
     <div className='seven'><Footer /></div>
   </div>

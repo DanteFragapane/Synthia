@@ -3,6 +3,7 @@
   width: 100%;
   background:#d9480f; 
   height: 56px;
+ 
 }
 
 .toolbar__navigation {
@@ -23,7 +24,7 @@
 }
 
 .spacer {
-  flex: 1;
+  flex: 99;
 }
 
 .toolbar_navigation-items ul {

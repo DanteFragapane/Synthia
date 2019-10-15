@@ -1,10 +1,182 @@
-thead{
-  text-align: center;
-  align-items: center;
+
+
+.yeahdiv> div{
+  border: 2px solid black;
+  border-radius: 1rem;
+  
+  background-color: lightgray;
+  padding: 1rem 1rem 1rem  1rem;
+  color: white;
+  
+  align-content:center;
+ 
+  margin: 1rem;
+
+  
+  
 }
 
-table td{
-  padding: 1rem 1rem .25rem 2rem; 
-  margin: 0 0 0 0;
+#value{
+  font-size: 2rem;
+}
+  
+  .yeahdiv {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr  ;
+    align-content: center;
+    background-color: rgba(143, 141, 139, 0.5);
+
+    
+  }
+
+
+  label.slidecontainer{
+    margin-top:1.5rem ;
+    font-size: 1.50rem;
+    text-decoration: chocolate;
+    
+
+  }
+
+
+.textlabel{
+  margin-top:1.5rem ;
+}
+
+#value{
+  font-size: 4rem;
+}
+
+
+
+div.buttononetopleft{
+  grid-row-start: 1;
+  grid-row-end: 1 ;
+  grid-column-start: 1;
+  
+  text-align: center;
+
+  background: #007bff;
  
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  
+  border-radius: 50rem;
+  border: 2.5px dashed black;
+}
+div.buttontwotopmid{
+  grid-row-start: 1;
+  grid-column-start: 2;
+ 
+  background: #ffc107;
+  
+  text-align: center;
+  
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  border-radius: 50rem;
+  border: 2.5px dashed black;
+}
+
+
+div.buttonthreetopmid {
+  grid-row-start: 1;
+  grid-column-start: 3;
+  
+  text-align: center;
+
+  background: #dc3545;
+
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  border-radius: 50rem;
+  border: 2.5px dashed black;
+}
+
+div.buttonfourtopright{
+  grid-row-start: 1;
+  grid-column-start: 4;
+  
+  background: #6c757d;
+
+  text-align: center;
+
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  border-radius: 50rem;
+  border: 2.5px dashed black;
+}
+
+
+div.buttonfirstbottomleft  {
+  grid-row-start: 2;
+  grid-column-start: 1;
+
+  text-align: center;
+
+  background: #007bff;
+
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  border-radius: 50rem;
+  border: 2.5px dashed black;
+}
+
+div.buttonsecondbottommid  {
+  grid-row-start: 2;
+  grid-column-start: 2;
+  
+  background: #ffc107;
+
+  text-align: center;
+
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  border-radius: 50rem;
+  border: 2.5px dashed black;
+}
+
+div.buttonthirdbottommid  {
+  grid-row-start: 2;
+  grid-column-start: 3;
+ 
+  text-align: center;
+
+  background: #dc3545;
+
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  border-radius: 20rem;
+  border: 2.5px dashed black;
+}
+
+div.buttonfourthbottomright {
+  grid-row-start: 2;
+  grid-column-start: 4;
+
+  text-align: center;
+
+  background: #6c757d;
+
+  width: 12rem ;
+  height: 12rem ;
+
+  align-content: center;
+  border-radius: 20rem;
+  border: 2.5px dashed black;
 }

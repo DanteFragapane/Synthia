@@ -12,16 +12,16 @@ export default class Synthesizer extends React.Component {
     super(props)
     this.keys = [
       { name: 'C', freq: 261.63, keyLetter: 'A' }, 
-      { name: 'C#', freq: 277.18, keyLetter: 'W' },
+      { name: 'CSH', freq: 277.18, keyLetter: 'W' },
       { name: 'D', freq: 293.66, keyLetter: 'S' },
-      { name: 'D#', freq: 311.13, keyLetter: 'E' },
+      { name: 'ESH', freq: 311.13, keyLetter: 'E' },
       { name: 'E', freq: 329.63, keyLetter: 'D' },
       { name: 'F', freq: 349.23, keyLetter: 'F' },
-      { name: 'F#', freq: 369.99, keyLetter: 'T' },
+      { name: 'FSH', freq: 369.99, keyLetter: 'T' },
       { name: 'G', freq: 392.0, keyLetter: 'G' },
-      { name: 'G#', freq: 415.3, keyLetter: 'Y' },
+      { name: 'GSH', freq: 415.3, keyLetter: 'Y' },
       { name: 'A', freq: 440.0, keyLetter: 'H' },
-      { name: 'A#', freq: 466.16, keyLetter: 'U' },
+      { name: 'ASH', freq: 466.16, keyLetter: 'U' },
       { name: 'B', freq: 493.88, keyLetter: 'J' },
       { name: 'C1', freq: 523.25, keyLetter: 'K' }
     ]
