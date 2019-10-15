@@ -6,6 +6,41 @@
   grid-auto-rows: minmax(2rem, auto)
 } */
 
+
+div.keyMaker{
+  display: grid;
+  grid-template-columns: 1fr 1fr  1fr 1fr  1fr 1fr  1fr 1fr  1fr 1fr  1fr 1fr  1fr;
+  grid-template-rows: 1fr  1fr 1fr 1fr;
+  padding: 1rem;
+  margin: 1rem;
+}
+
+
+.C{grid-column-start: 1;grid-row-start: 3;}
+.CSH{grid-column-start: 2;grid-row-start: 1;}
+
+.D{grid-column-start: 3;grid-row-start: 3;}
+.DSH{grid-column-start: 4;grid-row-start: 1;}
+
+.E{grid-column-start: 5;grid-row-start: 3;}
+
+
+.F{grid-column-start: 6;grid-row-start: 3;}
+.FSH{grid-column-start: 7;grid-row-start: 1;}
+
+
+.G{grid-column-start: 8;grid-row-start: 3;}
+.GSH{grid-column-start: 9;grid-row-start: 1;}
+
+.A{grid-column-start: 10;grid-row-start: 3;}
+.ASH{grid-column-start: 11;grid-row-start: 1;}
+
+
+
+.B{grid-column-start: 12;grid-row-start: 3;}
+.C1{grid-column-start: 13;grid-row-start: 3;}
+
+
 .synth {
   width: 100%;
   font-size: 20rem;
@@ -27,9 +62,7 @@
 
 /* Input box sizing  */
 .control{
- padding: 1rem 5rem 5rem 5rem;
- width: 90%;
- height: 80%;
+visibility: hidden;
 
  
 }
@@ -54,20 +87,14 @@ input {
   background-color: ivory;
 }
 
-.synth__all{
-  align-items: grid;
-  padding: .10rem 4rem 2rem 1rem; 
-  display: grid;
-  width: 50px;
-}
 
 
-keyMaker{
+div.keyMaker{
   color: tomato;
 }
 
 .button{
-
+  border-radius: 25px;
   color: tomato;
   background: violet;
 }
