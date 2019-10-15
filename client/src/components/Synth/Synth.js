@@ -136,23 +136,21 @@ export default class Synthesizer extends React.Component {
     this.setState({ releaseTime: Number(r.target.value) })
   }
 
-
   playSound = (freq) => {
     this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
     // this.midi.noteOn(freq)
   }
 
-
   keyPlaySound2 = event => {
     switch (event.key) {
       case 'a' :
         this.playSound(261.63)
-        console.log('a key was pressed')
+        console.log(this.audioContext)
         break
         case 'w' :
         this.playSound(277.18)
-        console.log('w key was pressed')
+        console.log(this.audioContext)
         break
         case 's' :
         this.playSound(293.66)
@@ -217,16 +215,12 @@ export default class Synthesizer extends React.Component {
     this.adsr.gateOff(this.audioContext.currentTime)
     // this.midi.noteOff()
   }
-
-
   
   test = (freq) => {
     console.log(freq)
     this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
   }
-
-  
 
   render () {
     return (
