@@ -47,7 +47,10 @@ return (
     <div className='two'><Toolbar drawerClickHandler={this.drawerToggleClickHandler} /></div>
     <SideDrawer show={this.state.sideDrawerOpen}/>
     {backdrop}
-    <div className='three'><div className ='visualframe'><Mockvisualizer /></div></div>
+    
+    <div className='three'><div className ='visualframe'>Vizualize!
+      <Mockvisualizer />
+      </div></div>
     <div className='four'><Table /></div>
 
    

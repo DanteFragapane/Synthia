@@ -1,8 +1,20 @@
  
 .visualframe{
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 100%;
+  max-height: auto;
+
+  padding: 15.5rem 1rem 15.5rem 1rem;
+  /* background: black;*/
+  align-content: center;
+  background: rgb(226, 143, 9);  
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, rgb(233,171,88), rgb(190, 114, 15));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, rgb(100, 99, 199), rgb(224, 123, 6)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
 }
+
+
 
 
 .wrapper > div {
@@ -37,11 +49,14 @@
 /* Synthesizer */
 
 .three {
+  background: #d9480f;
+  display: grid;
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 3;
   grid-row-end:3;
-  max-width: 500px;
+  align-content: center;
+  /* max-width: 500px; */
   /* grid-column-end: 3; */
 }
 
