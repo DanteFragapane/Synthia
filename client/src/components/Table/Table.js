@@ -9,82 +9,53 @@ import Knob from '../Knob'
 export default class Example extends React.Component {
   render () {
     return (
-      <div className="mesa">
-        <Table dark>
-          <thead>
-            <tr className="mesa">
-              <th align="center">BUZZ</th>
-              <th align="center">BLAMO</th>
-              <th align="center">WHAMO</th>
-              <th align="center">ZAP</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th className="mesa" scope="row">
-                1
-              </th>
-              <td>
-                <Button color="primary">Frequency!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="warning">Gain!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="danger">Attack!</Button>
-                <Knob />{' '}
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>
-                <Button color="primary">Decay!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="warning">Release!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="danger">WUUUUUB!</Button>
-                <Knob />{' '}
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>
-                <Button color="primary">WUUUUUB!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="secondary">WUUUUUB!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="danger">WUUUUUB!</Button>
-                <Knob />{' '}
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>
-                <Button color="primary">WUUUUUB!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="secondary">WUUUUUB!</Button>
-                <Knob />{' '}
-              </td>
-              <td>
-                <Button color="danger">WUUUUUB!</Button>
-                <Knob />{' '}
-              </td>
-            </tr>
-          </tbody>
-        </Table>
-      </div>
+
+      <Table>
+
+        <div className='yeahdiv'>
+
+          <div className='divider'><div className='buttononetopleft'><div className='textlabel'>FREQUENCY</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+          <div className='divider'><div className='buttontwotopmid'><div className='textlabel'>DURATION</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+          <div className='divider'><div className='buttonthreetopmid'><div className='textlabel'>FILTER FREQUENCY</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+          <div className='divider'><div className='buttonfourtopright'><div className='textlabel'>FILTER GAIN</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+          <div className='divider'><div className='buttonfirstbottomleft' ><div className='textlabel'>ATTACK</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+          <div className='divider'><div className='buttonsecondbottommid'><div className='textlabel'>DECAY</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+          <div className='divider'><div className='buttonthirdbottommid'><div className='textlabel'>SUSTAIN</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+          <div className='divider'><div className='buttonfourthbottomright'><div className='textlabel'>RELEASE</div>
+            <div><Knob />{' '}</div>
+          </div>
+          </div>
+
+        </div>
+      </Table>
     )
   }
 }

@@ -1,4 +1,9 @@
  
+.visualframe{
+  max-width: 100px;
+  max-height: 100px;
+}
+
 
 .wrapper > div {
   border: 2px solid rgb(233,171,88);
@@ -9,7 +14,7 @@
 }
 .wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1.75fr  1.25fr;
   grid-template-rows: .100fr .1fr .90fr .1fr .05fr;
 }
 
@@ -36,29 +41,30 @@
   grid-column-end: 2;
   grid-row-start: 3;
   grid-row-end:3;
+  max-width: 500px;
   /* grid-column-end: 3; */
 }
 
 /* Table */
 
-.four {
-  grid-column-start: 3;
-  grid-column-end: 4;
+div.four {
+
+  grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end:3;
-  background-color: gray;
+  background: gray;
 
 }
 
 /* Table */
 
-.five {
+/* .five {
   grid-column-start: 5;
   grid-column-end: 6;
   grid-row-start: 3;
   grid-row-end:3;
   background-color: gray;
-}
+} */
 
 /* Mid horizontal bar */
 
