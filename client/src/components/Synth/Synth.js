@@ -1,7 +1,8 @@
-import React from "react"
-import WAVEFORMS from "./waveForms"
-import Frequency from "./Frequency"
-import "./Synth.css"
+import React from 'react'
+import WAVEFORMS from './waveForms'
+import Frequency from './Frequency'
+import './Synth.css'
+import MidiInterface from './MidiInterface'
 
 const EnvGen = require("fastidious-envelope-generator")
 
@@ -10,7 +11,7 @@ export default class Synthesizer extends React.Component {
   constructor(props) {
     super(props)
     this.keys = [
-      { name: 'C', freq: 261.63, keyLetter: 'A' },  
+      { name: 'C', freq: 261.63, keyLetter: 'A' },
       { name: 'CSH', freq: 277.18, keyLetter: 'W' },
       { name: 'D', freq: 293.66, keyLetter: 'S' },
       { name: 'DSH', freq: 311.13, keyLetter: 'E' },
@@ -58,6 +59,11 @@ export default class Synthesizer extends React.Component {
   }
 
   createContexts = () => {
+    this.midi = new MidiInterface({
+      onPressNote: (evt) => this.playSound(this.midi.frequencyFromNote(evt)),
+      onReleaseNote: (evt) => this.stopSound()
+    })
+
     const audioCtx = window.AudioContext || window.webkitAudioContext
     this.audioContext = new audioCtx()
   }
@@ -116,7 +122,11 @@ export default class Synthesizer extends React.Component {
     this.masterGainNode = null
   }
 
-  setWaveform = e => {
+  componentDidUpdate () {
+    console.log(this.state)
+  }
+
+  setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
   }
 
@@ -124,9 +134,8 @@ export default class Synthesizer extends React.Component {
     this.setState({ duration: Number(e.target.value) })
   }
 
-  setFrequency = e => {
-    // this.setState({ frequency: Number(value) })
-    this.frequency = Number(e)
+  setFrequency = (value) => {
+    this.frequency = Number(value)
     this.createAudio()
   }
 
@@ -138,20 +147,28 @@ export default class Synthesizer extends React.Component {
     this.setState({ filterGain: Number(e.target.value) })
   }
 
-  setAttackTime = a => {
-    this.setState({ attackTime: Number(a.target.value) })
+  setAttackTime = (a) => {
+    if (a > 0 && a < 10) {
+      this.setState({ attackTime: Number(a.target.value) })
+    } else this.setState({ attackTime: 0.5 })
   }
 
-  setDecayTime = d => {
-    this.setState({ decayTime: Number(d.target.value) })
+  setDecayTime = (d) => {
+    if (d > 0 && d < 10) {
+      this.setState({ decayTime: Number(d.target.value) })
+    } else this.setState({ decayTime: 1 })
   }
 
-  setSustainLevel = s => {
-    this.setState({ sustainLevel: Number(s.target.value) })
+  setSustainLevel = (s) => {
+    if (s > 0 && s < 1) {
+      this.setState({ sustainLevel: Number(s.target.value) })
+    } else this.setState({ sustainLevel: 0.5 })
   }
 
-  setReleaseTime = r => {
-    this.setState({ releaseTime: Number(r.target.value) })
+  setReleaseTime = (r) => {
+    if (r > 0 && r > 10) {
+      this.setState({ releaseTime: Number(r.target.value) })
+    } else this.setState({ releaseTime: 1 })
   }
 
   playSound = (freq) => {
@@ -159,68 +176,63 @@ export default class Synthesizer extends React.Component {
     this.adsr.gateOn(this.audioContext.currentTime)
   }
 
-  keyPlaySound2 = event => {
-    if (event.repeat === true) {
-      this.stopSound()
-      event.repeat = false 
-      console.log(event.repeat)
-    }
+  keyPlaySound2 = (event) => {
     switch (event.key) {
-      case "a":
+      case 'a':
         this.playSound(261.63)
-        console.log("a key was pressed")
+        console.log('a key was pressed')
         break
-      case "w":
+      case 'w':
         this.playSound(277.18)
-        console.log("w key was pressed")
+        console.log('w key was pressed')
         break
-      case "s":
+      case 's':
         this.playSound(293.66)
         console.log("s key was pressed")
         break
-      case "e":
+      case 'e':
         this.playSound(311.13)
         console.log("e key was pressed")
         break
-      case "d":
+      case 'd':
         this.playSound(329.63)
         console.log("d key was pressed")
         break
-      case "f":
+      case 'f':
         this.playSound(349.23)
         console.log("f key was pressed")
         break
-      case "t":
+      case 't':
         this.playSound(369.99)
         console.log("t key was pressed")
         break
-      case "g":
+      case 'g':
         this.playSound(392.0)
         console.log("g key was pressed")
         break
-      case "y":
+      case 'y':
         this.playSound(415.3)
         console.log("y key was pressed")
         break
-      case "h":
+      case 'h':
         this.playSound(440.0)
         console.log("h key was pressed")
         break
-      case "u":
+      case 'u':
         this.playSound(466.16)
         console.log("u key was pressed")
         break
-      case "j":
+      case 'j':
         this.playSound(493.88)
         console.log("j key was pressed")
         break
-      case "k":
+      case 'k':
         this.playSound(523.25)
         console.log("k key was pressed")
         break
 
       default:
-        console.log("wrong key")
+        console.log('wrong key')
     }
   }
 
@@ -237,24 +249,17 @@ export default class Synthesizer extends React.Component {
     this.adsr.gateOff(this.audioContext.currentTime)
   }
 
-  test = () => {
-    // console.log(freq)
-    // this.setFrequency(freq)
-    // this.adsr.gateOn(this.audioContext.currentTime)
-    this.restartAudio()
-    this.stopSound()
+  test = (freq) => {
+    console.log(freq)
+    this.setFrequency(freq)
+    this.adsr.gateOn(this.audioContext.currentTime)
   }
 
   render() {
     return (
-      <div
-        className="synth__all"
-        id="keyboardDiv"
-        onKeyPress={this.keyPlaySound2}
-        onKeyUp={this.stopSound}
-        onkey
-      >
- 
+      <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
+        <h1>Synthesizer</h1>
+        <p>Create a tone but be careful</p>
 
         <div className="control">
           <label htmlFor="waveform">Waveform</label>
@@ -346,11 +351,7 @@ export default class Synthesizer extends React.Component {
         </div>
         <div id="keyboard">
           <div />
-          <button className='boton' onMouseDown={this.stopSound}>
-            STOP SOUND
-          </button>
-          <button className='up'>up</button>
-          <button className='down'>down</button>
+          <button onMouseDown={this.stopSound}>STOP SOUND</button>
           <div className="keyMaker">
             {this.keys.map(key => (
               <div className={key.name} key={key.name} data-freq={key.freq}>
