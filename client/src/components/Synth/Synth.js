@@ -10,19 +10,32 @@ export default class Synthesizer extends React.Component {
   constructor(props) {
     super(props)
     this.keys = [
-      { name: "C", freq: 261.63, keyLetter: "A" },
-      { name: "CSH", freq: 277.18, keyLetter: "W" },
-      { name: "D", freq: 293.66, keyLetter: "S" },
-      { name: "ESH", freq: 311.13, keyLetter: "E" },
-      { name: "E", freq: 329.63, keyLetter: "D" },
-      { name: "F", freq: 349.23, keyLetter: "F" },
-      { name: "FSH", freq: 369.99, keyLetter: "T" },
-      { name: "G", freq: 392.0, keyLetter: "G" },
-      { name: "GSH", freq: 415.3, keyLetter: "Y" },
-      { name: "A", freq: 440.0, keyLetter: "H" },
-      { name: "ASH", freq: 466.16, keyLetter: "U" },
-      { name: "B", freq: 493.88, keyLetter: "J" },
-      { name: "C1", freq: 523.25, keyLetter: "K" }
+      { name: 'C', freq: 261.63, keyLetter: 'A' },  
+      { name: 'CSH', freq: 277.18, keyLetter: 'W' },
+      { name: 'D', freq: 293.66, keyLetter: 'S' },
+      { name: 'DSH', freq: 311.13, keyLetter: 'E' },
+      { name: 'E', freq: 329.63, keyLetter: 'D' },
+      { name: 'F', freq: 349.23, keyLetter: 'F' },
+      { name: 'FSH', freq: 369.99, keyLetter: 'T' },
+      { name: 'G', freq: 392.0, keyLetter: 'G' },
+      { name: 'GSH', freq: 415.3, keyLetter: 'Y' },
+      { name: 'A', freq: 440.0, keyLetter: 'H' },
+      { name: 'ASH', freq: 466.16, keyLetter: 'U' },
+      { name: 'B', freq: 493.88, keyLetter: 'J' },
+      { name: 'C1', freq: 523.25, keyLetter: 'K' },
+      { name: 'x1', freq: 0, keyLetter: 'x' },
+      { name: 'x2', freq: 0, keyLetter: 'x' },
+      { name: 'x3', freq: 0, keyLetter: 'x' },
+      { name: 'x4', freq: 0, keyLetter: 'x' },
+      { name: 'x5', freq: 0, keyLetter: 'x' },
+      { name: 'x6', freq: 0, keyLetter: 'x' },
+      { name: 'x7', freq: 0, keyLetter: 'x' },
+      { name: 'x8', freq: 0, keyLetter: 'x' },
+      { name: 'x9', freq: 0, keyLetter: 'x' },
+      { name: 'x10', freq: 0, keyLetter: 'x' },
+      { name: 'x11', freq: 0, keyLetter: 'x' },
+      { name: 'x12', freq: 0, keyLetter: 'x' },
+      { name: 'x13', freq: 0, keyLetter: 'x' },
     ]
     this.state = {
       waveform: WAVEFORMS.SQUARE.id,
@@ -241,8 +254,7 @@ export default class Synthesizer extends React.Component {
         onKeyUp={this.stopSound}
         onkey
       >
-        <h1>Synthesizer</h1>
-        <p>Create a tone but be careful</p>
+ 
 
         <div className="control">
           <label htmlFor="waveform">Waveform</label>
@@ -334,11 +346,15 @@ export default class Synthesizer extends React.Component {
         </div>
         <div id="keyboard">
           <div />
-          <button onMouseDown={this.test}>STOP SOUND</button>
+          <button className='boton' onMouseDown={this.stopSound}>
+            STOP SOUND
+          </button>
+          <button className='up'>up</button>
+          <button className='down'>down</button>
           <div className="keyMaker">
             {this.keys.map(key => (
               <div className={key.name} key={key.name} data-freq={key.freq}>
-                <button
+                <button className= 'buton2'
                   onMouseUp={this.stopSound}
                   onMouseDown={this.playSound.bind(this, key.freq)}
                   onTouchStart={this.playSound.bind(this, key.freq)}

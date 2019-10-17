@@ -9,7 +9,7 @@ import Toolbar from '../../Toolbar'
 import SideDrawer from '../../SideDrawer/SideDrawer'
 import Backdrop from '../../Backdrop/Backdrop'
 import Knob from '../../Knob'
-import Mockvisualizer from '../../Mockvisualizer'
+// import Mockvisualizer from '../../Mockvisualizer'
 
 
 
@@ -48,8 +48,8 @@ return (
     <SideDrawer show={this.state.sideDrawerOpen}/>
     {backdrop}
     
-    <div className='three'><div className ='visualframe'>Vizualize!
-      <Mockvisualizer />
+    <div className='three'><div className ='visualframe'><h1>Vizualize!</h1>
+      
       </div></div>
     <div className='four'><Table /></div>
 

@@ -20,7 +20,6 @@ class Knob extends React.Component {
             id='typeinp'
             type='range'
             className='slider'
-      
             min='0' max='100'
             value={this.state.value}
             onChange={this.handleChange}
