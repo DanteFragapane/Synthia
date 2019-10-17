@@ -11,7 +11,7 @@ export default class Synthesizer extends React.Component {
   constructor (props) {
     super(props)
     this.keys = [
-      { name: 'C', freq: 261.63, keyLetter: 'A' }, 
+      { name: 'C', freq: 261.63, keyLetter: 'A' },  
       { name: 'CSH', freq: 277.18, keyLetter: 'W' },
       { name: 'D', freq: 293.66, keyLetter: 'S' },
       { name: 'DSH', freq: 311.13, keyLetter: 'E' },
@@ -23,7 +23,20 @@ export default class Synthesizer extends React.Component {
       { name: 'A', freq: 440.0, keyLetter: 'H' },
       { name: 'ASH', freq: 466.16, keyLetter: 'U' },
       { name: 'B', freq: 493.88, keyLetter: 'J' },
-      { name: 'C1', freq: 523.25, keyLetter: 'K' }
+      { name: 'C1', freq: 523.25, keyLetter: 'K' },
+      { name: 'x1', freq: 0, keyLetter: 'x' },
+      { name: 'x2', freq: 0, keyLetter: 'x' },
+      { name: 'x3', freq: 0, keyLetter: 'x' },
+      { name: 'x4', freq: 0, keyLetter: 'x' },
+      { name: 'x5', freq: 0, keyLetter: 'x' },
+      { name: 'x6', freq: 0, keyLetter: 'x' },
+      { name: 'x7', freq: 0, keyLetter: 'x' },
+      { name: 'x8', freq: 0, keyLetter: 'x' },
+      { name: 'x9', freq: 0, keyLetter: 'x' },
+      { name: 'x10', freq: 0, keyLetter: 'x' },
+      { name: 'x11', freq: 0, keyLetter: 'x' },
+      { name: 'x12', freq: 0, keyLetter: 'x' },
+      { name: 'x13', freq: 0, keyLetter: 'x' },
     ]
     this.state = {
       waveform: WAVEFORMS.SAWTOOTH.id,
@@ -232,8 +245,7 @@ export default class Synthesizer extends React.Component {
           this.stopSound()
         }}
       >
-        <h1>Synthesizer</h1>
-        <p>Create a tone but be careful</p>
+ 
 
         <div className="control">
           <label htmlFor="waveform">Waveform</label>
@@ -280,6 +292,8 @@ export default class Synthesizer extends React.Component {
           <button className='boton' onMouseDown={this.stopSound}>
             STOP SOUND
           </button>
+          <button className='up'>up</button>
+          <button className='down'>down</button>
           <div className="keyMaker">
             {this.keys.map((key) => (
               <div className={key.name} key={key.name} data-freq={key.freq}>

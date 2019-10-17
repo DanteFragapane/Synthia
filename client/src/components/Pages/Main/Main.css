@@ -10,6 +10,7 @@
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to left, rgb(233,171,88), rgb(190, 114, 15));  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, rgb(100, 99, 199), rgb(224, 123, 6)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: url(https://prashantsani.com/Misc/codepen/noise.jpg);
   
 
 }
@@ -100,3 +101,4 @@ div.four {
 }
 
 
+/* ------------------------------------------------- */
