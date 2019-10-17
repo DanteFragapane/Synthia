@@ -6,22 +6,53 @@
   grid-auto-rows: minmax(2rem, auto)
 } */
 
+div.keyMaker{
+  display: grid;
+  grid-template-columns: repeat(autofill, minmax(150px, 1fr));
+  grid-gap: 5px;
+  align-content: center;
+}
+
+div#keyboard{
+  display: grid;
+  grid-template-columns: repeat(autofill, minmax(150px, 1fr));
+  grid-gap: 5px;
+  align-content: center;
+
+}
+
+.keyMaker{
+  border: 1px solid rgb(12, 8, 240);
+  border-radius: 25px;
+  background-color: rgba(233, 184, 49, 0.8);
+  background: -webkit-linear-gradient(to left, rgb(12, 8, 240),rgba(233, 184, 49, 0.8));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left,rgb(12, 8, 240),rgba(233, 184, 49, 0.8)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+  color: #fff;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+
 .buton2{
   border-radius: 25px;
-  color: tomato;
-  background: violet;
-  padding: 2rem;
+  min-width: 100px;
+  min-height: 100px;
+
   background: -webkit-linear-gradient(to left, white,black);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to left, black, white); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-div.keyMaker{
-  display: grid;
-  grid-template-columns: 1fr 1fr  1fr 1fr  1fr 1fr  1fr 1fr  1fr 1fr  1fr 1fr  1fr;
-  grid-template-rows: 1fr  1fr 1fr 1fr;
-  padding: 1rem;
-  margin: 1rem;
+div#keyboardDiv.synth__all{
+  max-height: 600px;
 }
+
+.buton2 div{
+
+}
+
+
 
 
 .C{
@@ -30,7 +61,7 @@ div.keyMaker{
   background: white;
   align-content: center;
   border-radius: 25px;
-  
+  max-width: 100px;
 }
 
 .CSH{
@@ -39,7 +70,7 @@ div.keyMaker{
   background: black;
   align-content: center;
   border-radius: 25px;
-
+  max-width: 100px;
 }
 
 .D{grid-column-start: 3;
@@ -47,6 +78,7 @@ div.keyMaker{
   background: white;
   align-content: center;
   border-radius: 25px;
+  max-width: 100px;
 
 }
 
@@ -54,6 +86,7 @@ div.keyMaker{
   background: black;
   align-content: center;
   border-radius: 25px;
+  max-width: 100px;
 
 }
 
@@ -63,7 +96,7 @@ div.keyMaker{
   background: white;
   align-content: center;
   border-radius: 25px;
-
+  max-width: 100px;
 }
 
 
@@ -72,6 +105,7 @@ div.keyMaker{
   background: white;
   align-content: center;
   border-radius: 25px;
+  max-width: 100px;
 
 }
 .FSH{
@@ -80,6 +114,7 @@ div.keyMaker{
   background: black;
   align-content: center;
   border-radius: 25px;
+  max-width: 100px;
 
 }
 
@@ -89,15 +124,15 @@ div.keyMaker{
   background: white;
   align-content: center;
   border-radius: 25px;
+  max-width: 100px;
 
 }
 .GSH{grid-column-start: 9;
   grid-row-start: 1;
   background: black;
   align-content: center;
-  width: 5rem;
-  height: 5rem;
   border-radius: 25px;
+  max-width: 100px;
 }
 
 .A{
@@ -106,8 +141,7 @@ div.keyMaker{
   background: white;
   align-content: center;
   border-radius: 25px;
-
-
+  max-width: 100px;
 }
 
 .ASH{
@@ -116,24 +150,22 @@ div.keyMaker{
   background: black;
   align-content: center;
   border-radius: 25px;
-
+  max-width: 100px;
 }
-
-
 
 .B{grid-column-start: 12;
   grid-row-start: 3;
   background: white;
   align-content: center;
   border-radius: 25px;
-
+  max-width: 100px;
 }
 .C1{grid-column-start: 13;
   grid-row-start: 3;
   background: white;
   align-content: center;
   border-radius: 25px;
-
+  max-width: 100px;
 }
 
 
@@ -159,7 +191,8 @@ div.keyMaker{
 /* Input box sizing  */
 .control{
 visibility: hidden;
-
+max-width: 0px;
+max-height: 0px;
  
 }
 
