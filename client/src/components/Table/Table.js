@@ -24,7 +24,7 @@ export default class Example extends React.Component {
           </div>
           </div>
 
-          <div className='divider'><div className='buttonthreetopmid'><div className='textlabel'>FILTER FREQUENCY</div>
+          <div className='divider'><div className='buttonthreetopmid'><div className='textlabel'>FILTER FREQ</div>
             <div><Knob />{' '}</div>
           </div>
           </div>

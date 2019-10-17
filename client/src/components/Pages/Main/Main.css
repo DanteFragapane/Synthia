@@ -19,16 +19,16 @@
 
 
 .wrapper > div {
-  border: 2px solid rgb(233,171,88);
+  border: 2px solid gray;
   border-radius: 5px;
-  background-color: rgba(233,171,88,.5);
+  background-color:gray;
   padding: .125 0rem 1rem  0;
   color: #d9480f;
 }
 .wrapper {
   display: grid;
-  grid-template-columns: 1.75fr  1.25fr;
-  grid-template-rows: .100fr .1fr .90fr .1fr .05fr;
+  grid-template-columns: 1.60fr  .30fr;
+  grid-template-rows: .050fr .05fr .90fr .1fr .05fr;
 }
 
 /* Main header */
@@ -48,7 +48,11 @@
 }
 
 /* Synthesizer */
-
+div.three {
+  display: grid;
+ 
+  grid-template-rows: 1fr 1fr; 
+}
 .three {
   background: #d9480f;
   display: grid;
