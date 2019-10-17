@@ -25,19 +25,20 @@ div#keyboard{
 
 }
 
-.keyMaker{
+.keyMaker {
   grid-column: 1 /3;
   grid-row: 2;
   
   font-size: 120%;
   font-weight: bold;
+  align-content: center;
 }
 
 
 button.buton2{
  border-radius: 25px;
- 
-  min-width: 200px;
+  
+  min-width: 100px;
   min-height: 100px;
   align-content: center;
   padding: 0px;
