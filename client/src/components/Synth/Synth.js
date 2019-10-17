@@ -2,16 +2,16 @@ import React from 'react'
 import WAVEFORMS from './waveForms'
 import Frequency from './Frequency'
 import './Synth.css'
-// import MidiInterface from 'js-midi'
+import MidiInterface from './MidiInterface'
 
-const EnvGen = require('fastidious-envelope-generator')
+const EnvGen = require("fastidious-envelope-generator")
 
 // The main class
 export default class Synthesizer extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.keys = [
-      { name: 'C', freq: 261.63, keyLetter: 'A' },  
+      { name: 'C', freq: 261.63, keyLetter: 'A' },
       { name: 'CSH', freq: 277.18, keyLetter: 'W' },
       { name: 'D', freq: 293.66, keyLetter: 'S' },
       { name: 'DSH', freq: 311.13, keyLetter: 'E' },
@@ -39,22 +39,19 @@ export default class Synthesizer extends React.Component {
       { name: 'x13', freq: 0, keyLetter: 'x' },
     ]
     this.state = {
-      waveform: WAVEFORMS.SAWTOOTH.id,
+      waveform: WAVEFORMS.SQUARE.id,
       frequency: 250,
       duration: 1000,
-      filterType: 'lowpass',
-      filterFrequency: 500,
+      filterType: "lowpass",
+      filterFrequency: 375,
       filterGain: 50,
-      attackTime: 0.1,
-      decayTime: 0.1,
-      sustainLevel: 0.1,
-      releaseTime: 0.1
+      attackTime: 0.2,
+      decayTime: 0.5,
+      sustainLevel: 0.5,
+      releaseTime: 0.3,
+      delayTime: 0.5
     }
     this.frequency = 220
-    // this.midi = new MidiInterface({
-    //   onPressNote: (evt) => console.log(evt),
-    //   onReleaseNote: (evt) => console.log(evt)
-    // })
   }
 
   restartAudio = () => {
@@ -62,32 +59,48 @@ export default class Synthesizer extends React.Component {
   }
 
   createContexts = () => {
+    this.midi = new MidiInterface({
+      onPressNote: (evt) => this.playSound(this.midi.frequencyFromNote(evt)),
+      onReleaseNote: (evt) => this.stopSound()
+    })
+
     const audioCtx = window.AudioContext || window.webkitAudioContext
     this.audioContext = new audioCtx()
   }
 
   createAudio = () => {
-    this.oscillator = this.audioContext.createOscillator()
-    this.filter = this.audioContext.createBiquadFilter()
+    //MASTER GAINN NODE
     this.masterGainNode = this.audioContext.createGain()
     this.masterGainNode.gain.value = 0
+    //MASTER GAINN NODE
 
-    this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
-
-    // Start setting up the components
-    this.oscillator.type = this.state.waveform || 'sine'
+    //OSCILLATOR
+    this.oscillator = this.audioContext.createOscillator()
+    this.oscillator.type = this.state.waveform || "sine"
     this.oscillator.frequency.value = this.frequency || 440
-    this.filter.type = this.state.filterType || 'lowpass'
-    this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
-    this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
+    //OSCILLATOR
 
-    //ASDR +++++++++++++++++++++++++++++++++
-    this.adsr.mode = 'ADSR'
+    //FILTER
+    this.filter = this.audioContext.createBiquadFilter()
+    this.filter.type = this.state.filterType || "lowpass"
+    this.filter.frequency.setValueAtTime(
+      this.state.filterFrequency,
+      this.audioContext.currentTime
+    )
+    this.filter.gain.setValueAtTime(
+      this.state.filterGain,
+      this.audioContext.currentTime
+    )
+    //FILTER
+
+    //ASDR
+    this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
+    this.adsr.mode = "ADSR"
     this.adsr.attackTime = this.state.attackTime
     this.adsr.decayTime = this.state.decayTime
     this.adsr.sustainLevel = this.state.sustainLevel
     this.adsr.releaseTime = this.state.releaseTime
-    //ASDR +++++++++++++++++++++++++++++++++
+    //ASDR
 
     // Connect the nodes
     this.oscillator.connect(this.filter)
@@ -97,121 +110,129 @@ export default class Synthesizer extends React.Component {
     this.oscillator.start()
   }
 
-  componentDidMount () {
+  componentDidMount() {
     // Call the main createAudio function
     this.createContexts()
-
-    document.getElementById('keyboardDiv').focus()
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     this.oscillator = null
     this.filter = null
     this.adsr = null
     this.masterGainNode = null
   }
 
+  componentDidUpdate () {
+    console.log(this.state)
+  }
+
   setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
   }
 
-  setDuration = (e) => {
+  setDuration = e => {
     this.setState({ duration: Number(e.target.value) })
   }
 
   setFrequency = (value) => {
-    // this.setState({ frequency: Number(value) })
     this.frequency = Number(value)
     this.createAudio()
   }
 
-  setFilterFrequency = (value2) => {
-    this.setState({ filterFrequency: Number(value2.target.value) })
+  setFilterFrequency = e => {
+    this.setState({ filterFrequency: Number(e.target.value) })
   }
 
-  setFilterGain = (value3) => {
-    this.setState({ filterGain: Number(value3.target.value) })
+  setFilterGain = e => {
+    this.setState({ filterGain: Number(e.target.value) })
   }
 
   setAttackTime = (a) => {
-    this.setState({ attackTime: Number(a.target.value) })
+    if (a > 0 && a < 10) {
+      this.setState({ attackTime: Number(a.target.value) })
+    } else this.setState({ attackTime: 0.5 })
   }
 
   setDecayTime = (d) => {
-    this.setState({ decayTime: Number(d.target.value) })
+    if (d > 0 && d < 10) {
+      this.setState({ decayTime: Number(d.target.value) })
+    } else this.setState({ decayTime: 1 })
   }
 
   setSustainLevel = (s) => {
-    this.setState({ sustainLevel: Number(s.target.value) })
+    if (s > 0 && s < 1) {
+      this.setState({ sustainLevel: Number(s.target.value) })
+    } else this.setState({ sustainLevel: 0.5 })
   }
 
   setReleaseTime = (r) => {
-    this.setState({ releaseTime: Number(r.target.value) })
+    if (r > 0 && r > 10) {
+      this.setState({ releaseTime: Number(r.target.value) })
+    } else this.setState({ releaseTime: 1 })
   }
 
   playSound = (freq) => {
     this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
-    // this.midi.noteOn(freq)
   }
 
-  keyPlaySound2 = event => {
+  keyPlaySound2 = (event) => {
     switch (event.key) {
-      case 'a' :
+      case 'a':
         this.playSound(261.63)
-        console.log(this.audioContext)
+        console.log('a key was pressed')
         break
-        case 'w' :
+      case 'w':
         this.playSound(277.18)
-        console.log(this.audioContext)
+        console.log('w key was pressed')
         break
-        case 's' :
+      case 's':
         this.playSound(293.66)
-        console.log('s key was pressed')
+        console.log("s key was pressed")
         break
-        case 'e' :
+      case 'e':
         this.playSound(311.13)
-        console.log('e key was pressed')
+        console.log("e key was pressed")
         break
-        case 'd' :
+      case 'd':
         this.playSound(329.63)
-        console.log('d key was pressed')
+        console.log("d key was pressed")
         break
-        case 'f' :
+      case 'f':
         this.playSound(349.23)
-        console.log('f key was pressed')
+        console.log("f key was pressed")
         break
-        case 't' :
+      case 't':
         this.playSound(369.99)
-        console.log('t key was pressed')
+        console.log("t key was pressed")
         break
-        case 'g' :
+      case 'g':
         this.playSound(392.0)
-        console.log('g key was pressed')
+        console.log("g key was pressed")
         break
-        case 'y' :
+      case 'y':
         this.playSound(415.3)
-        console.log('y key was pressed')
+        console.log("y key was pressed")
         break
-        case 'h' :
+      case 'h':
         this.playSound(440.0)
-        console.log('h key was pressed')
+        console.log("h key was pressed")
         break
-        case 'u' :
+      case 'u':
         this.playSound(466.16)
-        console.log('u key was pressed')
+        console.log("u key was pressed")
         break
-        case 'j' :
+      case 'j':
         this.playSound(493.88)
-        console.log('j key was pressed')
+        console.log("j key was pressed")
         break
-        case 'k' :
+      case 'k':
         this.playSound(523.25)
-        console.log('k key was pressed')
+        console.log("k key was pressed")
         break
 
-        default:
-          console.log('wrong key')
+      default:
+        console.log('wrong key')
     }
   }
 
@@ -223,79 +244,116 @@ export default class Synthesizer extends React.Component {
   //     console.log('not a valid key')
   //   }
   // }
- 
+
   stopSound = () => {
     this.adsr.gateOff(this.audioContext.currentTime)
-    // this.midi.noteOff()
   }
-  
+
   test = (freq) => {
     console.log(freq)
     this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
   }
 
-  render () {
+  render() {
     return (
-      <div
-        className="synth__all"
-        id="keyboardDiv"
-        onKeyDown={this.keyPlaySound2}
-        onKeyUp={() => {
-          this.stopSound()
-        }}
-      >
- 
+      <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
+        <h1>Synthesizer</h1>
+        <p>Create a tone but be careful</p>
 
         <div className="control">
           <label htmlFor="waveform">Waveform</label>
-          <select id="waveform" value={this.state.waveform} onChange={this.setWaveform}>
+          <select
+            id="waveform"
+            value={this.state.waveform}
+            onChange={this.setWaveform}
+          >
             <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
-            <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
-            <option value={WAVEFORMS.TRIANGLE.id}>{WAVEFORMS.TRIANGLE.userTerm}</option>
-            <option value={WAVEFORMS.SQUARE.id}>{WAVEFORMS.SQUARE.userTerm}</option>
+            <option value={WAVEFORMS.SAWTOOTH.id}>
+              {WAVEFORMS.SAWTOOTH.userTerm}
+            </option>
+            <option value={WAVEFORMS.TRIANGLE.id}>
+              {WAVEFORMS.TRIANGLE.userTerm}
+            </option>
+            <option value={WAVEFORMS.SQUARE.id}>
+              {WAVEFORMS.SQUARE.userTerm}
+            </option>
           </select>
         </div>
 
-        <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
+        <Frequency
+          value={this.state.frequency}
+          updateFrequency={this.setFrequency}
+        />
 
         <div className="control">
           <label htmlFor="duration">Duration (milliseconds)</label>
-          <input id="duration" type="text" value={this.state.duration} onChange={this.setDuration} />
+          <input
+            id="duration"
+            type="text"
+            value={this.state.duration}
+            onChange={this.setDuration}
+          />
         </div>
         <div className="control">
           <label htmlFor="filterFreq">Filter Frequency</label>
-          <input id="filterFreq" type="text" value={this.state.filterFrequency} onChange={this.setFilterFrequency} />
+          <input
+            id="filterFreq"
+            type="text"
+            value={this.state.filterFrequency}
+            onChange={this.setFilterFrequency}
+          />
         </div>
         <div className="control">
           <label htmlFor="filterGain">Filter Gain</label>
-          <input id="filterGain" type="text" value={this.state.filterGain} onChange={this.setFilterGain} />
+          <input
+            id="filterGain"
+            type="text"
+            value={this.state.filterGain}
+            onChange={this.setFilterGain}
+          />
         </div>
         <div className="control">
           <label htmlFor="attack">Attack</label>
-          <input id="attack" type="text" value={this.state.attackTime} onChange={this.setAttackTime} />
+          <input
+            id="attack"
+            type="text"
+            value={this.state.attackTime}
+            onChange={this.setAttackTime}
+          />
         </div>
         <div className="control">
           <label htmlFor="decay">Decay</label>
-          <input id="decay" type="text" value={this.state.decayTime} onChange={this.setDecayTime} />
+          <input
+            id="decay"
+            type="text"
+            value={this.state.decayTime}
+            onChange={this.setDecayTime}
+          />
         </div>
         <div className="control">
           <label htmlFor="sustain">Sustain</label>
-          <input id="sustain" type="text" value={this.state.sustainLevel} onChange={this.setSustainLevel} />
+          <input
+            id="sustain"
+            type="text"
+            value={this.state.sustainLevel}
+            onChange={this.setSustainLevel}
+          />
         </div>
         <div className="control">
           <label htmlFor="release">Release</label>
-          <input id="release" type="text" value={this.state.releaseTime} onChange={this.setReleaseTime} />
+          <input
+            id="release"
+            type="text"
+            value={this.state.releaseTime}
+            onChange={this.setReleaseTime}
+          />
         </div>
         <div id="keyboard">
           <div />
-          <button className='boton' onMouseDown={this.stopSound}>
-            STOP SOUND
-          </button>
-          <button className='up'>up</button>
-          <button className='down'>down</button>
+          <button onMouseDown={this.stopSound}>STOP SOUND</button>
           <div className="keyMaker">
-            {this.keys.map((key) => (
+            {this.keys.map(key => (
               <div className={key.name} key={key.name} data-freq={key.freq}>
                 <button className= 'buton2'
                   onMouseUp={this.stopSound}
