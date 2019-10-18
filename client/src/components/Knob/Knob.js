@@ -4,7 +4,7 @@ import './Knob.css'
 class Knob extends React.Component {
   constructor (props) {
     super()
-    this.state = { value: 3, max: props.max, min: props.min }
+    this.state = { step: props.step, value: props.defaultValue, max: props.max, min: props.min }
     this.handleChange = this.handleChange.bind(this)
   }
 
@@ -23,8 +23,11 @@ class Knob extends React.Component {
             min={this.state.min}
             max={this.state.max}
             value={this.state.value}
-            onChange={this.handleChange}
-            step=".25"
+            onChange={(e) => {
+              this.setState({ value: e.target.value })
+              this.props.onChange(e)
+            }}
+            step={this.state.step}
           />
           {this.state.value}
         </label>
