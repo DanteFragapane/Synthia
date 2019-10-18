@@ -127,56 +127,14 @@ export default class Synthesizer extends React.Component {
     this.masterGainNode = null
   }
 
-  componentDidUpdate () {
-    console.log(this.state)
-  }
-
   setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
-  }
-
-  setDuration = (e) => {
-    this.setState({ duration: Number(e.target.value) })
   }
 
   setFrequency = (value) => {
     this.frequency = Number(value)
     this.createAudio()
   }
-
-  // setFilterFrequency = (e) => {
-  //   if (e > 0 && e < 1000) {
-  //     this.setState({ filterFrequency: Number(e.target.value) })
-  //   } else this.setState({ filterFrequency: 500 })
-  // }
-
-  // setFilterGain = (e) => {
-  //   this.setState({ filterGain: Number(e.target.value) })
-  // }
-
-  // setAttackTime = (a) => {
-  //   if (a > 0 && a < 10) {
-  //     this.setState({ attackTime: Number(a.target.value) })
-  //   } else this.setState({ attackTime: 0.5 })
-  // }
-
-  // setDecayTime = (d) => {
-  //   if (d > 0 && d < 10) {
-  //     this.setState({ decayTime: Number(d.target.value) })
-  //   } else this.setState({ decayTime: 1 })
-  // }
-
-  // setSustainLevel = (s) => {
-  //   if (s > 0 && s < 1) {
-  //     this.setState({ sustainLevel: Number(s.target.value) })
-  //   } else this.setState({ sustainLevel: 0.5 })
-  // }
-
-  // setReleaseTime = (r) => {
-  //   if (r > 0 && r > 10) {
-  //     this.setState({ releaseTime: Number(r.target.value) })
-  //   } else this.setState({ releaseTime: 1 })
-  // }
 
   playSound = (freq) => {
     this.setFrequency(freq)
