@@ -244,6 +244,7 @@ export default class Synthesizer extends React.Component {
         <ValuesContext.Consumer>
           {(context) => {
             console.log(this)
+            this.waveform = context.waveform
             this.filterFrequency = context.filterFrequency
             this.filterGain = context.filterGain
             this.attackTime = context.attackTime
