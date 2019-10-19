@@ -1,7 +1,8 @@
-import React from 'react'
-import WAVEFORMS from './waveForms'
-import Frequency from './Frequency'
-import './Synth.css'
+import React from "react"
+import WAVEFORMS from "./waveForms"
+import Frequency from "./Frequency"
+import "./Synth.css"
+import createGrapher from "./grapher"
 import MidiInterface from './MidiInterface'
 
 const EnvGen = require('fastidious-envelope-generator')
@@ -53,6 +54,7 @@ export default class Synthesizer extends React.Component {
     }
 
     this.frequency = 220
+
   }
 
   restartAudio = () => {
@@ -98,9 +100,12 @@ export default class Synthesizer extends React.Component {
     //ASDR
 
     // Connect the nodes
+    this.grapherNode = createGrapher(this.audioContext, document.querySelector('#env-graph'), 1024);
+    console.log(this.grapherNode)
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
-    this.masterGainNode.connect(this.audioContext.destination)
+    this.grapherNode.connect(this.audioContext.destination)
+    this.masterGainNode.connect(this.grapherNode)
 
     // Start 'er up!
     this.oscillator.start()
@@ -229,6 +234,7 @@ export default class Synthesizer extends React.Component {
         <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
         <div id="keyboard">
+        <canvas id="env-graph" width="512" height="256"></canvas>
           <div />
           <button className='boton' onMouseDown={this.stopSound}>STOP SOUND</button>
           <div className="keyMaker">
