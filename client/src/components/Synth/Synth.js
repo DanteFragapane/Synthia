@@ -65,6 +65,7 @@ export default class Synthesizer extends React.Component {
       setReleaseTime: (t) => {}
     }
 
+    this.waveform = 'square'
     this.frequency = 220
     this.filterFrequency = 375
     this.filterGain = 100
@@ -101,7 +102,7 @@ export default class Synthesizer extends React.Component {
 
     //OSCILLATOR
     this.oscillator = this.audioContext.createOscillator()
-    this.oscillator.type = this.state.waveform || 'sine'
+    this.oscillator.type = this.waveform || 'sine'
     this.oscillator.frequency.value = this.frequency || 440
     //OSCILLATOR
 
