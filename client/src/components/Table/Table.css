@@ -22,7 +22,7 @@
   .yeahdiv {
     display: grid;
     grid-template-columns: repeat(2, minmax( 130px, 135px)); 
-    grid-template-rows: 1fr 1fr 1fr ;
+   
 
     
   }

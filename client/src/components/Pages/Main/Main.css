@@ -3,7 +3,7 @@
   max-width: 100%;
   max-height: auto;
 
-  padding: 15.5rem 1rem 15.5rem 1rem;
+  padding: 15.5rem 1rem 15rem 1rem;
   /* background: black;*/
   align-content: center;
   background: rgb(226, 143, 9);  
@@ -28,7 +28,7 @@
 .wrapper {
   display: grid;
   grid-template-columns: 1.60fr  .30fr;
-  grid-template-rows: .050fr .05fr .90fr .1fr .05fr;
+  grid-template-rows: .050fr .05fr .60fr .1fr .05fr;
 }
 
 /* Main header */
@@ -72,7 +72,7 @@ div.four {
   grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end:3;
-  background: gray;
+ 
 
 }
 
