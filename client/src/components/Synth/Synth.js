@@ -45,7 +45,7 @@ export default class Synthesizer extends React.Component {
     this.state = {
       sideDrawerOpen: false,
       filterFrequency: 375,
-      filterGain: 50,
+      filterGain: 100,
       attackTime: 0.2,
       decayTime: 0.5,
       sustainLevel: 0.5,
@@ -66,6 +66,13 @@ export default class Synthesizer extends React.Component {
     }
 
     this.frequency = 220
+    this.filterFrequency = 375
+    this.filterGain = 100
+    this.attackTime = 0.2
+    this.decayTime = 0.5
+    this.sustainLevel = 0.5
+    this.releaseTime = 0.3
+    this.delayTime = 0.5
   }
 
   restartAudio = () => {
@@ -101,17 +108,17 @@ export default class Synthesizer extends React.Component {
     //FILTER
     this.filter = this.audioContext.createBiquadFilter()
     this.filter.type = this.state.filterType || 'lowpass'
-    this.filter.frequency.setValueAtTime(this.state.filterFrequency, this.audioContext.currentTime)
-    this.filter.gain.setValueAtTime(this.state.filterGain, this.audioContext.currentTime)
+    this.filter.frequency.setValueAtTime(this.filterFrequency, this.audioContext.currentTime)
+    this.filter.gain.setValueAtTime(this.filterGain, this.audioContext.currentTime)
     //FILTER
 
     //ASDR
     this.adsr = new EnvGen(this.audioContext, this.masterGainNode.gain)
     this.adsr.mode = 'ADSR'
-    this.adsr.attackTime = this.state.attackTime
-    this.adsr.decayTime = this.state.decayTime
-    this.adsr.sustainLevel = this.state.sustainLevel
-    this.adsr.releaseTime = this.state.releaseTime
+    this.adsr.attackTime = this.attackTime
+    this.adsr.decayTime = this.decayTime
+    this.adsr.sustainLevel = this.sustainLevel
+    this.adsr.releaseTime = this.releaseTime
     //ASDR
 
     // Connect the nodes 
@@ -149,11 +156,6 @@ export default class Synthesizer extends React.Component {
     this.masterGainNode = null
   }
 
-  componentDidUpdate () {
-    console.log('UPDATED')
-    console.log(this.state)
-  }
-
   setWaveform = (e) => {
     this.setState({ waveform: e.target.value })
   }
@@ -166,7 +168,6 @@ export default class Synthesizer extends React.Component {
   playSound = (freq) => {
     this.setFrequency(freq)
     this.adsr.gateOn(this.audioContext.currentTime)
-    
   }
 
   keyPlaySound2 = (event) => {
@@ -236,6 +237,18 @@ export default class Synthesizer extends React.Component {
   render () {
     return (
       <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
+        <ValuesContext.Consumer>
+          {(context) => {
+            console.log(this)
+            this.filterFrequency = context.filterFrequency
+            this.filterGain = context.filterGain
+            this.attackTime = context.attackTime
+            this.decayTime = context.decayTime
+            this.sustainLevel = context.sustainLevel
+            this.releaseTime = context.releaseTime
+            this.delayTime = context.delayTime
+          }}
+        </ValuesContext.Consumer>
         <h1>Synthesizer</h1>
         <p>Create a tone but be careful</p>
 
