@@ -5,7 +5,7 @@ import Synthesizer from './Synth'
 
 const SynthApp = () => (
   <div>
-    <Synthesizer  />
+    <Synthesizer />
   </div>
 )
 

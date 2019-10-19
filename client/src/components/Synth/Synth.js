@@ -39,7 +39,8 @@ export default class Synthesizer extends React.Component {
       { name: 'x10', freq: 0, keyLetter: 'x' },
       { name: 'x11', freq: 0, keyLetter: 'x' },
       { name: 'x12', freq: 0, keyLetter: 'x' },
-      { name: 'DN', freq: 0, keyLetter: 'DN' }
+      { name: 'x13', freq: 0, keyLetter: 'x' },
+      { name: 'DN', freq: 0, keyLetter: 'DN' },
     ]
 
     this.state = {
@@ -254,8 +255,7 @@ export default class Synthesizer extends React.Component {
             this.delayTime = context.delayTime
           }}
         </ValuesContext.Consumer>
-        <h1>Synthesizer</h1>
-        <p>Create a tone but be careful</p>
+       
 
         <div className="control">
           <label htmlFor="waveform">Waveform</label>
@@ -270,11 +270,9 @@ export default class Synthesizer extends React.Component {
         <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
         <div id="keyboard">
-          <canvas id="env-graph" width="512" height="256" />
+          <canvas id="env-graph" width="0" height="0" />
           <div />
-          <button className="boton" onMouseDown={this.stopSound}>
-            STOP SOUND
-          </button>
+         
           <div className="keyMaker">
             {this.keys.map((key) => (
               <div className={key.name} key={key.name} data-freq={key.freq}>

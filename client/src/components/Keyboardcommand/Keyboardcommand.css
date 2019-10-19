@@ -1,0 +1,30 @@
+.navbar-light .navbar-brand{
+  color: white;
+}
+
+
+.img{
+  width: 80%;
+  height: auto;
+}
+
+.navitem img{
+  width: 80%;
+
+}
+
+div .keyboardParent{
+  height: 100vh;
+  display: grid;
+  grid-template-areas:
+   "KB YD";
+
+  }
+
+  div #keyboard{
+    grid-area: KB ;
+  }
+
+  div .yeahdiv{
+    grid-area: YD ;
+  }

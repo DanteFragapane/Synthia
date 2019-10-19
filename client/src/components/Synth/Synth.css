@@ -1,236 +1,220 @@
-/* .wrapper{
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: .25rem .040rem;
-  grid-area: inherit;
-  grid-auto-rows: minmax(2rem, auto)
-} */
+/* Hidden Input components box sizing  */
+.control{
+  visibility: hidden;
+  max-width: 0px;
+  max-height: 0px;
+   
+  }
 
-div.keyMaker{
+  div #keyboard{
+    margin-top: 0pt;
+  }
+
+
+div .keyMaker{
   display: grid;
-  grid-template-columns: repeat(13, minmax(1fr, 200px));
-  grid-template-rows: 1fr 1fr ;
-  grid-gap: 5px;
-  align-content: center;
+  grid-template-areas: 
+  "UP x4 x7 x10 DN D F GSH B"
+  "x2 x5 x8 x11 x3 DSH FSH A C1"
+  "C x6 x9 x12 CSH E G ASH x13"
+  ;
+  justify-content: center;
+  align-content: flex-start;
+ 
 }
-/* .keyMaker div:nth-child(odd){background: crimson;}
-.keyMaker div:nth-child(even){background: greenyellow;} */
 
-div#keyboard{
-  display: grid;
-  grid-template-rows: 50px 1fr 100px;
-  grid-template-columns: 1fr 1fr ;
 
-  align-content: center;
-
+/*visualizer*/
+#env-graph{
+  visibility: hidden;
 }
 
 .keyMaker {
-  grid-column: 1 /3;
-  grid-row: 2;
-  
+
   font-size: 120%;
   font-weight: bold;
-  align-content: center;
+
 }
 
 
 button.buton2{
- border-radius: 25px;
-  
-  min-width: 100px;
-  min-height: 100px;
-  align-content: center;
-  padding: 0px;
-  margin: 0;
   border-radius: 25px;
-  background: -webkit-linear-gradient(to left, rgba(255, 255, 255, 0),black);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, rgba(0,0,0,0)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+   
+   min-width: 100px;
+   min-height: 100px;
+   align-content: center;
+   padding: 0px;
+   margin: 0;
+   border-radius: 25px;
+   /* background: -webkit-linear-gradient(to left, rgba(255, 255, 255, 0),black);   */
+   /* Chrome 10-25, Safari 5.1-6 */
+   /* background: linear-gradient(to left, rgba(0,0,0,0));  */
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ }
+ 
 
-div#keyboardDiv.synth__all{
-  max-height: 600px;
-}
- /* stopsound */
-button.boton{
-  background: orangered;
-  align-content: center;
-  border-radius: 25px;
-  grid-column: 1 / 3;
-  grid-row-start: 1;
-}
 
-/* .up{  
-  grid-column: 1;
-  grid-row: 3;
-  background: orangered;
-  align-content: center;
-  border-radius: 25px;
-  max-height: 100px;
-  max-width: 100%;
- } */
-
-/* .down{  
-  grid-column: 2;
-  grid-row-start: 3;
-  background: orangered;
-  align-content: center;
-  border-radius: 25px;
-  max-height: 100px;
-  max-width: 100%;
-
-} */
 
 .UP{
- 
+  grid-area: UP ;
+  color: orangered;
   background: orangered;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 
 .x2{
+  grid-area: x2 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+
 }
 
 .x3{
+  grid-area: x3 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+
 }
 
 .x4{
+  grid-area: x4 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 
 .x5{
+grid-area: x5 ;  
 background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 .x6{
-  
+  grid-area: x6 ;  
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+
 }
 .x7{
-
+  grid-area: x7 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 .x8{
-
+  grid-area: x8 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+
 }
 .x9{
- 
+  grid-area: x9 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 .x10{
- 
+  grid-area: x10 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 .x11{
-  
+  grid-area: x11 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+  
 }
 .x12{
-
+  grid-area: x12 ;
   background: grey;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
-.DN{
 
+.x13{
+  grid-area: x13 ;
+  background: grey;
+  align-content: center;
+  border-radius: 25px;
+ 
+}
+
+.DN{
+  grid-area: DN ;
   background: orangered;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+  
 }
 
 
 .C{
-  grid-column-start: 1;
-  grid-row-start: 2;
+  grid-area: C ;
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+  
 }
 
 .CSH{
-  grid-column-start: 2;
-  grid-row-start: 1;
+  grid-area: CSH  ;  
   background: black;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 
-.D{grid-column-start: 3;
-  grid-row-start: 2;
+.D{
+  grid-area: D ;  
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 
 }
 
-.DSH{grid-column-start: 4;
-  grid-row-start: 1;
+.DSH{
+  grid-area: DSH ;  
   background: black;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 
 }
 
 .E{
-  grid-column-start: 5;
-  grid-row-start: 2;
+  grid-area: E ;  
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 
 
-.F{grid-column-start: 6;
-  grid-row-start: 2;
+.F{
+  grid-area: F ;  
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 
 }
 .FSH{
-  grid-column-start: 7;
-  grid-row-start: 1;
+  grid-area: FSH ;  
   background: black;
   align-content: center;
   border-radius: 25px;
@@ -239,53 +223,51 @@ background: grey;
 }
 
 
-.G{grid-column-start: 8;
-  grid-row-start: 2;
+.G{
+  grid-area: G ;  
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 
 }
-.GSH{grid-column-start: 9;
-  grid-row-start: 1;
+.GSH{
+  grid-area: GSH ;  
   background: black;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 
 .A{
-  grid-column-start: 10;
-  grid-row-start: 2;
+  grid-area: A ;  
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+  
 }
 
 .ASH{
-  grid-column-start: 11;
-  grid-row-start: 1;
+  grid-area: ASH ;  
   background: black;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
 
-.B{grid-column-start: 12;
-  grid-row-start: 2;
+.B{
+  grid-area: B ;  
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+ 
 }
-.C1{grid-column-start: 13;
-  grid-row-start: 1;
+.C1{
+  grid-area: C1 ;  
   background: white;
   align-content: center;
   border-radius: 25px;
-  max-width: 200px;
+  
 }
 
 
@@ -298,23 +280,11 @@ background: grey;
   margin-bottom: 5rem;
 }
 
-.waveform{
-   
-  color: #d62222;
-  display: grid;
-  width: 50px; 
-}
 
 
 
 
-/* Input box sizing  */
-.control{
-visibility: hidden;
-max-width: 0px;
-max-height: 0px;
- 
-}
+
 
 
 

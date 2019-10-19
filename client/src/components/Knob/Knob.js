@@ -14,12 +14,12 @@ class Knob extends React.Component {
 
   render () {
     return (
-      <div className="slidecontainer">
-        <label className="slidecontainer">
+      <div className='slidecontainer'>
+        <label className='slidecontainer'>
           <input
-            id="typeinp"
-            type="range"
-            className="slider"
+            id='typeinp'
+            type='range'
+            className='slider'
             min={this.state.min}
             max={this.state.max}
             value={this.state.value}

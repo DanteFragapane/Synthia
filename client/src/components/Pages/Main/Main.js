@@ -2,12 +2,13 @@ import React from 'react'
 import './Main.css'
 import Header from '../../Header'
 import Footer from '../../Footer'
-import Table from '../../Table'
-import HorizontalBar from '../../HorizontalBar'
+import Keyboardcommand from '../../Keyboardcommand'
 import Toolbar from '../../Toolbar'
 import SideDrawer from '../../SideDrawer/SideDrawer'
 import Backdrop from '../../Backdrop/Backdrop'
 import { ValuesContext } from './ValuesContext'
+
+
 
 class Main extends React.Component {
   constructor (props) {
@@ -85,19 +86,19 @@ class Main extends React.Component {
 
         <div className="three">
           <div className="visualframe">
-            <h1>Vizualize!</h1>
-            <canvas id="env-graph" width="600" height="300" />
+   
+          
           </div>
         </div>
         <div className="four">
           <ValuesContext.Provider value={this.state}>
-            <Table />
+      
           </ValuesContext.Provider>
         </div>
 
         <div className="six">
           <ValuesContext.Provider value={this.state}>
-            <HorizontalBar />
+            <Keyboardcommand />
           </ValuesContext.Provider>
         </div>
         <div className="seven">
