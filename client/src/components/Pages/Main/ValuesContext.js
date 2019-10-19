@@ -12,6 +12,7 @@ export const ValuesContext = React.createContext({
     releaseTime: 0.3,
     delayTime: 0.5
   },
+  setWveform: (w) => {},
   setFilterFrequency: (e) => {},
   setFilterGain: (e) => {},
   setAttackTime: (a) => {},

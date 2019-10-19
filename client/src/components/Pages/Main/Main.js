@@ -15,6 +15,7 @@ class Main extends React.Component {
 
     this.state = {
       sideDrawerOpen: false,
+      waveform: 'square',
       filterFrequency: 375,
       filterGain: 50,
       attackTime: 0.2,
@@ -22,6 +23,10 @@ class Main extends React.Component {
       sustainLevel: 0.5,
       releaseTime: 0.3,
       delayTime: 0.5,
+
+      setWaveform: (w) => {
+        this.setState({ waveform: w })
+      },
 
       setFilterFrequency: (f) => {
         this.setState({ filterFrequency: Number(f) })
@@ -81,7 +86,7 @@ class Main extends React.Component {
         <div className="three">
           <div className="visualframe">
             <h1>Vizualize!</h1>
-            <canvas id="env-graph" width="600" height="300"></canvas>
+            <canvas id="env-graph" width="600" height="300" />
           </div>
         </div>
         <div className="four">
