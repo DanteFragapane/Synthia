@@ -65,7 +65,7 @@ export default class Synthesizer extends React.Component {
       setReleaseTime: (t) => {}
     }
 
-    this.waveform = 'square'
+    this.waveform = 'sawtooth'
     this.frequency = 220
     this.filterFrequency = 375
     this.filterGain = 100

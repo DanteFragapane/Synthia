@@ -8,6 +8,13 @@ import { ValuesContext } from '../Pages/Main/ValuesContext'
 import Knob from '../Knob'
 
 export default class Example extends React.Component {
+  constructor (props) {
+    super(props)
+
+    this.state = { selected: '' }
+    this.num = [ 'square', 'sine', 'triangle', 'sawtooth' ]
+  }
+
   render () {
     return (
       <Table>
@@ -134,6 +141,30 @@ export default class Example extends React.Component {
                         state.setReleaseTime({ value: e.target.value })
                       }}
                     />
+                  )
+                }}
+              </ValuesContext.Consumer>
+            </div>
+          </div>
+
+          <div className="divider">
+            <div className="buttonfourthbottomright">
+              <div className="textlabel">WAVEFORM</div>
+              <ValuesContext.Consumer>
+                {(context) => {
+                  return (
+                    <select
+                      name="select"
+                      value={this.state.selected}
+                      onChange={(e) => {
+                        this.setState({ waveform: e.target.value })
+                        context.setWaveform(e.target.value)
+                      }}
+                    >
+                      {this.num.map((n) => {
+                        return <option value={n}>{n}</option>
+                      })}
+                    </select>
                   )
                 }}
               </ValuesContext.Consumer>
