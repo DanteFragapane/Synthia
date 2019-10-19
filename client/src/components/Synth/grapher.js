@@ -61,13 +61,13 @@ function createGrapher(audioContext, canvasElem, samplesPerPoint) {
   
       // Draw x axis
       var zeroY = canvasElem.height*(1 + minY/(maxY-minY))
-      canvasCtx.strokeStyle = 'rgb(0, 0, 255)';
+      canvasCtx.strokeStyle = 'rgb(255, 112, 77)';
       canvasCtx.beginPath();
       canvasCtx.moveTo(0, zeroY);
       canvasCtx.lineTo(canvasElem.width, zeroY);
       canvasCtx.stroke();
   
-      drawData(graphDataMin, 'rgb(100, 255, 0)');
+      drawData(graphDataMin, 'rgb(255, 112, 77)');
       drawData(graphDataMax, 'rgb(0, 255, 100)');
   
       rafId = requestAnimationFrame(draw);

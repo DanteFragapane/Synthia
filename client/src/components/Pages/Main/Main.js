@@ -95,6 +95,7 @@ class Main extends React.Component {
         <div className="three">
           <div className="visualframe">
             <h1>Vizualize!</h1>
+            <canvas id="env-graph" width="600" height="800"></canvas>
           </div>
         </div>
         <div className="four">

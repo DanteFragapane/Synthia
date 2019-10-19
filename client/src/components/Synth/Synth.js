@@ -219,6 +219,7 @@ export default class Synthesizer extends React.Component {
   render () {
     return (
       <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
+        
         <h1>Synthesizer</h1>
         <p>Create a tone but be careful</p>
 
@@ -235,7 +236,7 @@ export default class Synthesizer extends React.Component {
         <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
         <div id="keyboard">
-        <canvas id="env-graph" width="512" height="256"></canvas>
+        
           <div />
           <button onMouseDown={this.stopSound}>STOP SOUND</button>
           <div className="keyMaker">
