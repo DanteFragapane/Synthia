@@ -28,23 +28,23 @@ class Main extends React.Component {
       },
 
       setFilterGain: (g) => {
-        this.setState({ filterGain: Number(g) })
+        this.setState({ filterGain: Number(g.value) })
       },
 
       setAttackTime: (t) => {
-        this.setState({ attackTime: Number(t) })
+        this.setState({ attackTime: Number(t.value) })
       },
 
       setDecayTime: (t) => {
-        this.setState({ decayTime: Number(t) })
+        this.setState({ decayTime: Number(t.value) })
       },
 
       setSustainLevel: (l) => {
-        this.setState({ sustainLevel: Number(l) })
+        this.setState({ sustainLevel: Number(l.value) })
       },
 
       setReleaseTime: (t) => {
-        this.setState({ releaseTime: Number(t) })
+        this.setState({ releaseTime: Number(t.value) })
       }
     }
   }
