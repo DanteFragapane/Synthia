@@ -12,7 +12,7 @@ const EnvGen = require('fastidious-envelope-generator')
 export default class Synthesizer extends React.Component {
   constructor (props) {
     super(props)
-
+    this.playing = []
     this.keys = [
       { name: 'C', freq: 261.63, keyLetter: 'A' },
       { name: 'CSH', freq: 277.18, keyLetter: 'W' },
@@ -121,9 +121,8 @@ export default class Synthesizer extends React.Component {
     this.adsr.releaseTime = this.releaseTime
     //ASDR
 
-    // Connect the nodes 
-    
-    
+    // Connect the nodes
+
     console.log(this.grapherNode)
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
@@ -148,7 +147,7 @@ export default class Synthesizer extends React.Component {
     })
     this.grapherNode = createGrapher(this.audioContext, document.querySelector('#env-graph'), 1024)
   }
-  
+
   componentWillUnmount () {
     this.oscillator = null
     this.filter = null
@@ -166,8 +165,11 @@ export default class Synthesizer extends React.Component {
   }
 
   playSound = (freq) => {
-    this.setFrequency(freq)
-    this.adsr.gateOn(this.audioContext.currentTime)
+    if (!this.playing.length > 0) {
+      this.playing.push('Yup')
+      this.setFrequency(freq)
+      this.adsr.gateOn(this.audioContext.currentTime)
+    }
   }
 
   keyPlaySound2 = (event) => {
@@ -231,6 +233,7 @@ export default class Synthesizer extends React.Component {
   }
 
   stopSound = () => {
+    this.playing.pop()
     this.adsr.gateOff(this.audioContext.currentTime)
   }
 
