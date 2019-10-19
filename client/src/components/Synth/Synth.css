@@ -60,7 +60,7 @@ button.boton{
   grid-row-start: 1;
 }
 
-.up{  
+/* .up{  
   grid-column: 1;
   grid-row: 3;
   background: orangered;
@@ -68,9 +68,9 @@ button.boton{
   border-radius: 25px;
   max-height: 100px;
   max-width: 100%;
- }
+ } */
 
-.down{  
+/* .down{  
   grid-column: 2;
   grid-row-start: 3;
   background: orangered;
@@ -79,11 +79,11 @@ button.boton{
   max-height: 100px;
   max-width: 100%;
 
-}
+} */
 
-.x1{
+.UP{
  
-  background: grey;
+  background: orangered;
   align-content: center;
   border-radius: 25px;
   max-width: 200px;
@@ -165,9 +165,9 @@ background: grey;
   border-radius: 25px;
   max-width: 200px;
 }
-.x13{
+.DN{
 
-  background: grey;
+  background: orangered;
   align-content: center;
   border-radius: 25px;
   max-width: 200px;

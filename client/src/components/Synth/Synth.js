@@ -25,7 +25,7 @@ export default class Synthesizer extends React.Component {
       { name: 'ASH', freq: 466.16, keyLetter: 'U' },
       { name: 'B', freq: 493.88, keyLetter: 'J' },
       { name: 'C1', freq: 523.25, keyLetter: 'K' },
-      { name: 'x1', freq: 0, keyLetter: 'x' },
+      { name: 'UP', freq: 0, keyLetter: 'UP' },
       { name: 'x2', freq: 0, keyLetter: 'x' },
       { name: 'x3', freq: 0, keyLetter: 'x' },
       { name: 'x4', freq: 0, keyLetter: 'x' },
@@ -37,7 +37,7 @@ export default class Synthesizer extends React.Component {
       { name: 'x10', freq: 0, keyLetter: 'x' },
       { name: 'x11', freq: 0, keyLetter: 'x' },
       { name: 'x12', freq: 0, keyLetter: 'x' },
-      { name: 'x13', freq: 0, keyLetter: 'x' }
+      { name: 'DN', freq: 0, keyLetter: 'DN' }
     ]
 
     this.state = {
@@ -214,9 +214,8 @@ export default class Synthesizer extends React.Component {
   render () {
     return (
       <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
-        <h1>Synthesizer</h1>
-        <p>Create a tone but be careful</p>
-
+        
+        
         <div className="control">
           <label htmlFor="waveform">Waveform</label>
           <select id="waveform" value={this.state.waveform} onChange={this.setWaveform}>
@@ -231,7 +230,7 @@ export default class Synthesizer extends React.Component {
 
         <div id="keyboard">
           <div />
-          <button onMouseDown={this.stopSound}>STOP SOUND</button>
+          <button className='boton' onMouseDown={this.stopSound}>STOP SOUND</button>
           <div className="keyMaker">
             {this.keys.map((key) => (
               <div className={key.name} key={key.name} data-freq={key.freq}>
