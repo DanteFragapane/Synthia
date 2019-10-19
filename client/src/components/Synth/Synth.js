@@ -1,9 +1,10 @@
-import React from "react"
-import WAVEFORMS from "./waveForms"
-import Frequency from "./Frequency"
-import "./Synth.css"
-import createGrapher from "./grapher"
+import React from 'react'
+import WAVEFORMS from './waveForms'
+import Frequency from './Frequency'
+import './Synth.css'
+import createGrapher from './grapher'
 import MidiInterface from './MidiInterface'
+import { ValuesContext } from '../Pages/Main/ValuesContext'
 
 const EnvGen = require('fastidious-envelope-generator')
 
@@ -42,15 +43,26 @@ export default class Synthesizer extends React.Component {
     ]
 
     this.state = {
-      waveform: WAVEFORMS.SQUARE.id,
-      filterType: 'lowpass',
+      sideDrawerOpen: false,
       filterFrequency: 375,
       filterGain: 50,
       attackTime: 0.2,
       decayTime: 0.5,
       sustainLevel: 0.5,
       releaseTime: 0.3,
-      delayTime: 0.5
+      delayTime: 0.5,
+
+      setFilterFrequency: (f) => {},
+
+      setFilterGain: (g) => {},
+
+      setAttackTime: (t) => {},
+
+      setDecayTime: (t) => {},
+
+      setSustainLevel: (l) => {},
+
+      setReleaseTime: (t) => {}
     }
 
     this.frequency = 220
@@ -71,6 +83,10 @@ export default class Synthesizer extends React.Component {
   }
 
   createAudio = () => {
+    if (!this.audioContext) {
+      this.createContexts()
+    }
+
     //MASTER GAINN NODE
     this.masterGainNode = this.audioContext.createGain()
     this.masterGainNode.gain.value = 0
@@ -131,6 +147,11 @@ export default class Synthesizer extends React.Component {
     this.filter = null
     this.adsr = null
     this.masterGainNode = null
+  }
+
+  componentDidUpdate () {
+    console.log('UPDATED')
+    console.log(this.state)
   }
 
   setWaveform = (e) => {
@@ -212,16 +233,9 @@ export default class Synthesizer extends React.Component {
     this.adsr.gateOff(this.audioContext.currentTime)
   }
 
-  test = (freq) => {
-    console.log(freq)
-    this.setFrequency(freq)
-    this.adsr.gateOn(this.audioContext.currentTime)
-  }
-
   render () {
     return (
       <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
-        
         <h1>Synthesizer</h1>
         <p>Create a tone but be careful</p>
 
@@ -238,9 +252,11 @@ export default class Synthesizer extends React.Component {
         <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
         <div id="keyboard">
-        
+          <canvas id="env-graph" width="512" height="256" />
           <div />
-          <button className='boton' onMouseDown={this.stopSound}>STOP SOUND</button>
+          <button className="boton" onMouseDown={this.stopSound}>
+            STOP SOUND
+          </button>
           <div className="keyMaker">
             {this.keys.map((key) => (
               <div className={key.name} key={key.name} data-freq={key.freq}>

@@ -23,44 +23,30 @@ class Main extends React.Component {
       releaseTime: 0.3,
       delayTime: 0.5,
 
-      setFilterFrequency: (e) => {
-        if (e > 0 && e < 1000) {
-          this.setState({ filterFrequency: Number(e) })
-        } else this.setState({ filterFrequency: 500 })
+      setFilterFrequency: (f) => {
+        this.setState({ filterFrequency: Number(f) })
       },
 
-      setFilterGain: (e) => {
-        this.setState({ filterGain: Number(e) })
+      setFilterGain: (g) => {
+        this.setState({ filterGain: Number(g) })
       },
 
-      setAttackTime: (a) => {
-        if (a > 0 && a < 10) {
-          this.setState({ attackTime: Number(a) })
-        } else this.setState({ attackTime: 0.5 })
+      setAttackTime: (t) => {
+        this.setState({ attackTime: Number(t) })
       },
 
-      setDecayTime: (d) => {
-        if (d > 0 && d < 10) {
-          this.setState({ decayTime: Number(d) })
-        } else this.setState({ decayTime: 1 })
+      setDecayTime: (t) => {
+        this.setState({ decayTime: Number(t) })
       },
 
-      setSustainLevel: (s) => {
-        if (s > 0 && s < 1) {
-          this.setState({ sustainLevel: Number(s) })
-        } else this.setState({ sustainLevel: 0.5 })
+      setSustainLevel: (l) => {
+        this.setState({ sustainLevel: Number(l) })
       },
 
-      setReleaseTime: (r) => {
-        if (r > 0 && r > 10) {
-          this.setState({ releaseTime: Number(r) })
-        } else this.setState({ releaseTime: 1 })
+      setReleaseTime: (t) => {
+        this.setState({ releaseTime: Number(t) })
       }
     }
-  }
-
-  componentDidUpdate () {
-    console.log(this.state)
   }
 
   drawerToggleClickHandler = () => {
