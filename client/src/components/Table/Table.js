@@ -2,6 +2,7 @@ import React from 'react'
 import { Table } from 'reactstrap'
 import './Table.css'
 import { Button } from 'reactstrap'
+import { ValuesContext } from '../Pages/Main/ValuesContext'
 
 // slider
 import Knob from '../Knob'
@@ -9,51 +10,135 @@ import Knob from '../Knob'
 export default class Example extends React.Component {
   render () {
     return (
-
       <Table>
-
-        <div className='yeahdiv'>
-
-          <div className='divider'><div className='buttononetopleft'><div className='textlabel'>FREQUENCY</div>
-            <div><Knob />{' '}</div>
-          </div>
-          </div>
-
-          <div className='divider'><div className='buttontwotopmid'><div className='textlabel'>DURATION</div>
-            <div><Knob />{' '}</div>
-          </div>
-          </div>
-
-          <div className='divider'><div className='buttonthreetopmid'><div className='textlabel'>FILTER FREQ</div>
-            <div><Knob />{' '}</div>
-          </div>
-          </div>
-
-          <div className='divider'><div className='buttonfourtopright'><div className='textlabel'>FILTER GAIN</div>
-            <div><Knob />{' '}</div>
-          </div>
-          </div>
-
-          <div className='divider'><div className='buttonfirstbottomleft' ><div className='textlabel'>ATTACK</div>
-            <div><Knob />{' '}</div>
-          </div>
+        <div className="yeahdiv">
+          <div className="divider">
+            <div className="buttonthreetopmid">
+              <div className="textlabel">FILTER FREQ</div>
+              <div>
+                <ValuesContext.Consumer>
+                  {(state) => {
+                    return (
+                      <Knob
+                        min={0}
+                        max={1000}
+                        step={1}
+                        defaultValue={500}
+                        onChange={function (e) {
+                          state.setFilterFrequency(e.target.value)
+                        }}
+                      />
+                    )
+                  }}
+                </ValuesContext.Consumer>
+              </div>
+            </div>
           </div>
 
-          <div className='divider'><div className='buttonsecondbottommid'><div className='textlabel'>DECAY</div>
-            <div><Knob />{' '}</div>
-          </div>
+          <div className="divider">
+            <div className="buttonfourtopright">
+              <div className="textlabel">FILTER GAIN</div>
+              <ValuesContext.Consumer>
+                {(state) => {
+                  return (
+                    <Knob
+                      min={0}
+                      max={100}
+                      step={1}
+                      defaultValue={100}
+                      onChange={(e) => {
+                        state.setFilterGain({ value: e.target.value })
+                      }}
+                    />
+                  )
+                }}
+              </ValuesContext.Consumer>
+            </div>
           </div>
 
-          <div className='divider'><div className='buttonthirdbottommid'><div className='textlabel'>SUSTAIN</div>
-            <div><Knob />{' '}</div>
-          </div>
+          <div className="divider">
+            <div className="buttonfirstbottomleft">
+              <div className="textlabel">ATTACK</div>
+              <ValuesContext.Consumer>
+                {(state) => {
+                  return (
+                    <Knob
+                      min={0}
+                      max={10}
+                      step={0.1}
+                      defaultValue={0.1}
+                      onChange={(e) => {
+                        state.setAttackTime({ value: e.target.value })
+                      }}
+                    />
+                  )
+                }}
+              </ValuesContext.Consumer>
+            </div>
           </div>
 
-          <div className='divider'><div className='buttonfourthbottomright'><div className='textlabel'>RELEASE</div>
-            <div><Knob />{' '}</div>
-          </div>
+          <div className="divider">
+            <div className="buttonsecondbottommid">
+              <div className="textlabel">DECAY</div>
+              <ValuesContext.Consumer>
+                {(state) => {
+                  return (
+                    <Knob
+                      min={0}
+                      max={10}
+                      step={0.1}
+                      defaultValue={0.1}
+                      onChange={(e) => {
+                        state.setDecayTime({ value: e.target.value })
+                      }}
+                    />
+                  )
+                }}
+              </ValuesContext.Consumer>
+            </div>
           </div>
 
+          <div className="divider">
+            <div className="buttonthirdbottommid">
+              <div className="textlabel">SUSTAIN</div>
+              <ValuesContext.Consumer>
+                {(state) => {
+                  return (
+                    <Knob
+                      min={0}
+                      max={1}
+                      step={0.1}
+                      defaultValue={0.5}
+                      onChange={(e) => {
+                        state.setSustainLevel({ value: e.target.value })
+                      }}
+                    />
+                  )
+                }}
+              </ValuesContext.Consumer>
+            </div>
+          </div>
+
+          <div className="divider">
+            <div className="buttonfourthbottomright">
+              <div className="textlabel">RELEASE</div>
+              <ValuesContext.Consumer>
+                {(state) => {
+                  return (
+                    <Knob
+                      min={0}
+                      max={10}
+                      step={0.1}
+                      defaultValue={0.1}
+                      onChange={(e) => {
+                        state.setReleaseTime({ value: e.target.value })
+                      }}
+                    />
+                  )
+                }}
+              </ValuesContext.Consumer>
+            </div>
+          </div>
         </div>
       </Table>
     )
