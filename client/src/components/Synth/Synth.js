@@ -116,7 +116,7 @@ export default class Synthesizer extends React.Component {
 
     // Connect the nodes 
     
-    this.grapherNode = createGrapher(this.audioContext, document.querySelector('#env-graph'), 2048)
+    
     console.log(this.grapherNode)
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
@@ -139,9 +139,9 @@ export default class Synthesizer extends React.Component {
       releaseTime: 0.3,
       delayTime: 0.5
     })
-    createGrapher(this.audioContext, document.querySelector('#env-graph'), 1024)
+    this.grapherNode = createGrapher(this.audioContext, document.querySelector('#env-graph'), 1024)
   }
-
+  
   componentWillUnmount () {
     this.oscillator = null
     this.filter = null

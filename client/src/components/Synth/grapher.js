@@ -6,7 +6,7 @@ function createGrapher(audioContext, canvasElem, samplesPerPoint) {
   const graphDataMin = new Float32Array(graphPoints)
   const graphDataMax = new Float32Array(graphPoints)
   let graphDataStartIdx = 0
-  const grapherNode = audioContext.createScriptProcessor(samplesPerPoint, 1, 1)
+  const grapherNode = audioContext.createScriptProcessor(samplesPerPoint, 3, 1)
   grapherNode.onaudioprocess = function(e) {
     const inputData = e.inputBuffer.getChannelData(0)
     const outputData = e.outputBuffer.getChannelData(0)
