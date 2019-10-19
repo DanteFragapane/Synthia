@@ -2,7 +2,7 @@ import React from 'react'
 
 export const ValuesContext = React.createContext({
   state: {
-    waveform: 'lowpass',
+    waveform: 'square',
     sideDrawerOpen: false,
     filterFrequency: 375,
     filterGain: 50,
