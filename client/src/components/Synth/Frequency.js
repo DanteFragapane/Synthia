@@ -10,7 +10,7 @@ export default class FrequencyControl extends React.Component {
     render () {
         return (
             <div className="control">
-                <label htmlFor="frequency">Frequency</label>
+                <label htmlFor="frequency"></label>
                 <input
                     id="frequency"
                     type="text"

@@ -1,61 +1,69 @@
+body{margin: 0px;}
+
 /* Text color slider and label */
 .yeahdiv> div{
   border-radius: 25px;
-  background-color: lightgray;
+  background-color: none;
   color: white; 
-  align-content:center;
-  justify-content: center;
   font-size: .5rem;
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
+
 
 
   
  div .yeahdiv {
    
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 50px 100px 100px 100px;
-  justify-content: center;
-    align-content: center;
-  /*grid-template-areas:
-     " Waveform Waveform Waveform"
-    "FilterF Attack "
-    "Release FilterG "
-    "Sustain Decay"
-    ; */
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
+    grid-template-rows: 100px   ;
+    justify-content: right;
 
   }
+  
+div.controlWave{
+  grid-column: 1;
+  grid-row: 1/2
+}
 
-  label.slidecontainer{
-    margin-top:0rem ;
-    font-size: 1rem;
-  }
 
 /* FilterF   */
-div.filterF { 
-  grid-column: 4;
-  grid-row: 2;
+div .divider .filterF { 
+  
+  grid-row: 3;
   text-align: center;
   background: #ffc107;
-
+  justify-content: center;
+  align-content: center;
   border-radius: 25px;
   grid-area: FilterF ;
 
 }
 
+
 /* FilterG */
- div.filterG{
+ div .divider .filterG{
+  
+  grid-column: 2;
+
   background: #dc3545;  
   text-align: center;
 
   border-radius: 25px;
   grid-area: FilterG ;
 
+  justify-content: center;
+  align-content: center;
+
 
 } 
 
 /* Attack */
-div.attack  {
+div .divider .attack  {
+  grid-column: 3;
+  
   text-align: center;
   background: #007bff;
  
@@ -66,9 +74,14 @@ div.attack  {
 }
 
 /* Decay */
-div.decay  {
+div .divider .decay  {
+
+  grid-column: 4;
+  
   background: #ffc107;
   text-align: center;
+
+
 
   border-radius: 25px;
   grid-area: Decay;
@@ -76,7 +89,9 @@ div.decay  {
 }
 
 /* Sustain */
-div.sustain  {
+div .divider .sustain  {
+  grid-column: 1;
+  
   text-align: center;
   background: #dc3545;
  
@@ -86,8 +101,9 @@ div.sustain  {
 }
 
 /* Release */
-div.release {
-
+div .divider .release {
+  grid-column: 1;
+  
   text-align: center;
   background: #007bff;
 
@@ -96,16 +112,3 @@ div.release {
 
 }
 
-/* Waveform */
- .dividerwaveform {
-  text-align: center;
-  background: #6c757d;
-
-  border-radius: 25px;
-  grid-area: Waveform ;
-  /* grid-column: 1/ 3 ;
-  grid-row: 4; */
-
-  grid-column: 1/4;
-  grid-row: 1;
-}

@@ -5,6 +5,7 @@ import './Synth.css'
 import createGrapher from './grapher'
 import MidiInterface from './MidiInterface'
 import { ValuesContext } from '../Pages/Main/ValuesContext'
+import Table from '../Table'
 
 const EnvGen = require('fastidious-envelope-generator')
 
@@ -258,15 +259,7 @@ export default class Synthesizer extends React.Component {
         </ValuesContext.Consumer>
        
 
-        <div className="control">
-          <label htmlFor="waveform">Waveform</label>
-          <select id="waveform" value={this.state.waveform} onChange={this.setWaveform}>
-            <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
-            <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
-            <option value={WAVEFORMS.TRIANGLE.id}>{WAVEFORMS.TRIANGLE.userTerm}</option>
-            <option value={WAVEFORMS.SQUARE.id}>{WAVEFORMS.SQUARE.userTerm}</option>
-          </select>
-        </div>
+
 
         <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
@@ -289,7 +282,19 @@ export default class Synthesizer extends React.Component {
                 </button>
               </div>
             ))}
+
+            <div className='empty'></div>
+            <div className="controlWave">       
+          <label htmlFor="waveform">Waveform</label>
+          <select id="waveform" value={this.state.waveform} onChange={this.setWaveform}>
+            <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
+            <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
+            <option value={WAVEFORMS.TRIANGLE.id}>{WAVEFORMS.TRIANGLE.userTerm}</option>
+            <option value={WAVEFORMS.SQUARE.id}>{WAVEFORMS.SQUARE.userTerm}</option>
+          </select>
+        </div>
           </div>
+          <div className='mesa' ><Table /> </div>
         </div>
       </div>
       

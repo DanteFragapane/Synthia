@@ -21,7 +21,7 @@ export default class Keyboardcommand extends React.Component {
   render () {
     return (
       <div className='keyboardParent'>
-        <Table />
+        <SynthApp />
       </div>
     )
   }

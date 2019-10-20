@@ -3,7 +3,7 @@
   height: 100hv;
   display: grid;
   /* grid-template-columns: 1fr 1fr ;*/
-grid-template-rows: 100px 500px 100px ;
+grid-template-rows: 10% 1fr 10% ;
 /* justify-content: center;
   align-content: center; */
   grid-template-areas:

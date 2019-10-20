@@ -1,22 +1,36 @@
-/* Hidden Input components box sizing  */
-.control{
-  visibility: hidden;
-  max-width: 0px;
-  max-height: 0px;
-   
-  }
 
-  div #keyboard{
-  
-  }
+
+div.controlWave{
+  color: orangered;
+  background: orangered;
+  border-radius: 25px 25px 0px 0px;
+
+}
+
+div.empty{
+  color: orangered;
+  background: orangered;
+  border-radius: 0px 0px 25px 25px;
+  grid-area: empty ;
+}
+
+div.keyMaker
+{
+  grid-area: keys ;
+}
+
+div.mesa{grid-area: kontrol ;}
 
 
 div .keyMaker{
   display: grid;
+  grid-gap: 10px;
+  grid-row-gap: 20px;
+  
   grid-template-areas: 
  
-  "UP  x6  x9   x7  CSH  FSH  x13  ASH  DSH  GSH x5 C1 x4"
-  "DN  C  x2   D   x12   E    F    x11  G    x8  A x10  B "
+  " controlWave UP  x6  x9   x7  CSH  FSH  x13  ASH  DSH  GSH x5 C1 x4"
+  " empty DN  C  x2   D   x12   E    F    x11  G    x8  A x10  B "
 
   ;
   justify-content: flex-end;
@@ -24,6 +38,18 @@ div .keyMaker{
  
 }
 
+input#frequency
+{
+  visibility: hidden;
+  height: 0;
+  width: 0 ;
+}
+
+  div.control{
+    visibility: hidden;
+    height: 0;
+    width: 0 ;
+  }
 
 /*visualizer*/
 canvas#env-graph{
@@ -57,6 +83,23 @@ button.buton2{
    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
  }
  
+
+#waveform{
+  justify-content: center;
+  position: relative;
+  border-radius: 0px 0px 0px 0px;
+}
+
+
+
+
+select > option  {
+  background: pink;
+  align-content: center; 
+  justify-content: center;
+  border-radius: 25px 25px 25px 25px ;
+}
+
 
 
 
@@ -283,7 +326,6 @@ background: grey;
   font-family: system;
   color: #2A77AE;
   background: #d62222;
-  margin-bottom: 5rem;
 }
 
 
