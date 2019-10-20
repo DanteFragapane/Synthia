@@ -5,7 +5,9 @@ html{
 body {
   color: #e7eca0;
   font-size: 4rem;
-  background:#a72996;
+
+    background: peru;
+
   margin: 2rem;
   padding: 2rem;
   font-family: sans-serif;
