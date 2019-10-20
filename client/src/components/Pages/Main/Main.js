@@ -1,6 +1,6 @@
 import React from 'react'
 import './Main.css'
-import Header from '../../Header'
+
 import Footer from '../../Footer'
 import Keyboardcommand from '../../Keyboardcommand'
 import Toolbar from '../../Toolbar'
@@ -75,33 +75,26 @@ class Main extends React.Component {
 
     return (
       <div style={{ height: '100%' }} className="wrapper">
-        <div className="one">
-          <Header />
-        </div>
-        <div className="two">
+  
+        <div className="headers">
           <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         </div>
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
 
-        <div className="three">
-          <div className="visualframe">
-   
-          
-          </div>
-        </div>
+
         <div className="four">
           <ValuesContext.Provider value={this.state}>
       
           </ValuesContext.Provider>
         </div>
 
-        <div className="six">
+        <div className="keyboardCommand">
           <ValuesContext.Provider value={this.state}>
             <Keyboardcommand />
           </ValuesContext.Provider>
         </div>
-        <div className="seven">
+        <div className="footers">
           <Footer />
         </div>
       </div>

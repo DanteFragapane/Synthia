@@ -29,7 +29,7 @@ export default class Synthesizer extends React.Component {
       { name: 'C1', freq: 523.25, keyLetter: 'K' },
       { name: 'UP', freq: 0, keyLetter: 'UP' },
       { name: 'x2', freq: 0, keyLetter: 'x' },
-      { name: 'x3', freq: 0, keyLetter: 'x' },
+      
       { name: 'x4', freq: 0, keyLetter: 'x' },
       { name: 'x5', freq: 0, keyLetter: 'x' },
       { name: 'x6', freq: 0, keyLetter: 'x' },
@@ -241,6 +241,7 @@ export default class Synthesizer extends React.Component {
 
   render () {
     return (
+      
       <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
         <ValuesContext.Consumer>
           {(context) => {
@@ -270,7 +271,7 @@ export default class Synthesizer extends React.Component {
         <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
         <div id="keyboard">
-          <canvas id="env-graph" width="0" height="0" />
+          <canvas id="env-graph"  />
           <div />
          
           <div className="keyMaker">
@@ -291,6 +292,7 @@ export default class Synthesizer extends React.Component {
           </div>
         </div>
       </div>
+      
     )
   }
 }

@@ -1,0 +1,18 @@
+.wrapper
+{
+  height: 100hv;
+  display: grid;
+  /* grid-template-columns: 1fr 1fr ;*/
+grid-template-rows: 100px 500px 100px ;
+/* justify-content: center;
+  align-content: center; */
+  grid-template-areas:
+  "headers"
+  "command"
+  "footers"
+}
+.headers{grid-area: headers ;}
+
+.keyboardCommand{grid-area: command ;}
+
+.footers{grid-area: footers ;}

@@ -3,6 +3,7 @@ import React from 'react'
 import './Table.css'
 
 import { ValuesContext } from '../Pages/Main/ValuesContext'
+import SynthApp from '../Synth'
 
 // slider
 import Knob from '../Knob'
@@ -18,6 +19,31 @@ export default class Example extends React.Component {
   render () {
     return (
       <div className='yeahdiv'>
+
+        <div className='dividerwaveform'>
+          <div className='waveform'>
+            <div className='textlabel'>WAVEFORM</div>
+            <ValuesContext.Consumer>
+              {(context) => {
+                return (
+                  <select
+                    name='select'
+                    value={this.state.selected}
+                    onChange={(e) => {
+                      this.setState({ waveform: e.target.value })
+                      context.setWaveform(e.target.value)
+                    }}
+                  >
+                    {this.num.map((n) => {
+                      return <option value={n}>{n}</option>
+                    })}
+                  </select>
+                )
+              }}
+            </ValuesContext.Consumer>
+          </div>
+        </div>
+
         <div className='divider'>
           <div className='filterF'>
             <div className='textlabel'>FILTER FREQ</div>
@@ -145,31 +171,7 @@ export default class Example extends React.Component {
             </ValuesContext.Consumer>
           </div>
         </div>
-
-        <div className='dividerwaveform'>
-          <div className='waveform'>
-            <div className='textlabel'>WAVEFORM</div>
-            <ValuesContext.Consumer>
-              {(context) => {
-                return (
-                  <select
-                    name='select'
-                    value={this.state.selected}
-                    onChange={(e) => {
-                      this.setState({ waveform: e.target.value })
-                      context.setWaveform(e.target.value)
-                    }}
-                  >
-                    {this.num.map((n) => {
-                      return <option value={n}>{n}</option>
-                    })}
-                  </select>
-                )
-              }}
-            </ValuesContext.Consumer>
-          </div>
-        </div>
-
+        <SynthApp />
       </div>
 
     )
