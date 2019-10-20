@@ -1,17 +1,22 @@
 
 
 div.controlWave{
-  color: orangered;
+  color: white;
   background: orangered;
   border-radius: 25px 25px 0px 0px;
-
+  font-size: 1rem;
 }
 
 div.empty{
-  color: orangered;
+  color: white;
   background: orangered;
+
   border-radius: 0px 0px 25px 25px;
   grid-area: empty ;
+}
+
+h5{
+  margin-left: 5px;
 }
 
 div.keyMaker
@@ -24,13 +29,13 @@ div.mesa{grid-area: kontrol ;}
 
 div .keyMaker{
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 5px;
   grid-row-gap: 20px;
   
   grid-template-areas: 
  
-  " controlWave UP  x6  x9   x7  CSH  FSH  x13  ASH  DSH  GSH x5 C1 x4"
-  " empty DN  C  x2   D   x12   E    F    x11  G    x8  A x10  B "
+  " controlWave UP  x6  x9   x7  CSH  FSH  x13  ASH  DSH  GSH x5 C1   x4"
+  " empty       DN  C   x2   D   x12   E    F   x11   G   x8  A  x10  B "
 
   ;
   justify-content: flex-end;
@@ -55,8 +60,10 @@ input#frequency
 canvas#env-graph{
  background: orangered;
  grid-area: VIZ ;
-width: 1270px;
-height: 200px;
+margin-top: 10px ;
+margin-bottom: 10px;
+width: 1290px;
+height: 265px;
 
  border-radius: 20px;
 }
@@ -85,17 +92,20 @@ button.buton2{
  }
  
 
-#waveform{
+select#waveform{
+  background: grey;
+  color: white;
   justify-content: center;
   position: relative;
-  border-radius: 0px 0px 0px 0px;
+  max-width: 170px;
+  border-radius: 0px 25px 0px 0px;
 }
 
 
 
 
 select > option  {
-  background: pink;
+  background: rgba(255, 68, 0, 0.157);
   align-content: center; 
   justify-content: center;
   border-radius: 25px 25px 25px 25px ;
@@ -106,10 +116,11 @@ select > option  {
 
 .UP{
   grid-area: UP ;
-  color: orangered;
+  color: white;
   background: orangered;
   align-content: center;
   border-radius: 25px;
+  width: 200px;
   
  
 }
@@ -208,6 +219,7 @@ background: grey;
   background: orangered;
   align-content: center;
   border-radius: 25px;
+  color: white;
   
 }
 

@@ -3,7 +3,7 @@ import './Footer.css'
 
 function Footer () {
   return (
-    <div className='myfooter'>I am a footer. I am a footer. I am a footer. I am a footer. I am a footer. I am a footer. I am a footer. I am a footer.</div>
+    <div className='myfooter' />
   )
 }
 export default Footer

@@ -28,9 +28,7 @@ export default class Synthesizer extends React.Component {
       { name: 'ASH', freq: 466.16, keyLetter: 'U' },
       { name: 'B', freq: 493.88, keyLetter: 'J' },
       { name: 'C1', freq: 523.25, keyLetter: 'K' },
-      { name: 'UP', freq: 0, keyLetter: 'UP' },
       { name: 'x2', freq: 0, keyLetter: 'x' },
-      
       { name: 'x4', freq: 0, keyLetter: 'x' },
       { name: 'x5', freq: 0, keyLetter: 'x' },
       { name: 'x6', freq: 0, keyLetter: 'x' },
@@ -41,7 +39,7 @@ export default class Synthesizer extends React.Component {
       { name: 'x11', freq: 0, keyLetter: 'x' },
       { name: 'x12', freq: 0, keyLetter: 'x' },
       { name: 'x13', freq: 0, keyLetter: 'x' },
-      { name: 'DN', freq: 0, keyLetter: 'DN' },
+    
     ]
 
     this.state = {
@@ -283,9 +281,10 @@ export default class Synthesizer extends React.Component {
               </div>
             ))}
 
-            <div className='empty'></div>
+            <div className='empty'><h5>Waveform</h5></div>
+            <button className='UP'><h5>UP</h5></button>
+            <button className='DN'><h5>DN</h5></button>
             <div className="controlWave">       
-          <label htmlFor="waveform">Waveform</label>
           <select id="waveform" value={this.state.waveform} onChange={this.setWaveform}>
             <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
             <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
