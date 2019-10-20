@@ -17,9 +17,9 @@ body{margin: 0px;}
  div .yeahdiv {
    
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr ;
-    grid-template-rows: 100px   ;
-    justify-content: right;
+    grid-template-columns: 30%  20% 10% 10% 10% 10% ;
+    grid-template-rows: 90px   ;
+   justify-content: center;
 
   }
   
@@ -37,7 +37,7 @@ div .divider .filterF {
   background: #ffc107;
   justify-content: center;
   align-content: center;
-  border-radius: 25px;
+  border-radius: 0px 0px 0px 25px;
   grid-area: FilterF ;
 
 }
@@ -51,7 +51,7 @@ div .divider .filterF {
   background: #dc3545;  
   text-align: center;
 
-  border-radius: 25px;
+ 
   grid-area: FilterG ;
 
   justify-content: center;
@@ -67,7 +67,7 @@ div .divider .attack  {
   text-align: center;
   background: #007bff;
  
-  border-radius: 25px;
+ 
   grid-area: Attack ;
 
   
@@ -80,10 +80,7 @@ div .divider .decay  {
   
   background: #ffc107;
   text-align: center;
-
-
-
-  border-radius: 25px;
+ 
   grid-area: Decay;
 
 }
@@ -95,7 +92,7 @@ div .divider .sustain  {
   text-align: center;
   background: #dc3545;
  
-   border-radius: 25px;
+ 
    grid-area: Sustain;
 
 }
@@ -107,7 +104,7 @@ div .divider .release {
   text-align: center;
   background: #007bff;
 
-  border-radius: 25px;
+  border-radius: 0px 0px 25px 0px;
   grid-area: Release;
 
 }

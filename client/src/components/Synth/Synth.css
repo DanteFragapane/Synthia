@@ -1,5 +1,14 @@
 
 
+div#root{
+  background: grey;
+  height: 100%;
+}
+
+div#keyboard{
+
+}
+
 div.controlWave{
   color: white;
   background: orangered;
@@ -61,10 +70,10 @@ input#frequency
 canvas#env-graph{
  background: orangered;
  grid-area: VIZ ;
- margin: 10px;
+ margin: 20px 0px 10px 60px;
 
-width: 1270px;
-height: 265px;
+width: 1150px;
+height: 200px;
 
  border-radius: 20px;
 }
@@ -80,13 +89,13 @@ height: 265px;
 button.buton2{
   border-radius: 25px;
    color:orange;
-   min-width: 75px;
-   min-height: 75px;
+   width: 70px;
+   height: 70px;
    align-content: center;
    padding: 0px;
    margin: 0;
    border-radius: 25px;
-   /* background: -webkit-linear-gradient(to left, rgba(255, 255, 255, 0),black);   */
+   background: -webkit-linear-gradient(to left, rgba(235, 226, 226, 0.644),black);  
    /* Chrome 10-25, Safari 5.1-6 */
    background: linear-gradient(to left, rgba(0,0,0,0)); 
    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -112,7 +121,9 @@ select > option  {
   border-radius: 25px 25px 25px 25px ;
 }
 
-
+div .keyMaker{
+  margin-right: 60px;
+}
 
 
 .UP{
@@ -121,7 +132,7 @@ select > option  {
   background: orangered;
   align-content: center;
   border-radius: 25px;
-  width: 150px;
+  width: 100px;
   
  
 }
@@ -365,7 +376,5 @@ input {
 
 
 
-div.keyMaker{
-  color: tomato;
-}
+
 

@@ -1,4 +1,4 @@
-function createGrapher(audioContext, canvasElem, samplesPerPoint) {
+function createGrapher (audioContext, canvasElem, samplesPerPoint) {
   const graphPoints = canvasElem.width
   let minY = -1
   let maxY = 1.0
@@ -7,7 +7,7 @@ function createGrapher(audioContext, canvasElem, samplesPerPoint) {
   const graphDataMax = new Float32Array(graphPoints)
   let graphDataStartIdx = 0
   const grapherNode = audioContext.createScriptProcessor(samplesPerPoint, 3, 1)
-  grapherNode.onaudioprocess = function(e) {
+  grapherNode.onaudioprocess = function (e) {
     const inputData = e.inputBuffer.getChannelData(0)
     const outputData = e.outputBuffer.getChannelData(0)
 
@@ -26,11 +26,11 @@ function createGrapher(audioContext, canvasElem, samplesPerPoint) {
     }
   }
 
-  const canvasCtx = canvasElem.getContext("2d")
+  const canvasCtx = canvasElem.getContext('2d')
   let rafId
 
-  function drawData(data, color) {
-    canvasCtx.lineWidth = 1
+  function drawData (data, color) {
+    canvasCtx.lineWidth = 40
     canvasCtx.strokeStyle = color
 
     canvasCtx.beginPath()
@@ -53,20 +53,20 @@ function createGrapher(audioContext, canvasElem, samplesPerPoint) {
     canvasCtx.stroke()
   }
 
-  function draw() {
-    canvasCtx.fillStyle = "rgb(0, 0, 0)"
+  function draw () {
+    canvasCtx.fillStyle = 'rgba(5, 80, 0, 10)'
     canvasCtx.fillRect(0, 0, canvasElem.width, canvasElem.height)
 
     // Draw x axis
     const zeroY = canvasElem.height * (1 + minY / (maxY - minY))
-    canvasCtx.strokeStyle = "rgb(0, 0, 255)"
+    canvasCtx.strokeStyle = 'rgba(0, 50, 255, 20)'
     canvasCtx.beginPath()
     canvasCtx.moveTo(0, zeroY)
     canvasCtx.lineTo(canvasElem.width, zeroY)
     canvasCtx.stroke()
 
-    drawData(graphDataMin, "rgb(255, 112, 77)")
-    drawData(graphDataMax, "rgb(0, 255, 100)")
+    drawData(graphDataMin, 'rgba(300, 112, 77, 10)')
+    drawData(graphDataMax, 'rgba(50, 255, 100, 10)')
 
     rafId = requestAnimationFrame(draw)
   }

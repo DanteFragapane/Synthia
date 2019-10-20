@@ -1,7 +1,7 @@
 import React from 'react'
 import './Keyboardcommand.css'
 import SynthApp from '../Synth/index'
-import Table from '../Table'
+
 
 export default class Keyboardcommand extends React.Component {
   constructor (props) {

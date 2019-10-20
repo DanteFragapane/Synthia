@@ -17,7 +17,7 @@ export default class Nav extends React.Component {
 
     return (
       <p>
-        Hello! <a href="/login">Login?</a>
+        Hello! <a href='/login'>Login?</a>
       </p>
     )
   }
