@@ -55,8 +55,9 @@ input#frequency
 canvas#env-graph{
  background: orangered;
  grid-area: VIZ ;
- width: 0px;
- max-height: 0px; 
+width: 1270px;
+height: 200px;
+
  border-radius: 20px;
 }
 
