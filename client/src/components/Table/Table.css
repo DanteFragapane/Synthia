@@ -6,33 +6,31 @@ body{margin: 0px;}
   background-color: none;
   color: white; 
   font-size: .5rem;
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 5px;
   margin-right: 5px;
 }
 
 
 
-  
  div .yeahdiv {
    
     display: grid;
-    grid-template-columns: 25%  20% 10% 10% 10% 10% ;
-    grid-template-rows: 80px   ;
+    grid-template-columns: 20%  19% 14% 14% 14% 14% ;
+    grid-template-rows: 100px   ;
    justify-content: right;
    padding-right: 15px;
 
   }
   
 div.controlWave{
-  grid-column: 1;
-  grid-row: 1/2
+ 
 }
 
 
 /* FilterF   */
 div .divider .filterF { 
-  
+  color: black;
   grid-row: 3;
   text-align: center;
   background: rgb(211, 103, 3);
@@ -44,6 +42,7 @@ div .divider .filterF {
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  height: 65px;
 }
 
 
@@ -57,7 +56,7 @@ div .divider .filterF {
 
  
   grid-area: FilterG ;
-
+  height: 65px;
   justify-content: center;
   align-content: center;
   border-radius: 25px;
@@ -65,16 +64,17 @@ div .divider .filterF {
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  color: black;
 } 
 
 /* Attack */
 div .divider .attack  {
   grid-column: 3;
-  
+  height: 65px;
   text-align: center;
   background: yellow;
   border-radius: 25px;
- 
+  color: black;
   grid-area: Attack ;
   font-weight: bolder;
   border-style: solid;
@@ -85,9 +85,9 @@ div .divider .attack  {
 
 /* Decay */
 div .divider .decay  {
-
+  height: 65px;
   grid-column: 4;
-  
+  color: black;
   background: rgb(211, 103, 3);
   text-align: center;
   border-radius: 25px;
@@ -101,10 +101,10 @@ div .divider .decay  {
 /* Sustain */
 div .divider .sustain  {
   grid-column: 1;
-  
+  color: black;
   text-align: center;
   background: rgb(211, 103, 3);
- 
+  height: 65px;
   border-radius: 25px;
    grid-area: Sustain;
    font-weight: bolder;
@@ -116,7 +116,7 @@ div .divider .sustain  {
 /* Release */
 div .divider .release {
   grid-column: 1;
-  
+  color: black;
   text-align: center;
   background: yellow;
 
@@ -126,5 +126,6 @@ div .divider .release {
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  height: 65px;
 }
 
