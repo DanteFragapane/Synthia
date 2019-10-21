@@ -17,9 +17,10 @@ body{margin: 0px;}
  div .yeahdiv {
    
     display: grid;
-    grid-template-columns: 30%  20% 10% 10% 10% 10% ;
-    grid-template-rows: 90px   ;
-   justify-content: center;
+    grid-template-columns: 25%  20% 10% 10% 10% 10% ;
+    grid-template-rows: 80px   ;
+   justify-content: right;
+   padding-right: 15px;
 
   }
   
@@ -37,9 +38,12 @@ div .divider .filterF {
   background: rgb(211, 103, 3);
   justify-content: center;
   align-content: center;
-  border-radius: 0px 0px 0px 25px;
+  border-radius: 25px;
   grid-area: FilterF ;
-
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 }
 
 
@@ -56,8 +60,11 @@ div .divider .filterF {
 
   justify-content: center;
   align-content: center;
-
-
+  border-radius: 25px;
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 } 
 
 /* Attack */
@@ -66,10 +73,13 @@ div .divider .attack  {
   
   text-align: center;
   background: yellow;
- 
+  border-radius: 25px;
  
   grid-area: Attack ;
-
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
   
 }
 
@@ -80,9 +90,12 @@ div .divider .decay  {
   
   background: rgb(211, 103, 3);
   text-align: center;
- 
+  border-radius: 25px;
   grid-area: Decay;
-
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 }
 
 /* Sustain */
@@ -92,9 +105,12 @@ div .divider .sustain  {
   text-align: center;
   background: rgb(211, 103, 3);
  
- 
+  border-radius: 25px;
    grid-area: Sustain;
-
+   font-weight: bolder;
+   border-style: solid;
+   border-color: black;
+   border-width: 2px;
 }
 
 /* Release */
@@ -104,8 +120,11 @@ div .divider .release {
   text-align: center;
   background: yellow;
 
-  border-radius: 0px 0px 25px 0px;
+  border-radius: 25px;
   grid-area: Release;
-
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 }
 

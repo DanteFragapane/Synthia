@@ -1,7 +1,7 @@
 .toolbar{
   position: static;
   width: 100%;
-  background:#d9480f; 
+  background: rgb(211, 103, 3);
   height: 56px;
   border-radius: 10px 10px 0px 0px;
  
@@ -19,9 +19,11 @@
 }
 
 .toolbar__logo a {
-  color: white;
+  color: black;
   text-decoration: none;
   font-size: 1.5rem;
+  font-weight: bolder;
+  
 }
 
 .spacer {
@@ -41,7 +43,7 @@
 
 
 .toolbar_navigation-items a {
-  color: white;
+  color: black;
   text-decoration: none;
 }
 

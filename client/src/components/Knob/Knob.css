@@ -4,7 +4,7 @@
 
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 80%;
   height: 25px;
   background: #d3d3d3;
   outline: none;
@@ -12,6 +12,8 @@
   -webkit-transition: .2s;
   transition: opacity .2s;
   border-radius: 50%/90px 50%/70px  0 0;
+  border-style: solid;
+  border-color: black;
 }
 
 .slider:hover {
@@ -21,16 +23,20 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 25px;
+  width: 30px;
   height: 25px;
-  background: #4CAF50;
+  background: yellow;
   cursor: pointer;
-  border-radius: 1rem;
+  border-radius: 10px;
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 }
 
 .slider::-moz-range-thumb {
   width: 25px;
   height: 25px;
-  background: #4CAF50;
+  background: orange;
   cursor: pointer;
 }

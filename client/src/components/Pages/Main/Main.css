@@ -10,7 +10,7 @@
 
   display: grid;
   /* grid-template-columns: 1fr 1fr ;*/
-grid-template-rows: 10% 1fr 8% ;
+grid-template-rows: 10% 1fr 5% ;
 grid-template-columns: 1fr;
 
 /* justify-content: center;
@@ -34,7 +34,7 @@ grid-template-columns: 1fr;
 .footers
 {
   grid-area: footers ;
-  background: orangered;
+  background: rgb(211, 103, 3);
   border-radius: 0px 0px 10px 10px;
   
 }

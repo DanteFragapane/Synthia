@@ -18,13 +18,20 @@ div.controlWave{
   background: rgb(211, 103, 3);;
   border-radius: 25px 25px 0px 0px;
   font-size: 1rem;
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 }
 
 div.empty{
   color: black;
   font-weight: bolder;
   background: rgb(211, 103, 3);;
-
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
   border-radius: 0px 0px 25px 25px;
   grid-area: empty ;
 }
@@ -78,9 +85,13 @@ canvas#env-graph{
  background: orangered;
  grid-area: VIZ ;
  margin: 10px 0px 10px 50px;
+ font-weight: bolder;
+ border-style: solid;
+ border-color: black;
+ border-width: 5px;
 
-width: 1150px;
-height: 200px;
+width: 1100px;
+height: 180px;
 
  border-radius: 20px;
 }
@@ -96,7 +107,11 @@ height: 200px;
 button.buton2{
   border-radius: 25px;
   font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
    color:black;
+  
    width: 70px;
    height: 70px;
    align-content: center;
@@ -109,6 +124,7 @@ button.buton2{
    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
  }
  
+
 
 select#waveform{
   background: grey;
@@ -142,7 +158,10 @@ div .keyMaker{
   align-content: center;
   border-radius: 25px;
   width: 150px;
-  
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
  
 }
 
@@ -242,7 +261,10 @@ background: rgb(211, 103, 3);
   border-radius: 25px;
   color: black;
   font-weight: bolder;
-  
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
 }
 
 
