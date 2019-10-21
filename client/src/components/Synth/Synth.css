@@ -10,9 +10,7 @@ div#root{
   height: 100%;
 }
 
-div#keyboard{
 
-}
 
 div.controlWave{
   color: black;
@@ -145,6 +143,7 @@ select#waveform{
 
 select > option:focus{
   background-color: cornflowerblue;
+  border-radius: 25px;
 }
 
 

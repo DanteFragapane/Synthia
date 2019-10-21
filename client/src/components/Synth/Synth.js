@@ -267,7 +267,7 @@ export default class Synthesizer extends React.Component {
          
           <div className="keyMaker">
             {this.keys.map((key) => (
-              <div className={key.name} key={key.name} data-freq={key.freq}>
+              <div className={key.name}  key={key.name} data-freq={key.freq}> 
                 <button
                   className="buton2"
                   onMouseUp={this.stopSound}
@@ -276,8 +276,9 @@ export default class Synthesizer extends React.Component {
                   onTouchEnd={this.stopSound}
                   onTouchCancel={this.stopSound}
                 >
-                  {key.name}
+                  <a className={key.name}>{key.name}</a>
                 </button>
+                
               </div>
             ))}
 
