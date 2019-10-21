@@ -6,9 +6,9 @@ body{margin: 0px;}
   background-color: none;
   color: white; 
   font-size: .5rem;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
+  
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 
@@ -17,15 +17,12 @@ body{margin: 0px;}
    
     display: grid;
     grid-template-columns: 20%  19% 14% 14% 14% 14% ;
-    grid-template-rows: 100px   ;
+    grid-template-rows: 6.25rem   ;
    justify-content: right;
-   padding-right: 15px;
+   padding-right: 2rem;
 
   }
   
-div.controlWave{
- 
-}
 
 
 /* FilterF   */
@@ -42,7 +39,7 @@ div .divider .filterF {
   border-style: solid;
   border-color: black;
   border-width: 2px;
-  height: 65px;
+  height: 3.75rem;
 }
 
 
@@ -56,7 +53,7 @@ div .divider .filterF {
 
  
   grid-area: FilterG ;
-  height: 65px;
+  height: 3.75rem;
   justify-content: center;
   align-content: center;
   border-radius: 25px;
@@ -70,7 +67,7 @@ div .divider .filterF {
 /* Attack */
 div .divider .attack  {
   grid-column: 3;
-  height: 65px;
+  height: 3.75rem;
   text-align: center;
   background: yellow;
   border-radius: 25px;
@@ -85,7 +82,7 @@ div .divider .attack  {
 
 /* Decay */
 div .divider .decay  {
-  height: 65px;
+  height: 3.75rem;
   grid-column: 4;
   color: black;
   background: rgb(211, 103, 3);
@@ -104,7 +101,7 @@ div .divider .sustain  {
   color: black;
   text-align: center;
   background: rgb(211, 103, 3);
-  height: 65px;
+  height: 3.75rem;
   border-radius: 25px;
    grid-area: Sustain;
    font-weight: bolder;
@@ -126,6 +123,6 @@ div .divider .release {
   border-style: solid;
   border-color: black;
   border-width: 2px;
-  height: 65px;
+  height: 3.75rem;
 }
 

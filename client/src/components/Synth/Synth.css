@@ -37,7 +37,7 @@ div.empty{
 }
 
 h5{
-  margin-left: 5px;
+  margin-left: .5rem;
 }
 
 div.keyMaker
@@ -57,7 +57,7 @@ div.mesa{grid-area: kontrol ;}
 
 div .keyMaker{
   display: grid;
-  grid-gap: 5px;
+  grid-gap: .25rem;
   
   grid-template-areas: 
  
@@ -65,8 +65,8 @@ div .keyMaker{
   " empty       DN  C   CSH1    D   DSH1   E  F   FSH1  G  GSH1   A   ASH1  B "
 
   ;
-  justify-content: flex-end;
-  align-content: flex-end;
+  justify-content: center;
+  align-content: center;
  
 }
 
@@ -88,14 +88,14 @@ canvas#env-graph{
   background: orange;
  grid-area: VIZ ;
  padding: 10px 10px 10px 10px;
- margin: 10px 0px 15px 1%;
+ margin: .50rem .50rem .50rem 2rem;
  font-weight: bolder;
  border-style: solid;
  border-color: black;
  border-width: 2.5px;
 
-width: 1280px;
-height: 250px;
+width: 95%;
+height: 230px;
 
  border-radius: 25px;
 }
@@ -103,7 +103,7 @@ height: 250px;
 .keyMaker {
 
   font-size: 120%;
-  font-weight: bold;
+  font-weight: bolder;
 
 }
 
@@ -116,10 +116,10 @@ button.buton2{
   border-width: 2px;
    color:black;
   
-   width: 70px;
-   height: 70px;
+   width: 4rem;
+   height: 4rem;
    align-content: center;
-   padding: 0px;
+   padding: 0;
    margin: 0;
    border-radius: 25px;
    background: -webkit-linear-gradient(to left, rgba(235, 226, 226, 0.644),black);  
@@ -158,7 +158,7 @@ select > option  {
 }
 
 div .keyMaker{
-  padding: 20px;
+  padding: 2rem 0rem 2rem 2rem;
 }
 
 
@@ -169,7 +169,7 @@ div .keyMaker{
   background: yellow;
   align-content: center;
   border-radius: 25px;
-  width: 150px;
+  width: 10rem;
   font-weight: bolder;
   border-style: solid;
   border-color: black;
