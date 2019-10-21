@@ -82,8 +82,9 @@ input#frequency
 
 /*visualizer*/
 canvas#env-graph{
- background: orangered;
+  background: orange;
  grid-area: VIZ ;
+ padding: 10px 10px 10px 10px;
  margin: 10px 0px 10px 50px;
  font-weight: bolder;
  border-style: solid;
@@ -93,7 +94,7 @@ canvas#env-graph{
 width: 1100px;
 height: 180px;
 
- border-radius: 20px;
+ border-radius: 25px;
 }
 
 .keyMaker {

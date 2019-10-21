@@ -54,7 +54,7 @@ function createGrapher (audioContext, canvasElem, samplesPerPoint) {
   }
 
   function draw () {
-    canvasCtx.fillStyle = 'rgba(5, 80, 0, 10)'
+    canvasCtx.fillStyle = 'rgba(5, 0, 0, 10)'
     canvasCtx.fillRect(0, 0, canvasElem.width, canvasElem.height)
 
     // Draw x axis
