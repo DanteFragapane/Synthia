@@ -3,11 +3,14 @@ div.yeahdiv
 {
   background: cornflowerblue;
   border-style: solid;
+  border-radius: 0px 0px 25px 25px;
   border-width: 0px 2px 3px 2px;
+  margin: 0rem 2rem .75rem 2rem;
 }
 div#root{
   background: grey;
   height: 100%;
+  width: 100%;
 }
 
 
@@ -88,7 +91,7 @@ canvas#env-graph{
   background: orange;
  grid-area: VIZ ;
  padding: 10px 10px 10px 10px;
- margin: .50rem .50rem .50rem 2rem;
+ margin: .50rem .50rem 1.25rem 2rem;
  font-weight: bolder;
  border-style: solid;
  border-color: black;
@@ -158,9 +161,10 @@ select > option  {
 }
 
 div .keyMaker{
-  padding: 2rem 0rem 2rem 2rem;
+  margin: 0rem 2rem 0rem 2rem ;
+  padding: .5rem 0rem 1rem 0rem;
 }
-
+div#keyboard{background: yellow;}
 
 .UP{
   grid-area: UP ;
