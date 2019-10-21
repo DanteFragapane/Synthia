@@ -30,7 +30,7 @@ function createGrapher (audioContext, canvasElem, samplesPerPoint) {
   let rafId
 
   function drawData (data, color) {
-    canvasCtx.lineWidth = 40
+    canvasCtx.lineWidth = 30
     canvasCtx.strokeStyle = color
 
     canvasCtx.beginPath()

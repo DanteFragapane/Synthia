@@ -34,7 +34,7 @@ div .divider .filterF {
   
   grid-row: 3;
   text-align: center;
-  background: #ffc107;
+  background: rgb(211, 103, 3);
   justify-content: center;
   align-content: center;
   border-radius: 0px 0px 0px 25px;
@@ -48,7 +48,7 @@ div .divider .filterF {
   
   grid-column: 2;
 
-  background: #dc3545;  
+  background: orange;  
   text-align: center;
 
  
@@ -65,7 +65,7 @@ div .divider .attack  {
   grid-column: 3;
   
   text-align: center;
-  background: #007bff;
+  background: yellow;
  
  
   grid-area: Attack ;
@@ -78,7 +78,7 @@ div .divider .decay  {
 
   grid-column: 4;
   
-  background: #ffc107;
+  background: rgb(211, 103, 3);
   text-align: center;
  
   grid-area: Decay;
@@ -90,7 +90,7 @@ div .divider .sustain  {
   grid-column: 1;
   
   text-align: center;
-  background: #dc3545;
+  background: rgb(211, 103, 3);
  
  
    grid-area: Sustain;
@@ -102,7 +102,7 @@ div .divider .release {
   grid-column: 1;
   
   text-align: center;
-  background: #007bff;
+  background: yellow;
 
   border-radius: 0px 0px 25px 0px;
   grid-area: Release;

@@ -1,5 +1,8 @@
 
-
+div.yeahdiv
+{
+  background: cornflowerblue;
+}
 div#root{
   background: grey;
   height: 100%;
@@ -10,15 +13,17 @@ div#keyboard{
 }
 
 div.controlWave{
-  color: white;
-  background: orangered;
+  color: black;
+  font-weight: bolder;
+  background: rgb(211, 103, 3);;
   border-radius: 25px 25px 0px 0px;
   font-size: 1rem;
 }
 
 div.empty{
-  color: white;
-  background: orangered;
+  color: black;
+  font-weight: bolder;
+  background: rgb(211, 103, 3);;
 
   border-radius: 0px 0px 25px 25px;
   grid-area: empty ;
@@ -30,6 +35,10 @@ h5{
 
 div.keyMaker
 {
+  border-radius: 25px 25px 0px 0px;
+ 
+  margin: 0px;
+  background: cornflowerblue;
   grid-area: keys ;
 }
 
@@ -39,8 +48,6 @@ div.mesa{grid-area: kontrol ;}
 div .keyMaker{
   display: grid;
   grid-gap: 5px;
-  grid-row-gap: 10px;
-  margin-right: 28px ;
   
   grid-template-areas: 
  
@@ -70,7 +77,7 @@ input#frequency
 canvas#env-graph{
  background: orangered;
  grid-area: VIZ ;
- margin: 20px 0px 10px 60px;
+ margin: 10px 0px 10px 50px;
 
 width: 1150px;
 height: 200px;
@@ -88,7 +95,8 @@ height: 200px;
 
 button.buton2{
   border-radius: 25px;
-   color:orange;
+  font-weight: bolder;
+   color:black;
    width: 70px;
    height: 70px;
    align-content: center;
@@ -122,24 +130,25 @@ select > option  {
 }
 
 div .keyMaker{
-  margin-right: 60px;
+  padding: 20px;
 }
 
 
 .UP{
   grid-area: UP ;
-  color: white;
-  background: orangered;
+  color: black;
+  font-weight: bolder;
+  background: yellow;
   align-content: center;
   border-radius: 25px;
-  width: 100px;
+  width: 150px;
   
  
 }
 
 .G1{
   grid-area: G1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
 
@@ -147,7 +156,7 @@ div .keyMaker{
 
 .CSH1{
   grid-area: CSH1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
 
@@ -155,7 +164,7 @@ div .keyMaker{
 
 .GSH1{
   grid-area: GSH1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
  
@@ -163,56 +172,56 @@ div .keyMaker{
 
 .D1{
 grid-area: D1 ;  
-background: grey;
+background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
  
 }
 .DSH1{
   grid-area: DSH1 ;  
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
 
 }
 .A1{
   grid-area: A1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
  
 }
 .E1{
   grid-area: E1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
 
 }
 .ASH1{
   grid-area: ASH1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
  
 }
 .F1{
   grid-area: F1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
  
 }
 .B1{
   grid-area: B1 ;
-  background: grey;
+  background: rgb(211, 103, 3);
   align-content: center;
   border-radius: 25px;
   
 }
 .FSH1{
   grid-area: FSH1 ;
-  background: grey;
+  background: rgb(211, 103, 3);;
   align-content: center;
   border-radius: 25px;
  
@@ -220,7 +229,7 @@ background: grey;
 
 .C1{
   grid-area: C1 ;
-  background: grey;
+  background: rgb(211, 103, 3);;
   align-content: center;
   border-radius: 25px;
  
@@ -228,17 +237,18 @@ background: grey;
 
 .DN{
   grid-area: DN ;
-  background: orangered;
+  background: yellow;
   align-content: center;
   border-radius: 25px;
-  color: white;
+  color: black;
+  font-weight: bolder;
   
 }
 
 
 .C{
   grid-area: C ;
-  background: white;
+  background: orange;
   align-content: center;
   border-radius: 25px;
   
@@ -246,7 +256,7 @@ background: grey;
 
 .CSH{
   grid-area: CSH  ;  
-  background: black;
+  background: yellow;
   align-content: center;
   border-radius: 25px;
   color: white;
@@ -255,7 +265,7 @@ background: grey;
 
 .D{
   grid-area: D ;  
-  background: white;
+  background: orange;
   align-content: center;
   border-radius: 25px;
  
@@ -264,7 +274,7 @@ background: grey;
 
 .DSH{
   grid-area: DSH ;  
-  background: black;
+  background: yellow;
   align-content: center;
   border-radius: 25px;
   color: white;
@@ -273,7 +283,7 @@ background: grey;
 
 .E{
   grid-area: E ;  
-  background: white;
+  background: orange;
   align-content: center;
   border-radius: 25px;
  
@@ -282,7 +292,7 @@ background: grey;
 
 .F{
   grid-area: F ;  
-  background: white;
+  background: orange;
   align-content: center;
   border-radius: 25px;
  
@@ -290,7 +300,7 @@ background: grey;
 }
 .FSH{
   grid-area: FSH ;  
-  background: black;
+  background: yellow;
   align-content: center;
   border-radius: 25px;
   max-width: 200px;
@@ -300,7 +310,7 @@ background: grey;
 
 .G{
   grid-area: G ;  
-  background: white;
+  background: orange;
   align-content: center;
   border-radius: 25px;
  
@@ -308,7 +318,7 @@ background: grey;
 }
 .GSH{
   grid-area: GSH ;  
-  background: black;
+  background: yellow;
   align-content: center;
   border-radius: 25px;
   color: white;
@@ -316,7 +326,7 @@ background: grey;
 
 .A{
   grid-area: A ;  
-  background: white;
+  background: orange;
   align-content: center;
   border-radius: 25px;
   
@@ -324,7 +334,7 @@ background: grey;
 
 .ASH{
   grid-area: ASH ;  
-  background: black;
+  background: yellow;
   align-content: center;
   border-radius: 25px;
   color: white;
@@ -332,18 +342,14 @@ background: grey;
 
 .B{
   grid-area: B ;  
-  background: white;
+  background: orange;
   align-content: center;
   border-radius: 25px;
  
 }
-.C1{
-  grid-area: C1 ;  
-  background: grey;
-  align-content: center;
-  border-radius: 25px;
+
   
-}
+
 
 
 .synth {
