@@ -1,7 +1,6 @@
 import React from 'react'
-import './Keyboardcommand.css'
-import SynthApp from '../Synth/index'
 
+import SynthApp from '../Synth/index'
 
 export default class Keyboardcommand extends React.Component {
   constructor (props) {

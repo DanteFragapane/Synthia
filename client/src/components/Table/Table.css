@@ -1,4 +1,4 @@
-body{margin: 0px;}
+body{margin: 1rem;}
 
 /* Text color slider and label */
 .yeahdiv> div{
@@ -16,10 +16,10 @@ body{margin: 0px;}
  div .yeahdiv {
    
     display: grid;
-    grid-template-columns: 20%  19% 14% 14% 14% 14% ;
-    grid-template-rows: 6.25rem   ;
-   justify-content: right;
-   padding-right: 2rem;
+    grid-template-columns: 1fr  1fr .5fr .5fr .5fr .5fr ;
+    grid-template-rows: 6rem   ;
+    justify-content: center;
+   
 
   }
   
