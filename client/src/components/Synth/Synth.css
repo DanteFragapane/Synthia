@@ -74,6 +74,7 @@ canvas#env-graph{
  border-color: black;
  border-width: 2.5px;
 
+
 width: 95%;
 height: 230px;
 
@@ -488,12 +489,14 @@ div.keyMaker
   font-weight: bolder;
   border-style: solid;
   border-color: black;
-  border-width: 2.5px;
+  border-width: 2.0px;
 
-  width: 30%;
-  height: 5%;
-
-  border-radius: 25px;
+  width: 150%;
+  height: 30%;
+  transform: rotate(90deg);
+  border-radius: 0px;
+  margin: 5.5rem 3rem 0rem -4rem;
+  padding: 0rem 0rem 0rem 0rem;
   }
 
 
@@ -755,11 +758,14 @@ div.keyMaker
 {
   background: cornflowerblue;
   border-style: solid;
-  border-radius: 0px 0px 25px 25px;
-  border-width: 0px 2px 3px 2px;
-  margin: 0rem 0rem 0rem 0rem;
+  border-radius: 25px 25px 25px 25px;
+  border-width: 2px 2px 2px 2px;
+  margin: 1.40rem -1.6rem -10rem -3.1rem;
+  padding: 1.80rem 0rem .5rem 0rem;
   grid-area: yeah ;
- 
+  
+ justify-content: center;
+ align-content: center;
 }
 
 div#keyboard{
@@ -772,27 +778,32 @@ div#keyboard{
   grid-template-areas: 
  
     
-  "   keys kontrol    "
+  "   VIZ  kontrol keys   "
   
 
   ;
   justify-content: center;
   align-content: center;
-  margin: 0rem 2rem 0rem 2rem ;
+  margin: 0rem -.5rem 2rem 1rem ;
   padding: 0rem 0rem 0rem 0rem;
-
+background: none;
 
 }
 div.keyMaker
 {
   border-radius: 25px 25px 25px 25px;
- 
+  font-size: 70%;
  
   background: cornflowerblue;
   grid-area: keys ;
   border-style: solid;
   border-width: 2px 2px 2px 2px;
+  margin: 1rem 1rem .5rem 2.25rem;
 
 }
+
+
+
+
 
 }

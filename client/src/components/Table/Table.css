@@ -4,7 +4,7 @@ body{margin: 1rem;}
 .yeahdiv> div{
   border-radius: 25px;
   background-color: none;
-  color: white; 
+   
   font-size: .5rem;
   
   margin-left: 1rem;
@@ -133,14 +133,46 @@ div .divider .release {
   div .yeahdiv {
    
     display: grid;
-    grid-template-columns: 1fr 1fr .1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    grid-gap: .25rem;
-    justify-content: right;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .50fr 1fr 1fr ;
+    grid-gap: .15rem;
+    justify-content: center;
+    align-content: center;
    
 
   }
   div .divider .decay .attack .release .filterF .filterG .sustain {
     border-radius: 5px;
   }
+
+  /* Sustain */
+div .divider .sustain  {
+  grid-column: 1;
+  color: black;
+  text-align: center;
+  background: rgb(211, 103, 3);
+  
+  border-radius: 25px;
+   grid-area: Sustain;
+   font-weight: bolder;
+   border-style: solid;
+   border-color: black;
+   border-width: 2px;
+}
+
+/* Release */
+div .divider .release {
+  grid-column: 1;
+  color: black;
+  text-align: center;
+  background: yellow;
+
+  border-radius: 25px;
+  grid-area: Release;
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  padding-bottom: -1rem;
+}
 }
