@@ -17,6 +17,7 @@ body{margin: 1rem;}
    
     display: grid;
     grid-template-columns: 1fr  1fr .5fr .5fr .5fr .5fr ;
+    
     grid-template-rows: 6rem   ;
     justify-content: center;
    
@@ -39,7 +40,7 @@ div .divider .filterF {
   border-style: solid;
   border-color: black;
   border-width: 2px;
-  height: 3.75rem;
+  
 }
 
 
@@ -53,7 +54,7 @@ div .divider .filterF {
 
  
   grid-area: FilterG ;
-  height: 3.75rem;
+  
   justify-content: center;
   align-content: center;
   border-radius: 25px;
@@ -67,7 +68,7 @@ div .divider .filterF {
 /* Attack */
 div .divider .attack  {
   grid-column: 3;
-  height: 3.75rem;
+  
   text-align: center;
   background: yellow;
   border-radius: 25px;
@@ -82,7 +83,7 @@ div .divider .attack  {
 
 /* Decay */
 div .divider .decay  {
-  height: 3.75rem;
+
   grid-column: 4;
   color: black;
   background: rgb(211, 103, 3);
@@ -101,7 +102,7 @@ div .divider .sustain  {
   color: black;
   text-align: center;
   background: rgb(211, 103, 3);
-  height: 3.75rem;
+  
   border-radius: 25px;
    grid-area: Sustain;
    font-weight: bolder;
@@ -123,6 +124,23 @@ div .divider .release {
   border-style: solid;
   border-color: black;
   border-width: 2px;
-  height: 3.75rem;
+ 
 }
 
+@media(max-width: 768px){
+
+
+  div .yeahdiv {
+   
+    display: grid;
+    grid-template-columns: 1fr 1fr .1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: .25rem;
+    justify-content: right;
+   
+
+  }
+  div .divider .decay .attack .release .filterF .filterG .sustain {
+    border-radius: 5px;
+  }
+}

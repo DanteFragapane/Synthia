@@ -25,7 +25,7 @@
   -webkit-appearance: none;
   appearance: none;
   width: 30px;
-  height: 25px;
+  height: 10px;
   background: yellow;
   cursor: pointer;
   border-radius: 10px;
@@ -40,4 +40,8 @@
   height: 25px;
   background: orange;
   cursor: pointer;
+}
+
+@media(max-width: 768px){
+
 }
