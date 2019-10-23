@@ -127,7 +127,28 @@ div .divider .release {
  
 }
 
-@media(max-width: 768px){
+@media(max-width: 1500px) and (max-height: 1500px){
+
+
+
+  div .yeahdiv {
+   
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr ;
+    grid-gap: .15rem;
+    justify-content: center;
+    align-content: center;
+    margin: 0rem 32rem 0rem 6rem; 
+    padding: 0rem 0rem 1rem 0rem;
+   
+
+  }
+
+  
+}
+
+@media(max-width: 500px) and (max-height: 900px){
 
 
   div .yeahdiv {
@@ -198,21 +219,3 @@ div .divider .release {
   
 }
 
-@media(max-width: 1100px) and (max-height: 1500px){
-
-  div .yeahdiv {
-   
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr ;
-    grid-gap: .15rem;
-    justify-content: center;
-    align-content: center;
-    margin: 3rem 7rem .5rem 3.5rem; 
-    padding: 0rem 0rem 1.75rem 0rem;
-   
-
-  }
-
-  
-}
