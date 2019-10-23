@@ -169,7 +169,10 @@ div .divider .release {
   
 }
 
-@media(max-width: 500px) and (max-height: 900px){
+
+
+
+@media(max-width: 900px) and (max-height: 500px){
 
 
   div .yeahdiv {
@@ -178,7 +181,8 @@ div .divider .release {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr ;
     grid-gap: .15rem;
-    margin: 0rem 0rem 0rem 0rem;
+    margin: 4rem -2rem -0rem -2rem;
+    padding: 1rem 0rem 1rem 0rem;
    
    
 
@@ -219,24 +223,22 @@ div .divider .release {
 }
 }
 
-@media(max-width: 900px) and (max-height: 500px){
 
+@media(max-width: 500px) and (max-height: 900px){
 
   div .yeahdiv {
    
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: .50fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr ;
     grid-gap: .15rem;
-    justify-content: center;
-    align-content: center;
+    margin: -4rem 1.5rem 0rem 0rem;
+    padding: 2rem 0rem 2rem 0rem;
+    border-radius: 10px;
+    border-width: 2px;
    
+    rotate: (90deg);
 
   }
-  div .divider .decay .attack .release .filterF .filterG .sustain {
-    border-radius: 5px;
-  }
-
   
 }
-
