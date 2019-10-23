@@ -1,4 +1,7 @@
 
+
+p{display: none;}
+
 div.yeahdiv
 {
   background: cornflowerblue;
@@ -8,7 +11,7 @@ div.yeahdiv
   margin: 0rem 2rem .75rem 2rem;
 }
 div#root{
-  background: grey;
+  background: black;
   height: 100%;
   width: 100%;
 }
@@ -799,6 +802,389 @@ div.keyMaker
   border-style: solid;
   border-width: 2px 2px 2px 2px;
   margin: 1rem 1rem .5rem 2.25rem;
+
+}
+
+
+
+
+
+}
+
+
+@media(max-width: 900px){
+  button.buton2{
+    height: 3rem;
+    width: 3rem;
+   }
+
+  div .keyMaker{
+    display: grid;
+    grid-gap: .125rem;
+    
+    grid-template-areas: 
+   
+    "controlWave   FSH    GSH  ASH         "    
+    " empty    G  A     B      "
+    " UP    F   CSH    DSH                    "  
+    "  DN   C       D     E                               "
+  
+    ;
+    justify-content: center;
+    align-content: center;
+    margin: 0rem 2rem 0rem 2rem ;
+    padding: .5rem .5rem .5rem .5rem;
+
+
+  }
+
+  .UP{
+    grid-area: UP ;
+    color: black;
+    font-weight: bolder;
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    
+    font-weight: bolder;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+   
+  }
+
+  .DN{
+    grid-area: DN ;
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    color: black;
+    font-weight: bolder;
+    font-weight: bolder;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+  }
+
+    /*visualizer*/
+  canvas#env-graph{
+  background: orange;
+  grid-area: VIZ ;
+  
+  
+  font-weight: bolder;
+  border-style: solid;
+  border-color: black;
+  border-width: 2.0px;
+
+  width: 120%;
+  height: 30%;
+  transform: rotate(90deg);
+  border-radius: 0px;
+  margin: 7.2rem 1rem 0rem -3.5rem;
+  padding: 0rem 0rem 0rem 0rem;
+  }
+
+
+  div.controlWave{
+    color: black;
+    font-weight: bolder;
+    background: rgb(211, 103, 3);;
+    border-radius: 0px 0px 0px 0px;
+    
+    font-weight: bolder;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+  }
+  
+  div.empty{
+    color: black;
+    font-weight: bolder;
+    background: rgb(211, 103, 3);;
+    font-weight: bolder;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 0px 0px 25px 25px;
+    grid-area: empty ;
+  }
+
+  select#waveform{
+    background: grey;
+    color: black;
+    font-weight: bolder;
+    justify-content: center;
+    position: relative;
+    margin: .25rem 0rem 1rem .10rem; 
+    
+    border-radius: 0px;
+  
+  }
+  
+  select > option:focus{
+    background-color: cornflowerblue;
+    
+  }
+  
+  select > option  {
+    background: orange;
+    align-content: center; 
+    justify-content: center;
+  
+    font-weight: bolder;
+  }
+
+  .G1{
+    grid-area: G1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  
+  .CSH1{
+    grid-area: CSH1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  
+  .GSH1{
+    grid-area: GSH1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  
+  .D1{
+  grid-area: D1 ;  
+  background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  .DSH1{
+    grid-area: DSH1 ;  
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  .A1{
+    grid-area: A1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  .E1{
+    grid-area: E1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  .ASH1{
+    grid-area: ASH1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  .F1{
+    grid-area: F1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  .B1{
+    grid-area: B1 ;
+    background: rgb(211, 103, 3);
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  .FSH1{
+    grid-area: FSH1 ;
+    background: rgb(211, 103, 3);;
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  
+  .C1{
+    grid-area: C1 ;
+    background: rgb(211, 103, 3);;
+    align-content: center;
+    border-radius: 25px;
+    display: none;
+  }
+  
+  .DN{
+    grid-area: DN ;
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    color: black;
+    font-weight: bolder;
+    font-weight: bolder;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+  }
+  
+  
+  .C{
+    grid-area: C ;
+    background: orange;
+    align-content: center;
+    border-radius: 25px;
+    
+  }
+  
+  .CSH{
+    grid-area: CSH  ;  
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    color: white;
+   
+  }
+  
+  .D{
+    grid-area: D ;  
+    background: orange;
+    align-content: center;
+    border-radius: 25px;
+   
+  
+  }
+  
+  .DSH{
+    grid-area: DSH ;  
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    color: white;
+  
+  }
+  
+  .E{
+    grid-area: E ;  
+    background: orange;
+    align-content: center;
+    border-radius: 25px;
+   
+  }
+  
+  
+  .F{
+    grid-area: F ;  
+    background: orange;
+    align-content: center;
+    border-radius: 25px;
+   
+  
+  }
+  .FSH{
+    grid-area: FSH ;  
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    
+    color: white;
+  }
+  
+  
+  .G{
+    grid-area: G ;  
+    background: orange;
+    align-content: center;
+    border-radius: 25px;
+   
+  
+  }
+  .GSH{
+    grid-area: GSH ;  
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    color: white;
+  }
+  
+  .A{
+    grid-area: A ;  
+    background: orange;
+    align-content: center;
+    border-radius: 25px;
+    
+  }
+  
+  .ASH{
+    grid-area: ASH ;  
+    background: yellow;
+    align-content: center;
+    border-radius: 25px;
+    color: white;
+  }
+  
+  .B{
+    grid-area: B ;  
+    background: orange;
+    align-content: center;
+    border-radius: 25px;
+   
+  }
+
+  div.yeahdiv
+{
+  background: cornflowerblue;
+  border-style: solid;
+  border-radius: 25px 25px 25px 25px;
+  border-width: 2px 2px 2px 2px;
+  margin: 3.5rem -1.6rem -10rem -3rem;
+  padding: 1rem 0rem .6rem 0rem;
+  grid-area: yeah ;
+  
+ justify-content: center;
+ align-content: space-between;
+}
+
+div#keyboard{
+
+  display: grid;
+  
+  grid-template-columns: 1fr 1fr;
+  grid-gap: .05rem;
+  
+  grid-template-areas: 
+ 
+    
+  "   VIZ  kontrol keys   "
+  
+
+  ;
+  justify-content: center;
+  align-content: center;
+  margin: 0rem -.5rem 2rem 1rem ;
+  padding: 0rem 0rem 0rem 0rem;
+background: none;
+
+}
+div.keyMaker
+{
+  border-radius: 25px 25px 25px 25px;
+  font-size: 70%;
+ 
+  background: cornflowerblue;
+  grid-area: keys ;
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  margin: 2.5rem 2rem -1rem 4rem;
 
 }
 

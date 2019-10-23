@@ -134,10 +134,10 @@ div .divider .release {
    
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: .50fr 1fr 1fr ;
+    grid-template-rows: 1fr 1fr 1fr ;
     grid-gap: .15rem;
-    justify-content: center;
-    align-content: center;
+    margin: 0rem 0rem 0rem 0rem;
+   
    
 
   }
@@ -175,4 +175,25 @@ div .divider .release {
   border-width: 2px;
   padding-bottom: -1rem;
 }
+}
+
+@media(max-width: 900px){
+
+
+  div .yeahdiv {
+   
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: .50fr 1fr 1fr ;
+    grid-gap: .15rem;
+    justify-content: center;
+    align-content: center;
+   
+
+  }
+  div .divider .decay .attack .release .filterF .filterG .sustain {
+    border-radius: 5px;
+  }
+
+  
 }
