@@ -1,3 +1,3 @@
-# KnightsOfDweebdom
+# Synthia
 
-Knights of Dweebdom Project 3
+A web-based synthesizer.
