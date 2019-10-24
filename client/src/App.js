@@ -31,10 +31,6 @@ class App extends React.Component {
     this.updateUser()
   }
 
-  // componentDidUpdate () {
-  //   this.updateUser()
-  // }
-
   render () {
     return (
       <Router>
