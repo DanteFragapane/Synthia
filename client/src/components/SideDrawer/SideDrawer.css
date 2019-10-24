@@ -1,11 +1,11 @@
 .side-drawer{
     height: 100%;
-    background: white;
+    background: yellow;
     box-shadow: 1px 0px 7px rgba(0,0,0, 0.5);
     position: fixed;
     top: 0;
     left:0;
-    width: 400px;
+    width: 25%;
     z-index: 200;
     transform: translateX(-100%);
     transition: transform 0.3s ease-out
@@ -21,7 +21,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center
 }
 
 .side-drawer li {
@@ -29,7 +29,45 @@
 }
 
 .side-drawer a {
-color: darkorange;
+color: white;
 text-decoration: none;
-font-size: 1.2rem
+font-size: 1.2rem;
+
+}
+
+.cast{
+  align-self: left;
+  margin-left: 1rem;
+  
+  font-weight: bolder;
+  background: orange;
+  border-radius: 25px 0px 0px 25px;
+  border-style: solid;
+  border-width: 2px 0px 2px 2px;
+  padding: 1rem;
+
+}
+
+li{
+  align-self: center;
+  border-radius: 25px 25px 0px 25px;
+  background: cornflowerblue;
+  border-style: solid;
+  border-width: 2px 2px 2px 2px;
+  padding: 1rem;
+  padding-right: -2rem;
+}
+
+h2{
+  border-radius: 0px 0px 0px 25px;
+ 
+}
+
+.casttitle{
+  color: green;
+  background: black;
+  border-radius: 25px;
+  padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  margin: 0px 2rem -4rem 5rem;
+
 }
