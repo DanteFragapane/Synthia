@@ -1,8 +1,11 @@
 
 
 h2{
+  background-color: orange;
   padding-left: 2rem;
   padding-bottom: 1rem;
+  border-style:solid;
+  border-width: 2px;
 }
 
 form{
@@ -10,6 +13,7 @@ form{
   padding-bottom: 150px;
   text-align: left;
   display: grid;
+  background-image: url(./synthia.jpg);
 }
 
 .formbox{
@@ -60,3 +64,43 @@ margin-left: 1.5rem;
 max-width: 70%;
 }
 
+
+
+/* .lilsynth{
+display: grid;
+width: 30%;
+height: 70%;
+
+justify-self: right;
+}
+
+.screen{
+background: black;
+border-style: solid;
+border-color: orange;
+border-width: 2px;
+}
+
+.pad{
+  display: grid;
+  background:cornflowerblue}
+
+.fakeheader{
+  background: orange;
+}
+
+.fakefooter{
+  background: orange;}
+
+.b1{background: orange;}
+.b2{background: yellow;}
+.b3{background: orange;}
+.b4{background: yellow;}
+.b5{background: orange;}
+.b6{background: yellow;}
+.b7{background: orange;}
+.b8{background: yellow;}
+.b9{background: orange;}
+.b10{background: yellow;}
+.b11{background: orange;}
+.b12{background: yellow;} */
