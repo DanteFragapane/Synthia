@@ -123,7 +123,6 @@ export default class Synthesizer extends React.Component {
 
     // Connect the nodes
 
-    console.log(this.grapherNode)
     this.oscillator.connect(this.filter)
     this.filter.connect(this.masterGainNode)
     this.grapherNode.connect(this.audioContext.destination)
@@ -176,73 +175,59 @@ export default class Synthesizer extends React.Component {
     switch (event.key) {
       case 'a':
         this.playSound(261.63)
-        console.log('a key was pressed')
         document.body.style.background = 'cornflowerblue'
         break
       case 'w':
         this.playSound(277.18)
-        console.log('w key was pressed')
         document.body.style.background = 'orange'
         break
       case 's':
         this.playSound(293.66)
-        console.log('s key was pressed')
         document.body.style.background = 'yellow'
         break
       case 'e':
         this.playSound(311.13)
-        console.log('e key was pressed')
         document.body.style.background = 'cornflowerblue'
         break
       case 'd':
         this.playSound(329.63)
-        console.log('d key was pressed')
         document.body.style.background = 'cornflowerblue'
         break
       case 'f':
         this.playSound(349.23)
-        console.log('f key was pressed')
         document.body.style.background = 'yellow'
         break
       case 't':
         this.playSound(369.99)
-        console.log('t key was pressed')
         document.body.style.background = 'orange'
         break
       case 'g':
         this.playSound(392.0)
-        console.log('g key was pressed')
         document.body.style.background = 'cornflowerblue'
         break
       case 'y':
         this.playSound(415.3)
-        console.log('y key was pressed')
         document.body.style.background = 'yellow'
         break
       case 'h':
         this.playSound(440.0)
-        console.log('h key was pressed')
         document.body.style.background = 'cornflowerblue'
         break
       case 'u':
         this.playSound(466.16)
-        console.log('u key was pressed')
         document.body.style.background = 'yellow'
         break
       case 'j':
         this.playSound(493.88)
-        console.log('j key was pressed')
         document.body.style.background = 'orange'
 
         break
       case 'k':
         this.playSound(523.25)
-        console.log('k key was pressed')
         document.body.style.background = 'cornflowerblue'
         break
 
       default:
-        console.log('wrong key')
         document.body.style.background = 'black'
     }
   }
@@ -257,7 +242,6 @@ export default class Synthesizer extends React.Component {
       <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
         <ValuesContext.Consumer>
           {(context) => {
-            console.log(this)
             this.waveform = context.waveform
             this.filterFrequency = context.filterFrequency
             this.filterGain = context.filterGain
@@ -303,7 +287,7 @@ export default class Synthesizer extends React.Component {
               {(context) => {
                 return (
                   <div className="controlWave">
-                    <select id="waveform" value={this.waveform} onChange={context.setWaveform}>
+                    <select id="waveform" value={context.waveform} onChange={context.setWaveform}>
                       <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
                       <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
                       <option value={WAVEFORMS.TRIANGLE.id}>{WAVEFORMS.TRIANGLE.userTerm}</option>

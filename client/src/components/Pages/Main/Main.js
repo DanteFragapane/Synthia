@@ -8,8 +8,6 @@ import SideDrawer from '../../SideDrawer/SideDrawer'
 import Backdrop from '../../Backdrop/Backdrop'
 import { ValuesContext } from './ValuesContext'
 
-
-
 class Main extends React.Component {
   constructor (props) {
     super(props)
@@ -26,7 +24,7 @@ class Main extends React.Component {
       delayTime: 0.5,
 
       setWaveform: (w) => {
-        this.setState({ waveform: w })
+        this.setState({ waveform: w.target.value })
       },
 
       setFilterFrequency: (f) => {
@@ -75,18 +73,14 @@ class Main extends React.Component {
 
     return (
       <div style={{ height: '100%' }} className="wrapper">
-  
         <div className="headers">
           <Toolbar drawerClickHandler={this.drawerToggleClickHandler} />
         </div>
         <SideDrawer show={this.state.sideDrawerOpen} />
         {backdrop}
 
-
         <div className="four">
-          <ValuesContext.Provider value={this.state}>
-      
-          </ValuesContext.Provider>
+          <ValuesContext.Provider value={this.state} />
         </div>
 
         <div className="keyboardCommand">
