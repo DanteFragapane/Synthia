@@ -36,10 +36,9 @@ export default class Synthesizer extends React.Component {
       { name: 'FSH1', freq: 739.99, keyLetter: 'x' },
       { name: 'G1', freq: 783.99, keyLetter: 'x' },
       { name: 'GSH1', freq: 830.61, keyLetter: 'x' },
-      { name: 'A1', freq: 880.00, keyLetter: 'x' },
+      { name: 'A1', freq: 880.0, keyLetter: 'x' },
       { name: 'ASH1', freq: 932.33, keyLetter: 'x' },
-      { name: 'B1', freq: 987.77, keyLetter: 'x' },
-    
+      { name: 'B1', freq: 987.77, keyLetter: 'x' }
     ]
 
     this.state = {
@@ -178,73 +177,73 @@ export default class Synthesizer extends React.Component {
       case 'a':
         this.playSound(261.63)
         console.log('a key was pressed')
-        document.body.style.background = "cornflowerblue"
+        document.body.style.background = 'cornflowerblue'
         break
       case 'w':
         this.playSound(277.18)
         console.log('w key was pressed')
-        document.body.style.background = "orange"
+        document.body.style.background = 'orange'
         break
       case 's':
         this.playSound(293.66)
         console.log('s key was pressed')
-        document.body.style.background = "yellow"
+        document.body.style.background = 'yellow'
         break
       case 'e':
         this.playSound(311.13)
         console.log('e key was pressed')
-        document.body.style.background = "cornflowerblue"
+        document.body.style.background = 'cornflowerblue'
         break
       case 'd':
         this.playSound(329.63)
         console.log('d key was pressed')
-        document.body.style.background = "cornflowerblue"
+        document.body.style.background = 'cornflowerblue'
         break
       case 'f':
         this.playSound(349.23)
         console.log('f key was pressed')
-        document.body.style.background = "yellow"
+        document.body.style.background = 'yellow'
         break
       case 't':
         this.playSound(369.99)
         console.log('t key was pressed')
-        document.body.style.background = "orange"
+        document.body.style.background = 'orange'
         break
       case 'g':
         this.playSound(392.0)
         console.log('g key was pressed')
-        document.body.style.background = "cornflowerblue"
+        document.body.style.background = 'cornflowerblue'
         break
       case 'y':
         this.playSound(415.3)
         console.log('y key was pressed')
-        document.body.style.background = "yellow"
+        document.body.style.background = 'yellow'
         break
       case 'h':
         this.playSound(440.0)
         console.log('h key was pressed')
-        document.body.style.background = "cornflowerblue"
+        document.body.style.background = 'cornflowerblue'
         break
       case 'u':
         this.playSound(466.16)
         console.log('u key was pressed')
-        document.body.style.background = "yellow"
+        document.body.style.background = 'yellow'
         break
       case 'j':
         this.playSound(493.88)
         console.log('j key was pressed')
-        document.body.style.background = "orange"
-   
+        document.body.style.background = 'orange'
+
         break
       case 'k':
         this.playSound(523.25)
         console.log('k key was pressed')
-        document.body.style.background = "cornflowerblue"
+        document.body.style.background = 'cornflowerblue'
         break
 
       default:
         console.log('wrong key')
-        document.body.style.background = "black"
+        document.body.style.background = 'black'
     }
   }
 
@@ -255,7 +254,6 @@ export default class Synthesizer extends React.Component {
 
   render () {
     return (
-      
       <div className="synth__all" id="keyboardDiv" onKeyDown={this.keyPlaySound2} onKeyUp={this.stopSound}>
         <ValuesContext.Consumer>
           {(context) => {
@@ -270,19 +268,16 @@ export default class Synthesizer extends React.Component {
             this.delayTime = context.delayTime
           }}
         </ValuesContext.Consumer>
-       
-
-
 
         <Frequency value={this.state.frequency} updateFrequency={this.setFrequency} />
 
         <div id="keyboard">
-          <canvas id="env-graph"  />
+          <canvas id="env-graph" />
           <div />
-         
+
           <div className="keyMaker">
             {this.keys.map((key) => (
-              <div className={key.name}  key={key.name} data-freq={key.freq}>
+              <div className={key.name} key={key.name} data-freq={key.freq}>
                 <button
                   className="buton2"
                   onMouseUp={this.stopSound}
@@ -295,23 +290,35 @@ export default class Synthesizer extends React.Component {
                 </button>
               </div>
             ))}
-
-            <div className='empty'><h5>Waveform</h5></div>
-            <button className='UP'><h5>UP</h5></button>
-            <button className='DN'><h5>DN</h5></button>
-            <div className="controlWave">       
-          <select id="waveform" value={this.state.waveform} onChange={this.setWaveform}>
-            <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
-            <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
-            <option value={WAVEFORMS.TRIANGLE.id}>{WAVEFORMS.TRIANGLE.userTerm}</option>
-            <option value={WAVEFORMS.SQUARE.id}>{WAVEFORMS.SQUARE.userTerm}</option>
-          </select>
-        </div>
+            <div className="empty">
+              <h5>Waveform</h5>
+            </div>
+            <button className="UP">
+              <h5>UP</h5>
+            </button>
+            <button className="DN">
+              <h5>DN</h5>
+            </button>
+            <ValuesContext.Consumer>
+              {(context) => {
+                return (
+                  <div className="controlWave">
+                    <select id="waveform" value={this.waveform} onChange={context.setWaveform}>
+                      <option value={WAVEFORMS.SINE.id}>{WAVEFORMS.SINE.userTerm}</option>
+                      <option value={WAVEFORMS.SAWTOOTH.id}>{WAVEFORMS.SAWTOOTH.userTerm}</option>
+                      <option value={WAVEFORMS.TRIANGLE.id}>{WAVEFORMS.TRIANGLE.userTerm}</option>
+                      <option value={WAVEFORMS.SQUARE.id}>{WAVEFORMS.SQUARE.userTerm}</option>
+                    </select>
+                  </div>
+                )
+              }}
+            </ValuesContext.Consumer>>
           </div>
-          <div className='mesa' ><Table /> </div>
+          <div className="mesa">
+            <Table />{' '}
+          </div>
         </div>
       </div>
-      
     )
   }
 }

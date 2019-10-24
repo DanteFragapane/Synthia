@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './Signup.css'
 
 export default class Signup extends Component {
   constructor (props) {
@@ -43,8 +44,10 @@ export default class Signup extends Component {
   render () {
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Signup Below!</h1>
+        <h2>Synthia</h2>
+        <div className='formbox'><h6>Singup!</h6>
         <input
+          className ='email'
           type="email"
           name="email"
           placeholder="Enter email"
@@ -53,6 +56,7 @@ export default class Signup extends Component {
           required
         />
         <input
+          className ='username'
           type="text"
           name="username"
           placeholder="Enter username"
@@ -61,6 +65,7 @@ export default class Signup extends Component {
           required
         />
         <input
+          className ='password'
           type="password"
           name="password"
           placeholder="Enter password"
@@ -68,8 +73,30 @@ export default class Signup extends Component {
           onChange={this.handleInputChange}
           required
         />
-        <input type="submit" value="Submit" />
+        <input className='submit' type="submit" value="Submit" />
+        </div>
+        {/* <div className='lilsynth'>
+          <div className='fakeheader'></div>
+          <div className='screen'>sceen</div>
+          
+          <div className='pad'>
+            <div className='b1'>1</div>
+            <div className ='b2'>2</div>
+            <div className='b3'>3</div>
+            <div className='b4'>4</div>
+            <div className='b5'>5</div>
+            <div className='b6'>6</div>
+            <div className='b7'>7</div>
+            <div className='b8'>8</div>
+            <div className='b9'>9</div>
+            <div className='b10'>10</div>
+            <div className='b11'>11</div>
+            <div className ='b12'>12</div>
+          </div>
+          <div className='fakefooter'></div>
+        </div> */}
       </form>
+      
     )
   }
 }

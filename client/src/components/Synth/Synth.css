@@ -18,7 +18,7 @@ div.controlWave{
   color: black;
   font-weight: bolder;
   background: rgb(211, 103, 3);;
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 0px 0px 0px 0px;
   font-size: 1rem;
   font-weight: bolder;
   border-style: solid;
@@ -108,7 +108,7 @@ select#waveform{
   justify-content: center;
   position: relative;
   max-width: 170px;
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 0px 0px 0px 0px;
 
 }
 
@@ -143,6 +143,7 @@ div#keyboard{background: yellow;}
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  visibility: hidden;
  
 }
 
@@ -246,6 +247,7 @@ background: rgb(211, 103, 3);
   border-style: solid;
   border-color: black;
   border-width: 2px;
+  visibility: hidden;
 }
 
 
@@ -459,6 +461,8 @@ div.keyMaker
 
 
   }
+
+  
   
   @media(max-width: 1100px) and (max-height: 1400px){
     div .keyMaker{
@@ -538,6 +542,7 @@ div.keyMaker
     background: yellow;
     align-content: center;
     border-radius: 25px;
+    visibility: hidden;
     
     font-weight: bolder;
     border-style: solid;
@@ -557,6 +562,7 @@ div.keyMaker
     border-style: solid;
     border-color: black;
     border-width: 2px;
+    visibility: hidden;
   }
 
     /*visualizer*/
@@ -729,6 +735,7 @@ div.keyMaker
     border-style: solid;
     border-color: black;
     border-width: 2px;
+    visibility: hidden;
   }
   
   

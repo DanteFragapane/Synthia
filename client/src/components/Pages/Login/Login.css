@@ -1,0 +1,106 @@
+
+
+h2{
+  background-color: orange;
+  padding-left: 2rem;
+  padding-bottom: 1rem;
+  border-style:solid;
+  border-width: 2px;
+}
+
+form{
+  background: cornflowerblue;
+  padding-bottom: 150px;
+  text-align: left;
+  display: grid;
+  background-image: url(./synthia.jpg);
+}
+
+.formbox{
+  background: yellow;
+  border-radius: 25px;
+  display: grid;
+  height: 400px;
+  width: 400px;
+  max-width: 70%;
+  margin: 1rem;
+  border-width: 2px;
+  border-style: solid;
+
+}
+
+h6{
+  padding-top: 30px;
+  margin-top: 20px; 
+  margin-left:30px;
+  background: none;
+  font-weight: bolder;
+}
+
+.submit{
+text-align: center;
+margin-top: 6rem;
+margin-left: 12rem;
+margin-bottom: 25%;
+max-width: 40%;
+background: cornflowerblue;
+border-style: solid;
+border-width: 2px;
+border-color: black;
+font-weight: bolder;
+}
+
+.username{
+text-align: left;
+margin-top: 2rem;
+margin-left: 1.5rem;
+max-width: 70%;
+}
+
+.password{
+text-align: left;
+margin-top: 3rem;
+margin-left: 1.5rem;
+max-width: 70%;
+}
+
+
+
+/* .lilsynth{
+display: grid;
+width: 30%;
+height: 70%;
+
+justify-self: right;
+}
+
+.screen{
+background: black;
+border-style: solid;
+border-color: orange;
+border-width: 2px;
+}
+
+.pad{
+  display: grid;
+  background:cornflowerblue}
+
+.fakeheader{
+  background: orange;
+}
+
+.fakefooter{
+  background: orange;}
+
+.b1{background: orange;}
+.b2{background: yellow;}
+.b3{background: orange;}
+.b4{background: yellow;}
+.b5{background: orange;}
+.b6{background: yellow;}
+.b7{background: orange;}
+.b8{background: yellow;}
+.b9{background: orange;}
+.b10{background: yellow;}
+.b11{background: orange;}
+.b12{background: yellow;} */

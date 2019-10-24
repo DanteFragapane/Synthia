@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import "./Login.css"
 
 export default class Login extends Component {
   constructor (props) {
@@ -42,8 +43,10 @@ export default class Login extends Component {
   render () {
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Login Below!</h1>
+        <h2>Synthia</h2>        
+        <div className= " formbox"><h6>Login!</h6>
         <input
+          className="username"
           type="text"
           name="username"
           placeholder="Enter username"
@@ -52,6 +55,7 @@ export default class Login extends Component {
           required
         />
         <input
+          className="password"
           type="password"
           name="password"
           placeholder="Enter password"
@@ -59,7 +63,11 @@ export default class Login extends Component {
           onChange={this.handleInputChange}
           required
         />
-        <input type="submit" value="Submit" />
+        <input 
+        className="submit"
+        type="submit" 
+        value="Submit" />
+        </div>
       </form>
     )
   }
