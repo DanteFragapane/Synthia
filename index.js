@@ -16,13 +16,14 @@ const app = express()
 
 // MySQL stuff
 const mysql = require('mysql')
-const connection = mysql.createConnection({
-  host: process.env.dbHots || 'localhost',
-  port: process.env.dbPort || 3306,
-  user: process.env.dbUser || 'root',
-  password: process.env.dbPassword || 'password',
-  database: process.env.dbDatabase || 'websynth'
-})
+const connection = mysql.createConnection(process.env.JAWSDB_URL) // ||
+// mysql.createConnection({
+//   host: process.env.dbHots || 'localhost',
+//   port: process.env.dbPort || 3306,
+//   user: process.env.dbUser || 'root',
+//   password: process.env.dbPassword || 'password',
+//   database: process.env.dbDatabase || 'websynth'
+// })
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }))

@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Nav from './components/Nav'
 import Login from './components/Pages/Login/Login'
 import Signup from './components/Pages/Signup/Signup'
-import Me from './components/Me'
 import withAuth from './components/withAuth'
 import Main from './components/Pages/Main'
 
