@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import './Signup.css'
 
-export default class Login extends Component {
+export default class Signup extends Component {
   constructor (props) {
     super(props)
     this.state = {
       username: '',
+      email: '',
       password: ''
     }
   }
@@ -18,7 +20,7 @@ export default class Login extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    fetch('/api/authenticate', {
+    fetch('/api/createUser', {
       method: 'POST',
       body: JSON.stringify(this.state),
       headers: {
@@ -35,14 +37,22 @@ export default class Login extends Component {
       })
       .catch((err) => {
         console.error(err)
-        alert('Error logging in. Please try again')
+        alert('Error signing up. Please try again')
       })
   }
 
   render () {
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Login Below!</h1>
+        <h1>Signup Below!</h1>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          value={this.state.email}
+          onChange={this.handleInputChange}
+          required
+        />
         <input
           type="text"
           name="username"
