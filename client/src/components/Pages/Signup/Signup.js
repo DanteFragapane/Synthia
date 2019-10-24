@@ -44,8 +44,10 @@ export default class Signup extends Component {
   render () {
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Signup Below!</h1>
+        <h2>Synthia</h2>
+        <div className='formbox'><h6>Singup!</h6>
         <input
+          className ='email'
           type="email"
           name="email"
           placeholder="Enter email"
@@ -54,6 +56,7 @@ export default class Signup extends Component {
           required
         />
         <input
+          className ='username'
           type="text"
           name="username"
           placeholder="Enter username"
@@ -62,6 +65,7 @@ export default class Signup extends Component {
           required
         />
         <input
+          className ='password'
           type="password"
           name="password"
           placeholder="Enter password"
@@ -69,8 +73,10 @@ export default class Signup extends Component {
           onChange={this.handleInputChange}
           required
         />
-        <input type="submit" value="Submit" />
+        <input className='submit' type="submit" value="Submit" />
+        </div>
       </form>
+      
     )
   }
 }
