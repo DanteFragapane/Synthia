@@ -312,7 +312,7 @@ export default class Synthesizer extends React.Component {
                   </div>
                 )
               }}
-            </ValuesContext.Consumer>>
+            </ValuesContext.Consumer>
           </div>
           <div className="mesa">
             <Table />{' '}
