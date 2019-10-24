@@ -1,0 +1,15 @@
+
+
+html{
+  height: 100%;
+}
+
+body {
+  font-size: 4rem;
+
+
+  margin: 2rem;
+  padding: 2rem;
+  font-family: sans-serif;
+  height: 100%;
+}
